@@ -1,0 +1,40 @@
+.bodyWrapper {
+  width: 800px;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:visited {
+  color: #363636;
+}
+
+.post-wrapper {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.post-wrapper p {
+  font-size: 14px;
+  font-weight: 400;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-wrapper span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #888888;
+}
