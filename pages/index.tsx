@@ -6,9 +6,8 @@ import { getAllPosts, PostMeta } from "./api/getAllPosts";
 const Home = ({ posts }: { posts: PostMeta[] }) => {
   return (
     <>
-      <h1>My Posts</h1>
       <LandingHeader />
-      <Articles posts={posts} />
+      {/* <Articles posts={posts} /> */}
     </>
   );
 };

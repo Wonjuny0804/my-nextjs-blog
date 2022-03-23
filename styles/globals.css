@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/public/assets/fonts/NotoSansKR-Regular.otf"),
+    url("/public/assets/fonts/NotoSansKR-Medium.otf"),
+    url("/public/assets/fonts/NotoSansKR-Bold.otf"),
+    url("/public/assets/fonts/NotoSansKR-Light.otf");
+  font-weight: 400 500 700;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("/public/assets/fonts/WorkSans-VariableFont_wght.ttf");
+  font-weight: 400 500 700;
+}
+
 html,
 body {
   padding: 0;

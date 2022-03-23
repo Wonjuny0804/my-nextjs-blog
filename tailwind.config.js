@@ -4,7 +4,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    colors: {
+      "primary-dark": "#333d4b",
+      "primary-blue": "#2563eb",
+    },
+    extend: {
+      fontFamily: {
+        notoSans: ["Noto Sans KR", "sans-serif"],
+        workSans: ["Work Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };
