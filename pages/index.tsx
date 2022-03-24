@@ -7,7 +7,7 @@ const Home = ({ posts }: { posts: PostMeta[] }) => {
   return (
     <>
       <LandingHeader />
-      <section className={`px-4 lg:w-[600px] lg:m-auto `}>
+      <section className={`px-4 lg:w-[640px] lg:m-auto `}>
         <Articles posts={posts} />
       </section>
     </>
