@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import rehypePrismGenerator from "rehype-prism-plus/generator";
 
 interface Props {
   children: React.ReactNode | string;

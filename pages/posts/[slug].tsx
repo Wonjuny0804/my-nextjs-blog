@@ -15,6 +15,7 @@ import rehypeCodeTitles from "rehype-code-titles";
 import readingTime from "reading-time";
 import P from "../../components/CustomeTags/P";
 import CODE from "../../components/CustomeTags/CODE";
+import H2 from "../../components/CustomeTags/H2";
 
 interface PostDetailProps {
   post: {
@@ -53,8 +54,9 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
           {...post.source}
           components={{
             h1: (props) => <H1>{props.children}</H1>,
+            h2: (props) => <H2>{props.children}</H2>,
             p: (props) => <P>{props.children}</P>,
-            code: (props) => <CODE>{props.children}</CODE>,
+            // code: (props) => <CODE>{props.children}</CODE>,
           }}
         />
       </section>
