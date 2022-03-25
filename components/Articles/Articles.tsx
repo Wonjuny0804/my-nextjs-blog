@@ -11,7 +11,7 @@ interface Props {
 const Articles: FC<Props> = ({ posts }) => {
   return (
     <AnimatePresence>
-      <ul className={`mt-10 flex flex-col gap-14`}>
+      <ul className={`mt-10 flex flex-col gap-14 list-none`}>
         {posts.map((post, index) => (
           <motion.li
             initial={{ opacity: 0 }}

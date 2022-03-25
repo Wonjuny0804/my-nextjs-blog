@@ -5,7 +5,7 @@ import { getAllPosts, getPostFromSlug, PostMeta } from "../api/getAllPosts";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
-import rehypeHighlight from "rehype-highlight";
+// import rehypeHighlight from "rehype-highlight";
 import H1 from "../../components/CustomeTags/H1";
 import LandingHeader from "../../components/Landing/LandingHeader";
 import moment from "moment";
@@ -16,6 +16,12 @@ import readingTime from "reading-time";
 import P from "../../components/CustomeTags/P";
 import CODE from "../../components/CustomeTags/CODE";
 import H2 from "../../components/CustomeTags/H2";
+import H3 from "../../components/CustomeTags/H3";
+import H4 from "../../components/CustomeTags/H4";
+import H5 from "../../components/CustomeTags/H5";
+import OL from "../../components/CustomeTags/OL";
+import LI from "../../components/CustomeTags/LI";
+import UL from "../../components/CustomeTags/UL";
 
 interface PostDetailProps {
   post: {
@@ -55,8 +61,15 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
           components={{
             h1: (props) => <H1>{props.children}</H1>,
             h2: (props) => <H2>{props.children}</H2>,
+            h3: (props) => <H3>{props.children}</H3>,
+            h4: (props) => <H4>{props.children}</H4>,
+            h5: (props) => <H5>{props.children}</H5>,
+            h6: (props) => <H5>{props.children}</H5>,
             p: (props) => <P>{props.children}</P>,
-            // code: (props) => <CODE>{props.children}</CODE>,
+            ol: (props) => <OL>{props.children}</OL>,
+            ul: (props) => <UL>{props.children}</UL>,
+            li: (props) => <LI>{props.children}</LI>,
+            code: (props) => <CODE>{props.children}</CODE>,
           }}
         />
       </section>
@@ -71,7 +84,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const mdxSource = await serialize(content, {
     mdxOptions: {
       rehypePlugins: [
-        rehypeHighlight,
         rehypePrism,
         rehypeCodeTitles,
         [
