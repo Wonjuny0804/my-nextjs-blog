@@ -1,88 +1,217 @@
 ---
 title: "React와 Typescript로 나만의 TodoList만들기 1편 - 기획, 셋팅"
 date: "2022-02-09"
-tags: ["Javascript"]
+tags: ["React", "Typescript", "TodoList"]
 excerpt: "React와 Typescript를 쓰는 방법을 익히기 위해서 스스로 TodoList 디자인 시안을 만들고 요구사항까지 정의해 보았다. 전체적인 토이 프로젝트의 흐름과 결과물이 어떻게 될지 설계하고 프로젝트 초기 세팅에 대해서 적어본다."
 ---
 
-## What is Javascript
+개발자에게는 계속해서 연습하는 것이 중요하기 때문에 혼자서 React와 Typescript를 연습하기 위해서 간단한 TodoList를 만들어보기로 했다.
 
-자바스크립트라는 언어를 배우러 온 것을 환영한다. 지금부터는 자바스크립트가 어떤 언어인지 알아보도록 하겠다. 그리고 함께 자바스크립트의 동작 원리와 어떻게하면자바스크립트를 잘 사용할 수 있는지 알아보도록 하겠다. 먼저 자바스크립트는 다음과 같은 특징을 가진다.
+## 기획
 
-먼저 렌더링이라는 용어에 대해서 알아보자.
+어플리케이션: TodoList(v1)
+기능: 1. Todo를 추가한다. 2. Todo를 삭제한다. 3. Todo를 수정한다. 4. 전체 선택할 수 있다.
 
-## 랜더링(rendering)
+기술스택 :React, Typescript, dart-sass
+테스팅: Storybook
+상태관리: Redux toolkit
+배포: AWS, nginx
 
-렌더링이란 HTML, CSS, 자바스크립트로 작성된 문서를 해석해서 *브라우저에 시각적으로 출력하는 것*을 말한다. 때로는 *서버에서 데이터를 HTML로 변환해서 브라우저에게 전달하는 과정(SSR; Server Side Rendering)*을 가리키기도 한다.
+### 디자인 시안
 
-## JavaScript 성장의 역사
+![](https://images.velog.io/images/wonjuny0804/post/559b293b-36df-4c32-98cf-b6ed8aeaf0d2/Desktop%20-%201.png)
 
-### **Ajax**
+디자인 시안도 여러가지 웹을 돌아다니면서 좋은 디자인들도 봤지만, Helevtica Poster의 느낌이 나는 조금은 투박하지만 타이포그래피가 아름답다고 느껴지는 TodoList를 만들기로 했다.
 
-1999년, 자바스크립트를 이용해 서버와 브라우저가 비동기(asynchronous) 방식으로 데이터를 교환할 수 있는 통신 기능인 **_Ajax(Asynchronous Javascript And XML)_**가 XMLHttpRequest라는 이름으로 등장했다.
+대신 너무 정적으로 보여서 상당히 많은(?) 애니매이션 효과를 주기로 했다. 애니매이션에는 React Spring을 쓰기로 했다.
 
-웹페이지 전체를 다시 load하지 않고 바뀌는 부분만 데이터를 가져와서 렌더링할 수 있게끔 해준다.
+## Project Setting
 
-### **jQuery**
+먼저 기술 스택은 React, Typescript, dart-sass를 쓰기로 했으니 이 세 가지를 먼저 설치해준다.
 
-자주 사용하는 코드들을 재사용할 수 있는 형태로 가공해서 프로그래밍 효율을 높여주는 코드들을 라이브러리라고 한다면 **jQuery란 엘리먼트를 선택하는 강력한 방법과 선택된 엘리먼트들을 효율적으로 제어할 수 있는 다양한 수단을 제공하는 자바스크립트 라이브러리**를 말한다.
+### 1. Typescript로 셋팅된 React앱 생성하기
 
-간단한 jQuery문법
-
-```jsx
-$(function() {
-제이쿼리 코드;
-});
+```bash
+npx create-react-app todolist --template typescript
 ```
 
-### **JavaScipt engine**
+위의 명령어를 명령어창에 입력하자.
 
-구글 맵스를 통해 웹 애플리케이션 프로그래밍 언어로서의 가능성이 확인된 자바스크립트로 웹 애플리케이션을 구축하려는 시도가 늘면서 더욱 빠르게 동작하는 자바스크립트 엔진의 필요성이 대두되었다. 2008년 등장한 구글의 V8 자바스크립트 엔진은 이러한 요구에 부합하는 빠른 성능을 보여주었다. **_V8 자바스크립트 엔진_**의 등장으로 자바스크립트는 데스크톱 애플리케이션과 유사한 사용자 경험(UX; user experience)을 제공할 수 있는 웹 애플리케이션 프로그래밍 언어로 정착하게 되었다.
+### 2. dart-sass 설치하기
 
-- **_V8 자바스크립트 엔진으로 촉발된 자바스크립트의 발전으로 과거 웹 서버에서 수행되던 로직들이 대거 클라이언트(브라우저)로 이동했고, 이는 웹 애플리케이션 개발에서 프런트엔드 영역이 주목받는 계기로 작용했다._**
-- **자바스크립트 엔진의 종류**
-- 크롬 V8
-- Mozilla의 SpiderMonkey
-- Edge의 Chakra
-- Safari의 JSC
+Dart-Sass에 대해서 혹시 모르시는 분들이 계실까봐 적어본다.. 구 sass버전은 node-sass라고 하는데 CRA(create react app) 웹사이트에 가면 sass를 추가할 때 명령어가 `node-sass`를 추가하도록 한다.
 
-### **Node.js**
+우리는 이때 새로운 `dart-sass`를 설치 해주기 위해서 todolist 디렉토리로 이동 후 다음의 명령어를 작성한다.
 
-> Node.js는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임입니다. Node.js는 이벤트 기반, 논 블로킹I/O모델을 사용해 가볍고 효율적입니다. Node.js의 패키지 생태계인npm은 세계에서 가장 큰 오픈 소스 라이브러리 생태계이기도 합니다. -node.js 공식 사이트-
+```bash
+npm i sass
+```
 
-Node.js는 브라우저의 자바스크립트 엔진에서만 동작하던 자바스크립트를 브라우저 이외의 환경에서도 동작할 수 있도록 자바스크립트 엔진을 브라우저에서 독립시킨 **_자바스크립트 실행 환경_**이다. Node.js는 다양한 플랫폼에 적용할 수 있지만 서버 사이드 애플리케이션 개발에 주로 사용되며, 이에 필요한 모듈, 파일 시스템, HTTP 등 빌트인(built-in, 내장) API를 제공한다.
+이때 주의해야하는 것은 package-lock.json에서 `sass-loader`가 버전 `7.2.0` 이상인지 확인하는 것이다. 만약 버전이 낮다면 현재 `sass-loader`를 7.2.0 이상으로 업데이트 해준 뒤에 `sass`를 설치해주면 된다.
+관련 글은 다음을 참고하도록 하자.
 
-Node.js는 **_비동기 I/O_**를 지원하며 **_단일 스레드(single thread) 이벤트 루프_** 기반으로 동작함으로써 요청(request) 처리 성능이 좋다. 따라서 Node.js는 데이터를 실시간으로 처리하기 위해 I/O가 빈번하게 발생하는 SPA(Single Page Application)에 적합하다. 하지만 CPU 사용률이 높은 애플리케이션에는 권장하지 않는다.
+- [Replace to Dart-Sass](https://stackoverflow.com/questions/63943756/replace-node-sass-with-dart-sass-in-create-react-app-v3-x)
 
-### **SPA 프레임워크**
+### 3. Formatting 설정
 
-SPA는 Single Page Application으로 한 페이지에 다 넣어놓는 것이다. 이러한 개발을 도와주도록 만들어진 프레임워크들을 말한다.
+ESLint + Prettier
+CRA를 이용해서 리액트 앱을 구성하는 경우 ESLint가 이미 설치가 되서 오기 때문에 ESLint는 따로 설치해주지 않아도 된다. 그래서 config만 해주면 되는데 우리는 보통 많이 이용하는 airbnb config를 설치해주도록 하겠다.
 
-### **JavaScript and ECMAScipt**
+```bash
+npm i -D eslint-config-airbnb-typescript
+```
 
-자바스크립트는 엄밀히 말해서 ECMASCript를 말하고 아무것도 추가 되지 않아서 Vanilla Script라고도 부른다.
+그 다음 eslintConfig 설정을 해준다. 디렉토리에 있는 package.json에 다음과 같이 추가해준다.
 
-### **JavaScript 특징**
+```json
+"eslintConfig": {
+    "extends": ["airbnb-typescript"]
+  }
+```
 
-자바스크립트는 인터프리터 방식이라고 나와있지만 자바스크립트 엔진이 자바스크립트를 빠르게 컴파일하고 실행할 수 있도록 그 안에 컴파일러와 인터프리터를 담고 있다. 이 부분에 대해서는 JavaScript엔진에 대해서 더 공부를 해봐야한다.
+그리고 `rules`를 수정해준다. 이 부분은 다른 분이 설정하신 규칙을 참고하였다.
 
-그 대신 인터넷에 검색해보면 쉽게 찾을 수 있는 특징에 대해서 조사해본다.
+```json
+"rules": {
+      "react/prefer-stateless-function": 0,
+      "react/jsx-filename-extension": 0,
+      "react/jsx-one-expression-per-line": 0,
+      "react/prop-types": 0,
+      "jsx-a11y/label-has-associated-control": [
+        "error",
+        {
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          }
+        }
+      ],
+      "jsx-a11y/label-has-for": [
+        "error",
+        {
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          }
+        }
+      ]
+    }
+```
 
-- **_동기적 언어_**
+그리고나서 개발 환경이 browser라는 것을 설정해준다.
 
-이 부분에 있어서 설명하기 전에 그렇다면 여기서 말하는 동기, 비동기의 의미를 알고 나아가야한다.
+```json
+"env": {
+      "browser": true
+    }
+```
 
-`Asynchronous`란 요청을 보낸 후 응답과 관계없이 다음 동작을 실행하는 방식을 말한다.
+그리고 Typescript로 설정을 해줬기 때문에 eslintConfig에 다음과 같은 설정을 추가해줘야 한다.
 
-`Synchronous`란 요청을 보낸 후 해당 요청의 응답을 받아야 다음 동작을 실행하는 방식을 말한다.
+```json
+"parserOptions": {
+      "project": "./tsconfig.json"
+    }
+```
 
-참고한 [웹페이지](https://velog.io/@jiwon/Javascript%EB%8A%94-%EB%8F%99%EA%B8%B0%EC%9D%BC%EA%B9%8C-%EB%B9%84%EB%8F%99%EA%B8%B0%EC%9D%BC%EA%B9%8C)에 따르면 자바스크립트는 동기적이고 `blocking`이며, `single-threaded`한 언어라고 한다. 하지만 이것은 오직 한 연산에서의 특성을 의미하고 모든 것에서의 특성을 의미하진 않는다.
+또 Storybook을 사용해서 Testing을 진행하기 때문에 storybook 파일은 eslint에서 제외시켜준다.
 
-사람들이 `JavaScript`가 비동기 언어라고 오해하는 이유는 JS가 비동기식으로 동작하도록 조작할 수 있기 때문이라고 한다.
+```
+"ignorePatterns": ["stories.js", "*.stories.js", "*.stories.ts"],
+```
 
-- 싱글스레드 기반
-- 동적 타입 언어
-- 함수가 일급 객체..
-- 프로토타입 기반 객체 지향 언어
+이렇게 해주면 eslintConfig의 전체 코드는 다음과 같다.
 
-위의 특징들에 대해서는 더 조사해봐야한다.
+```json
+"eslintConfig": {
+    "extends": [
+      "airbnb-typescript",
+      "prettier"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "ignorePatterns": ["stories.js", "*.stories.js", "*.stories.ts"],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off",
+          "react/prefer-stateless-function": 0,
+          "react/jsx-filename-extension": 0,
+          "react/jsx-one-expression-per-line": 0,
+          "react/prop-types": 0,
+          "react/react-in-jsx-scope": 0,
+          "jsx-a11y/label-has-associated-control": [
+            "error",
+            {
+              "required": {
+                "some": [
+                  "nesting",
+                  "id"
+                ]
+              }
+            }
+          ],
+          "jsx-a11y/label-has-for": [
+            "error",
+            {
+              "required": {
+                "some": [
+                  "nesting",
+                  "id"
+                ]
+              }
+            }
+          ]
+        },
+        "env": {
+          "browser": true
+        }
+      }
+    ]
+  }
+```
+
+#### Prettier 설정
+
+그럼 eslint설정이 모두 끝났고 Prettier와의 연동만 남겨두고 있다. 다음의 명령어를 실행해서 eslint-config-prettier를 설치해준다.
+
+```bash
+npm i -D eslint-config-prettier
+```
+
+그리고 package.json에 있는 extends에 prettier를 추가해준다.
+
+```json
+"eslintConfig": {
+    "extends": [
+      "airbnb-typescript",
+      "prettier"
+    ]
+  }
+```
+
+eslint와 Prettier 각자가 rules가 다르기 때문에 이 차이를 없애기 위해서 프리티어의 rules를 eslint에 맞춘다.
+
+.prettierrc를 생성하고 다음의 코드를 추가해준다.
+
+```bash
+{
+  "singleQuote": true,
+  "semi": true,
+  "useTabs": false,
+  "tabWidth": 2,
+  "printWidth": 80
+}
+```
+
+이렇게해주면 모든 설정이 완료되고 이제 즐겁게 component들을 만들기 시작하면 된다.
+
+다음 시간부터는 열심히 Component를 만드는 과정을 적어보도록 하겠다.
