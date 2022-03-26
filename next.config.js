@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const withMdxEnhanced = require("next-mdx-enhanced");
+
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["jsx", "js", "tsx", "ts", "mdx", "md"],
