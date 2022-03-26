@@ -6,7 +6,9 @@ interface Props {
 
 const H3: FC<Props> = ({ children }) => {
   return (
-    <h3 className={`text-[24px] font-medium text-primary-dark`}>{children}</h3>
+    <h3 className={`text-[24px] mt-3 lg:mt-6 font-medium text-primary-dark`}>
+      {children}
+    </h3>
   );
 };
 

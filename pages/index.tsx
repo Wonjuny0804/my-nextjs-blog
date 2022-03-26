@@ -3,6 +3,7 @@ import LandingHeader from "../components/Landing/LandingHeader";
 import Articles from "../components/Articles/Articles";
 import { getAllPosts, PostMeta } from "./api/getAllPosts";
 import { AnimatePresence, motion } from "framer-motion";
+import moment from "moment";
 
 const Home = ({ posts }: { posts: PostMeta[] }) => {
   return (
