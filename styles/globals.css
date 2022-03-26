@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("./prism-nightowl.css");
+
 @font-face {
   font-family: "Noto Sans KR";
   src: url("/public/assets/fonts/NotoSansKR-Regular.otf"),

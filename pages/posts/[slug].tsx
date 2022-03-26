@@ -13,6 +13,7 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeCodeTitles from "rehype-code-titles";
 import readingTime from "reading-time";
+
 import P from "../../components/CustomeTags/P";
 import CODE from "../../components/CustomeTags/CODE";
 import H2 from "../../components/CustomeTags/H2";

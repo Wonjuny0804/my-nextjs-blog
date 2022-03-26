@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const withMdxEnhanced = require("next-mdx-enhanced");
+// const withMdxEnhanced = require("next-mdx-enhanced");
 
 const nextConfig = {
   reactStrictMode: true,
