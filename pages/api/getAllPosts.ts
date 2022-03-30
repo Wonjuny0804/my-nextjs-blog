@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { sync } from "glob";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
+const JS_POSTS_PATH = path.join(process.cwd(), "/javascript/posts");
 
 export const getSlugs = (): string[] => {
   const paths = sync(`${POSTS_PATH}/*.mdx`);
@@ -52,10 +53,10 @@ export const getAllPosts = () => {
   const posts = getSlugs()
     .map((slug) => getPostFromSlug(slug))
     .sort((postA, postB) => {
-      if (postA.meta.date > postB.meta.date) {
+      if (postA.meta.date < postB.meta.date) {
         return -1;
       }
-      if (postA.meta.date < postB.meta.date) {
+      if (postA.meta.date > postB.meta.date) {
         return 1;
       }
       return 0;
