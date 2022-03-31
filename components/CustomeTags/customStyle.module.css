@@ -32,10 +32,17 @@
 .ul > .li {
   padding-left: 16px;
   list-style: circle !important;
+  font-size: 14px;
 }
 
 .ul > .li::marker {
   content: "•";
   width: 16px;
   color: #4e5968;
+}
+
+@media (min-width: 1024px) {
+  .ul > .li {
+    font-size: 16px;
+  }
 }
