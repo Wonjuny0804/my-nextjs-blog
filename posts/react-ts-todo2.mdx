@@ -1,0 +1,296 @@
+---
+title: "React와 Typescript로 나만의 TodoList만들기 2편 - 컴포넌트 만들기 그리고 Storybook"
+date: "2022-02-24"
+tags: ["React", "StoryBook", "Typescript"]
+excerpt: "React에서 Typescript를 이용해서 TodoList를 만드는 것애 대해서 작성해 보았다. UI 테스팅 라이브러리 Storybook의 세팅까지도 함께 살펴 본다."
+---
+
+React와 Typescript로 나만의 TodoList를 만들기 이번에는 드디어 Component를 만들어보기로 하겠다. `Create React App`을 이용해서 todolist 앱을 생성했으면 이제는 directory와 file들을 정리할 차례다.
+
+App에 관련된 파일들은 App이라는 폴더를 생성하고 다 넣어준다. 그리고 components라고 하는 폴더를 생성한다. 이제는 이 component들을 하나씩 만들어갈건데 그러기 위해서는 우리가 만들 todolist에서 component를 먼저 정의할 필요가 있다.
+
+![](https://images.velog.io/images/wonjuny0804/post/6b18c031-5935-4cd2-9405-6e1e4e6fa05d/Component%201.png)
+
+위의 그림을 보면 최소 몇개의 컴포넌트가 보인다.
+
+- Heading
+- Date
+- Logo
+- TodoItem
+- Checkbox
+- Input
+- Add Button
+- Signature
+
+먼저 identify할 수 있는 컴포넌트들은 위와 같다. 만약 컴포넌트가 더 필요하다면 만들면되고 현재 identify한 컴포넌트가 더 작은 단위로 쪼개질 수 있다면 코딩 과정에서 세분화하면 된다.
+
+## Building Components
+
+### Date Component
+
+먼저 components 디렉토리에 Date라고 하는 폴더를 생성한다. 그리고 그 안에 `Date.tsx`라는 파일을 생성해준다. 만약 터미널을 이용해서 생성하는 경우 다음의 명령어를 실행해주면 된다.
+
+```bash
+cd components
+mkdir Date
+cd Date
+touch Date.tsx
+```
+
+우리가 만드는 Date 컴포넌트는 상위에서 값을 전달받아서 렌더하는 역할만 할 것이다. 그리고 상태가 없는 컴포넌트이기 때문에 굉장히 간단한 컴포넌트에 속한다. Typescript에서 컴포넌트를 만들때는 일반 함수로 만드는 것이 일종의 컨벤션이라고 한다.
+
+우리의 컴포넌트는 상위로부터 날짜(숫자), 요일, 월 을 전달받기로 하는데 Date객체에서 각각을 가져오는 메서드를 사용하면 숫자값을 반환하기 때문에 이 값들을 숫자로 받도록 설계한다.
+
+따라서 먼저 Date컴포넌트가 상위로부터 받을 `props`를 정의한 `DateProps type`을 선언한다.
+
+```ts
+type DateProps = {
+  month: number;
+  day: number;
+  date: number;
+};
+```
+
+그리고 그 아래에 함수형 컴포넌트 Date의 코드를 적어준다.
+
+```ts
+function Date({ month, day, date }: DateProps) {
+  return <div></div>;
+}
+```
+
+#### Component 마크업
+
+우리가 만드려고 하는 컴포넌트는 다음과 같이 생겼다.
+![](https://images.velog.io/images/wonjuny0804/post/91c9ddad-9e46-497f-a9ab-78f36755a353/image.png)
+순서는 날짜, 요일, 월 순서이다.(외국의 표기 방식 상.. 그렇다고 한다)
+따라서 다음과 같이 마크업하기로 결정했다.
+
+```
+<div className={styles.dateClass}>
+    <p className={styles.date}>{displayDate}</p>
+    <div className={styles.dateMonth}>
+      <p>{displayDay}</p>
+      <p>{displayMonth}</p>
+    </div>
+  </div>
+```
+
+그러고나서 상위에서 props를 내려받는데 이때 상위에서는 공통적으로 숫자 값을 내려주기 때문에 이것을 `text`로 변환 해줘야 한다. 여기서 그냥 switch case문을 사용할 수도 있겠지만 우리는 `useState`와 `useEffect` Hook을 이용해서 이 부분을 구현해보도록 하겠다.
+
+Date객체는 반환을 숫자로 하는데 요일은 0~6, 달은 0~11 이렇게 반환하기 때문에 우리가 표시하고자하는 text값을 배열에 모두 넣어놓고 사용해도 될 것이다. 따라서 다음과 같이 작성해준다.
+
+```ts
+const months = [
+  "jan",
+  "feb",
+  "mar",
+  "apr",
+  "may",
+  "jun",
+  "jul",
+  "aug",
+  "sep",
+  "oct",
+  "nov",
+  "dec",
+];
+const days = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+];
+```
+
+그리고 상위로부터 전달 받은 props를 바탕으로 render되는 텍스트가 바뀌기 때문에 이를 담아줄 변수를 useState를 이용해서 만들어준다.
+
+```ts
+const [displayMonth, setDisplayMonth] = React.useState("");
+const [displayDay, setDisplayDay] = React.useState("");
+const [displayDate, setDisplayDate] = React.useState(1);
+```
+
+그러고나서 이 변수(state)들을 바꿔주는 코드를 작성해준다. 이때 useEffect를 사용한다.
+
+```ts
+React.useEffect(() => {
+  setDisplayMonth(months[month]);
+  setDisplayDay(days[day]);
+  setDisplayDate(date);
+}, [month, day, date]);
+```
+
+> 💁**useEffect**
+> useEffect는 안에 `() => {}` 즉 함수를 전달 받게 되는데 이는 컴포넌트가 마운트될때 실행된다. useEffect에 전달 된 함수는 함수 다음에 useEffect에 전달된 두 번째 인자 값에 의해 호출 빈도가 결정된다. 만약 이 배열을 넣어주지 않는다면, 즉 함수만 전달할때는 re-render시마다 호출된다. 그리고 빈배열 `[]`을 넣어주면 마운트 될 때만 실행이 된다. 만약 어떠한 값이 바뀌어서 그 값이 바뀌면 render를 다시하고 싶다면 배열에 그 값을 넣어주면 된다. 그리고 값을 넣어주도록 React에서 권장한다.
+
+그리하여 만들어진 전체 component의 코드를 보면 다음과 같다.
+
+```ts
+type DateProps = {
+  month: number;
+  day: number;
+  date: number;
+};
+
+function Date({ month, day, date }: DateProps) {
+  const [displayMonth, setDisplayMonth] = React.useState("");
+  const [displayDay, setDisplayDay] = React.useState("");
+  const [displayDate, setDisplayDate] = React.useState(1);
+
+  const months = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec",
+  ];
+  const days = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
+
+  React.useEffect(() => {
+    setDisplayMonth(months[month]);
+    setDisplayDay(days[day]);
+    setDisplayDate(date);
+  }, [month, day, date]);
+
+  return (
+    <div className={styles.dateClass}>
+      <p className={styles.date}>{displayDate}</p>
+      <div className={styles.dateMonth}>
+        <p>{displayDay}</p>
+        <p>{displayMonth}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+코드의 최상단에 `import React from 'react';`를 작성해주고 코드의 최하위에 `export default Date;`까지 작성해주면 일단 typescript로 작성한 React 컴포넌트의 코드는 완성이 되었다.
+
+#### Styling
+
+이제는 스타일링을 할 차례이다. 스타일링은 sass를 사용할 것이고 그러기 위해서 현재 `Date.tsx`가 있는 디렉토리에 `scss`파일을 생성해준다.
+
+```bash
+touch Date.module.scss
+```
+
+여기서 `scss`확장자 앞에 `module`을 붙인 이유는 모듈화된 스타일링을 쓰기 위함이다. 이렇게하면 import할때 js 모듈 방식으로 `import`하여 사용할 수 있다.
+
+생성한 `scss`파일에 스타일링 코드를 작성해주자.
+스타일링은 언제나 다음과 같은 기준으로 해준다.
+
+1. 기본적인 속성들 reset(margin 제거, padding 제거)
+2. 배치 및 레이아웃
+3. 세부 속성 정하기(폰트, 색상 등등)
+4. 인터랙션 애니메이션 추가(선택)
+
+우리는 전반적인 과정을 모두 다루기 때문에 css에서 너무 세부적인 것까지 의논하지 않는다. 아무튼 다음과 같은 코드로 스타일링 마무리 되었다.
+
+```scss
+.dateClass {
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  width: 410px;
+  display: flex;
+  font-family: "Helvetica";
+}
+
+.date {
+  margin: 0;
+  padding: 0;
+  font-size: 144px;
+  width: 175px;
+  text-align: center;
+  vertical-align: middle;
+
+  &:hover {
+    color: #77aa89;
+  }
+}
+
+.dateMonth {
+  font-size: 48px;
+  padding-top: 30px;
+  p {
+    margin: 0;
+    padding: 0;
+
+    &:hover {
+      color: #366973;
+    }
+  }
+}
+```
+
+마지막으로 Date.tsx 최상단에 `import styles from './Date.module.scss';`를 추가해주면 component 만들기, 스타일링하기는 마무리하게 된다.
+
+이렇게 component에 대한 코드는 완성했으니 CDD에 주로 쓰이는 Storybook을 이용해서 story를 작성하고 컴포넌트가 잘 작동하는지 test-case를 작성해보도록 하자.
+
+## Storybook의 세계로...
+
+보통은 TDD 방식으로 많이들 개발한다. 그렇다고 TDD 방식을 잘 이해하고 있는 것은 아니지만, TDD는 이름만 들어도 직관적이다. CDD는 그 방법론이 아무래도 React가 컴포넌트 단위 개발에 용이하고 그렇게 개발을 많이 하기 때문에 탄생한듯 하다.
+
+아무튼, Storybook은 CDD 방식에서 쓰이는 Testing 라이브러리인데 이것을 React와 함께 쓰려면 다음의 명령어를 입력해줘야 한다.
+
+```bash
+npx -p @storybook/cli sb init
+```
+
+그 후 storybook을 실행하기 위해서 다음의 명령어를 실행해준다.
+
+```bash
+npm run storybook
+```
+
+### Date 컴포넌트를 위한 Story 작성하기
+
+storybook파일은 가운데 stories라고하는 단어가 들어간다. 그래서 Date 컴포넌트를 위한 storybook 파일을 만든다고 가정하면 `Date.stories.tsx` 이렇게 이름을 지어주면 된다.
+
+그럼 이제 `Date.stories.tsx`를 작성해보자.
+
+```ts
+import Date, { DateProps } from "./Date";
+
+/* ------------------------------------------------------------------- */
+
+export default {
+  title: "Component/Date",
+  component: Date,
+};
+
+export const Sample = ({ month, day, date }: DateProps) => (
+  <Date month={month} day={day} date={date} />
+);
+```
+
+그렇게 작성을 하게되면 밑에 처럼 컴포넌트가 render되게 된다.
+![](https://images.velog.io/images/wonjuny0804/post/ad09038a-6216-47f7-9cdb-c88cb358aed8/image.png)
+controls에 숫자 값을 넣어서 render되는 것을 볼 수 있다.
+최종적으로 작성된 Storybook은 다음과 같이 나타난다.
+![](<https://images.velog.io/images/wonjuny0804/post/5382b4ad-969b-4169-b9bd-600e0f39a97b/ezgif.com-gif-maker%20(9).gif>)
+
+이렇게해서 가장 간단한 Date 컴포넌트를 만들어보았다.
+다음 시간에는 좀더 delicate한 케어가 필요한 Input 컴포넌트를 만들어보도록 하겠다. Input coponent는 속성도 고려할 것이 많고 Web접근성도 신경써줘야 하기 때문에 굉장히 흥미롭다.
+
+Stay tuned!!
