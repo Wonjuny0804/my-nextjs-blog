@@ -26,6 +26,7 @@ import UL from "../../components/CustomeTags/UL";
 import PostHeader from "../../components/PostHeader/PostHeader";
 import BLOCKQUOTE from "../../components/CustomeTags/BLOCKQUOTE";
 import A from "../../components/CustomeTags/A";
+import Footer from "../../components/Footer/Footer";
 
 interface PostDetailProps {
   post: {
@@ -57,10 +58,13 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
             li: (props) => <LI>{props.children}</LI>,
             code: (props) => <CODE>{props.children}</CODE>,
             blockquote: (props) => <BLOCKQUOTE>{props.children}</BLOCKQUOTE>,
-            a: (props) => <A>{props.children}</A>,
+            a: (props) => {
+              return <A href={props.href}>{props.children}</A>;
+            },
           }}
         />
       </section>
+      <Footer />
     </>
   );
 };
