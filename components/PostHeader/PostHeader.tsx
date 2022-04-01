@@ -13,6 +13,7 @@ interface Props {
 }
 
 const PostHeader: FC<Props> = ({ post }) => {
+  console.log(post);
   return (
     <>
       <Head>
@@ -25,15 +26,23 @@ const PostHeader: FC<Props> = ({ post }) => {
         >
           {post.meta.title}
         </h1>
-
-        <div className={`flex items-center text-sm lg:text-base mt-3 lg:mt-4`}>
-          <span className={`text-primary-dark font-workSans`}>
-            {post.meta.author}
-          </span>
-          &nbsp;/&nbsp;
-          <span className={`text-secondary-dark  font-workSans`}>
-            {moment(post.meta.date).format("MMM DD, YYYY")}
-          </span>
+        <div className={`flex justify-between items-center`}>
+          <div
+            className={`flex items-center text-sm lg:text-base mt-3 lg:mt-4`}
+          >
+            <span className={`text-primary-dark font-workSans`}>
+              {post.meta.author}
+            </span>
+            &nbsp;/&nbsp;
+            <span className={`text-secondary-dark  font-workSans`}>
+              {moment(post.meta.date).format("MMM DD, YYYY")}
+            </span>
+          </div>
+          <div
+            className={`text-secondary-dark  font-workSans text-sm lg:text-base`}
+          >
+            {post.meta.readingTime.text}
+          </div>
         </div>
       </section>
     </>

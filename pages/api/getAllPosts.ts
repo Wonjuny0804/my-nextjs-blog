@@ -29,6 +29,12 @@ export interface PostMeta {
   tags: string[];
   author: string;
   date: string;
+  readingTime: {
+    text: string;
+    minutes?: number;
+    time?: number;
+    words?: number;
+  };
 }
 
 export const getPostFromSlug = (slug: string): Post => {
@@ -45,6 +51,9 @@ export const getPostFromSlug = (slug: string): Post => {
       tags: (data.tags ?? []).sort(),
       date: (data.date ?? new Date()).toString(),
       author: data.author ?? "Bryan",
+      readingTime: {
+        text: data.readingTime?.text ?? "3 min read",
+      },
     },
   };
 };
