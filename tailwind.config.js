@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         notoSans: ["Noto Sans KR", "sans-serif"],
         workSans: ["Work Sans", "sans-serif"],
+        monoLisa: ["Mono Lisa", "sans-serif"],
       },
     },
   },
