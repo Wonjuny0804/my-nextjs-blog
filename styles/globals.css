@@ -44,3 +44,42 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.toc {
+  display: none;
+}
+
+@media (min-width: 1365px) {
+  .toc {
+    display: block;
+    width: 240px;
+    margin-left: 5rem;
+    border-left: 2px solid #f1f3f5;
+    padding: 0.25rem 0.75rem;
+    color: var(--text3);
+    line-height: 1.5;
+    font-size: 14px;
+    max-height: calc(100vh - 128px);
+    overflow: hidden auto;
+    position: sticky;
+    right: -50px;
+  }
+
+  .toc ol {
+    padding: 0;
+  }
+
+  .toc li {
+    list-style: none !important;
+  }
+
+  .toc li a {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    color: #333d4b;
+  }
+
+  .toc li a:hover {
+    color: #14181d;
+  }
+}

@@ -13,7 +13,6 @@ interface Props {
 }
 
 const PostHeader: FC<Props> = ({ post }) => {
-  console.log(post);
   return (
     <>
       <Head>

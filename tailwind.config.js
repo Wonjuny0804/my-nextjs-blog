@@ -17,6 +17,9 @@ module.exports = {
         workSans: ["Work Sans", "sans-serif"],
         monoLisa: ["Mono Lisa", "sans-serif"],
       },
+      screens: {
+        contentSize: "1365px",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

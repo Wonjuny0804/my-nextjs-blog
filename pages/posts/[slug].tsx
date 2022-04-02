@@ -13,6 +13,7 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeCodeTitles from "rehype-code-titles";
 import readingTime from "reading-time";
+import rehypetoc from "rehype-toc";
 
 import P from "../../components/CustomeTags/P";
 import CODE from "../../components/CustomeTags/CODE";
@@ -41,7 +42,7 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
       <PostHeader post={post} />
 
       <section
-        className={`min-w-[320px] px-4 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto`}
+        className={`min-w-[320px] px-4 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative`}
       >
         <MDXRemote
           {...post.source}
@@ -86,6 +87,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             },
           },
         ],
+        rehypetoc,
       ],
     },
   });
