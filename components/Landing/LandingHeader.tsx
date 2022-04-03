@@ -1,8 +1,9 @@
-import React from "react";
+/* eslint-disable react/display-name */
+import React, { FC } from "react";
 import Link from "next/link";
 import Logo from "../../public/logo.svg";
 
-const LandingHeader = () => {
+const LandingHeader: FC = React.memo(() => {
   return (
     <div
       className={`border-b bg-[rgba(255, 255, 255, .8)] backdrop-blur-xl lg:backdrop-blur border-gray sticky top-0 z-10 h-16 flex items-center lg:justify-between lg:pl-10 lg:pr-10`}
@@ -39,6 +40,6 @@ const LandingHeader = () => {
       </div>
     </div>
   );
-};
+});
 
 export default LandingHeader;
