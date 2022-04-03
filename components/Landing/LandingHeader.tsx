@@ -5,7 +5,7 @@ import Logo from "../../public/logo.svg";
 const LandingHeader = () => {
   return (
     <div
-      className={`border-b bg-[#ffffff] border-gray sticky top-0 z-10 h-16 flex items-center lg:justify-between lg:pl-10 lg:pr-10`}
+      className={`border-b bg-[rgba(255, 255, 255, .8)] backdrop-blur-xl lg:backdrop-blur border-gray sticky top-0 z-10 h-16 flex items-center lg:justify-between lg:pl-10 lg:pr-10`}
     >
       <Link href={"/"}>
         <a

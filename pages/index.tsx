@@ -1,9 +1,14 @@
 import React from "react";
-import LandingHeader from "../components/Landing/LandingHeader";
-import Articles from "../components/Articles/Articles";
+import dynamic from "next/dynamic";
+
 import { getAllPosts, PostMeta } from "./api/getAllPosts";
 import { AnimatePresence, motion } from "framer-motion";
-import Footer from "../components/Footer/Footer";
+
+const Articles = dynamic(() => import("../components/Articles/Articles"));
+const LandingHeader = dynamic(
+  () => import("../components/Landing/LandingHeader")
+);
+const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 const Home = ({ posts }: { posts: PostMeta[] }) => {
   return (
