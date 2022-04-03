@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 
 import { getAllPosts, PostMeta } from "./api/getAllPosts";
 import { AnimatePresence, motion } from "framer-motion";
+import Script from "next/script";
 
 const Articles = dynamic(() => import("../components/Articles/Articles"));
 const LandingHeader = dynamic(
@@ -14,6 +15,23 @@ const Home = ({ posts }: { posts: PostMeta[] }) => {
   return (
     <>
       <title>wonjundev.tech</title>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${
+          process.env.GA_ID || process.env.NEXT_PUBLIC_GA_ID
+        }`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){window.dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', '${
+           process.env.GA_ID || process.env.NEXT_PUBLIC_GA_ID
+         }');
+        `}
+      </Script>
       <main>
         <LandingHeader />
         <AnimatePresence>
