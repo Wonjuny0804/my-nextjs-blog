@@ -13,6 +13,7 @@ const Footer = dynamic(() => import("../components/Footer/Footer"));
 const Home = ({ posts }: { posts: PostMeta[] }) => {
   return (
     <>
+      <title>wonjundev.tech</title>
       <main>
         <LandingHeader />
         <AnimatePresence>
