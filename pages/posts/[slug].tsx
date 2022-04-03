@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getAllPosts, getPostFromSlug, PostMeta } from "../api/getAllPosts";
 import { serialize } from "next-mdx-remote/serialize";
@@ -7,8 +6,6 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 // import rehypeHighlight from "rehype-highlight";
 import H1 from "../../components/CustomeTags/H1";
-import LandingHeader from "../../components/Landing/LandingHeader";
-import moment from "moment";
 import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeCodeTitles from "rehype-code-titles";
