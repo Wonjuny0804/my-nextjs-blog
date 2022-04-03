@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 import Link from "next/link";
 import React, { FC } from "react";
+import Logo from "../../public/logo.svg";
 
 const Footer: FC = React.memo(() => {
   return (
@@ -11,11 +12,10 @@ const Footer: FC = React.memo(() => {
         <a
           className={`w-fit text-[24px] block font-workSans font-medium text-primary-dark`}
         >
-          WonjunDev.
-          <span className={`font-normal text-primary-blue`}>tech</span>
+          <Logo className={`h-6`} />
         </a>
       </Link>
-      <p className={`font-regular font-notoSans text-sm`}>
+      <p className={`font-regular font-workSans text-sm font-light`}>
         © All rights reserved to Wonjun Jang
       </p>
     </footer>
