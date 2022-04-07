@@ -16,7 +16,7 @@ const LandingHeader: FC = React.memo(() => {
         </a>
       </Link>
       <div className={`hidden lg:flex lg:gap-8`}>
-        <Link href={`/`}>
+        <Link href={`/about`}>
           <a
             className={`font-workSans text-primary-dark hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
           >
