@@ -30,7 +30,7 @@ const Top: FC = () => {
       <h2
         className={`font-medium text-[24px] tracking-tight leading-[30px] mt-[120px] text-primary-dark`}
       >
-        Currently on a UX journey.
+        Currently on a <span className={`underline`}>UX journey.</span>
         <br />
         Studying and researching
         <br /> a better, managable frontend products.
