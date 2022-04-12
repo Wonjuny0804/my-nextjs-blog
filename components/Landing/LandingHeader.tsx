@@ -8,13 +8,15 @@ const LandingHeader: FC = React.memo(() => {
     <div
       className={`border-b bg-[rgba(255, 255, 255, .8)] backdrop-blur-xl lg:backdrop-blur border-gray sticky top-0 z-10 h-16 flex items-center lg:justify-between lg:pl-10 lg:pr-10`}
     >
-      <Link href={"/"}>
-        <a
-          className={`w-fit text-[24px] block ml-[12px] py-[12px] font-workSans font-medium text-primary-dark`}
-        >
-          <Logo className={`h-6`} />
-        </a>
-      </Link>
+      <div className={`flex items-center gap-3`}>
+        <Link href={"/"}>
+          <a
+            className={`w-fit text-[24px] block ml-[12px] py-[12px] font-workSans font-medium text-primary-dark`}
+          >
+            <Logo className={`h-6`} />
+          </a>
+        </Link>
+      </div>
       <div className={`hidden lg:flex lg:gap-8`}>
         <Link href={`/about`}>
           <a
