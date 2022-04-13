@@ -16,10 +16,24 @@ const Experience: FC<Props> = ({ title, period, desc, techStacks }) => {
   return (
     <div>
       <h3 className={`font-bold text-xl`}>{title}</h3>
-      <span className={`font-notoSans text-sm text-secondary-dark block mt-1`}>
-        {moment(period.from).format("MMM YYYY")} ~{" "}
-        {period?.to && moment(period.to).format("MMM YYYY")}
-      </span>
+      <div className={`flex gap-3 items-center mt-1`}>
+        <span className={`font-notoSans text-sm text-secondary-dark block `}>
+          {moment(period.from).format("MMM YYYY")} ~{" "}
+          {period?.to && moment(period.to).format("MMM YYYY")}
+        </span>
+        <span
+          className={`text-sm font-workSans font-medium bg-[#92B1F5] text-white px-1 rounded-xl`}
+        >
+          {moment(period.to).diff(moment(period.from), "months") + 1} months
+        </span>
+        {!period?.to && (
+          <span
+            className={`text-sm font-workSans font-medium bg-emerald-300 text-white px-1 rounded-xl`}
+          >
+            Current
+          </span>
+        )}
+      </div>
       <p className={`font-notoSans tracking-tight text-base mt-1`}>{desc}</p>
       <div className={`flex gap-2 mt-2`}>
         {techStacks.map((techStack) => (

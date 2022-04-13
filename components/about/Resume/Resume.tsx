@@ -77,7 +77,7 @@ const Resume: FC = React.memo(() => {
             Used to{" "}
             <span className={`font-bold text-primary-blue`}>Agile methods</span>{" "}
             when working, most of my work experiences include working in an
-            iteration.
+            iteration using <span className={`font-bold`}>JIRA</span>.
           </li>
           <li
             className={`before:content-[""] before:w-[6px] before:h-[2px] 
