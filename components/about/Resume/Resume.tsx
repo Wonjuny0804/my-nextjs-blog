@@ -11,7 +11,7 @@ const Resume: FC = React.memo(() => {
   );
 
   return (
-    <section className={`px-4 mt-20 text-primary-dark`}>
+    <section className={`px-4 mt-20 text-primary-dark lg:px-0`}>
       <h1 className={`text-[17px] font-medium`}>Skills and experiences</h1>
 
       <div className={`mt-3`}>

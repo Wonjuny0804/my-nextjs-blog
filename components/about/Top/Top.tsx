@@ -6,12 +6,12 @@ import myImage from "../../../public/assets/wonjun-2.png";
 const Top: FC = () => {
   return (
     <section
-      className={`flex flex-col font-workSans px-4 lg:flex 
-        lg:gap-14 lg:flex-row 
-      lg:mt-10 lg:px-10
+      className={`flex flex-col font-workSans px-4
+        lg:gap-14
+      lg:mt-10 lg:px-0
       `}
     >
-      <div className={`w-[160px] lg:hidden`}>
+      <div className={`w-[160px] lg:w-[240px]`}>
         <Image
           src={myImage}
           alt={"Image of Wonjun"}
@@ -19,7 +19,7 @@ const Top: FC = () => {
         />
       </div>
       <h1
-        className={`font-bold text-[42px] leading-[52px] 
+        className={`font-bold text-[42px] leading-[52px] lg:text-[60px] lg:leading-[72px]
          text-transparent bg-clip-text bg-gradient-to-tr 
          from-primary-blue to-blue-300 tracking-tight`}
       >
@@ -28,7 +28,7 @@ const Top: FC = () => {
       </h1>
 
       <h2
-        className={`font-medium text-[24px] tracking-tight leading-[30px] mt-[120px] text-primary-dark`}
+        className={`font-medium text-[24px] lg:text-[36px] lg:leading-[40px] tracking-tight leading-[30px] mt-[120px] lg:mt-[30px] text-primary-dark`}
       >
         Currently on a <span className={`underline`}>UX journey.</span>
         <br />
@@ -37,7 +37,9 @@ const Top: FC = () => {
       </h2>
 
       <p
-        className={`mt-5 font-[400] text-[16px] leading-[20px] text-primary-dark`}
+        className={`mt-5 font-[400] text-[16px] leading-[20px] 
+        lg:text-[18px] lg:leading-[24px] 
+        text-primary-dark`}
       >
         As a frontend developer, I try to see the details and think about the
         journey users go through within the application. In other words,{" "}
