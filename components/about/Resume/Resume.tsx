@@ -94,7 +94,7 @@ const Resume: FC = React.memo(() => {
             pl-3.5 indent-[-14px]`}
           >
             <span className={`font-bold`}>Git and github PR</span> and peer code
-            reviewing is usually how I've managed to sum up codes.
+            reviewing is usually how I&apos;ve managed to sum up codes.
           </li>
         </ul>
       </div>
