@@ -21,7 +21,7 @@ const Top: FC = () => {
       <h1
         className={`font-bold text-[42px] leading-[52px] 
          text-transparent bg-clip-text bg-gradient-to-tr 
-         from-blue-600 to-blue-300 tracking-tight`}
+         from-primary-blue to-blue-300 tracking-tight`}
       >
         Hi there, <br />
         this is Wonjun.
@@ -39,10 +39,13 @@ const Top: FC = () => {
       <p
         className={`mt-5 font-[400] text-[16px] leading-[20px] text-primary-dark`}
       >
-        As a frontend developer, try to see the details and think about the
-        journey users go through within the application. I Truly believe that
-        keeping these in mind will leave a memorable experience for the users
-        and lead to successful product.
+        As a frontend developer, I try to see the details and think about the
+        journey users go through within the application. In other words,{" "}
+        <span className={`text-blue-500 font-medium`}>User Experience.</span>{" "}
+        <span className={`font-medium`}>
+          I Truly believe that keeping these in mind will leave a memorable
+          experience for the users and lead to a successful service.
+        </span>
       </p>
     </section>
   );
