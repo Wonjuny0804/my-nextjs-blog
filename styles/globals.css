@@ -25,7 +25,20 @@
 @font-face {
   font-family: "Work Sans";
   src: url("/public/assets/fonts/WorkSans-VariableFont_wght.ttf");
-  font-weight: 400 500 700;
+  font-weight: 300 400 500 700;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/public/assets/fonts/NotoSans-Thin.ttf"),
+    url("/public/assets/fonts/NotoSans-Light.ttf"),
+    url("/public/assets/fonts/NotoSans-ExtraLight.ttf"),
+    url("/public/assets/fonts/NotoSans-Regular.ttf"),
+    url("/public/assets/fonts/NotoSans-Medium.ttf"),
+    url("/public/assets/fonts/NotoSans-SemiBold.ttf"),
+    url("/public/assets/fonts/NotoSans-ExtraBold.ttf"),
+    url("/public/assets/fonts/NotoSans-Bold.ttf");
+  font-weight: 100 200 300 400 500 600 700 800;
 }
 
 html,

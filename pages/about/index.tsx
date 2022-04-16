@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import dynamic from "next/dynamic";
+import Projects from "../../components/about/Projects/Projects";
 
 const Resume = dynamic(() => import("../../components/about/Resume/Resume"));
 const LandingHeader = dynamic(
@@ -14,6 +15,7 @@ const AboutPage: FC = () => {
       <main className={`lg:w-[800px] lg:m-auto`}>
         <Top />
         <Resume />
+        <Projects />
       </main>
     </>
   );

@@ -8,9 +8,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        notoSans: ["Noto Sans KR", "sans-serif"],
+        notoSans: ["Noto Sans KR", "Noto Sans"],
         workSans: ["Work Sans", "sans-serif"],
         monoLisa: ["Mono Lisa", "sans-serif"],
+        notoSansEng: ["Noto Sans"],
       },
       colors: {
         "primary-dark": "#333d4b",

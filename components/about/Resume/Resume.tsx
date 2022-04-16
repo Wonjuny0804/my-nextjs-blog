@@ -12,11 +12,17 @@ const Resume: FC = React.memo(() => {
 
   return (
     <section className={`px-4 mt-20 text-primary-dark lg:px-0`}>
-      <h1 className={`text-[17px] font-medium`}>Skills and experiences</h1>
+      <h1 className={`text-[17px] font-medium font-workSans`}>
+        Skills and experiences
+      </h1>
 
       <div className={`mt-3`}>
-        <h2 className={`text-xl font-bold`}>Creating a product</h2>
-        <ul className={`font-notoSans mt-4 list-none flex flex-col gap-2`}>
+        <h2 className={`text-xl font-bold font-workSans`}>
+          Creating a product
+        </h2>
+        <ul
+          className={`font-notoSansEng font-normal mt-4 list-none flex flex-col gap-2`}
+        >
           <li
             className={`before:content-[""] before:w-[6px] before:h-[2px] 
             before:inline-block before:mb-[5px] before:mr-[8px] before:bg-[#9ca3af]
@@ -67,8 +73,10 @@ const Resume: FC = React.memo(() => {
         </ul>
       </div>
       <div className={`mt-6`}>
-        <h2 className={`text-xl font-bold`}>Operating with others</h2>
-        <ul className={`font-notoSans mt-4 list-none flex flex-col gap-2`}>
+        <h2 className={`text-xl font-bold font-workSans`}>
+          Operating with others
+        </h2>
+        <ul className={`font-notoSansEng mt-4 list-none flex flex-col gap-2`}>
           <li
             className={`before:content-[""] before:w-[6px] before:h-[2px] 
             before:inline-block before:mb-[5px] before:mr-[8px] before:bg-[#9ca3af]
@@ -100,7 +108,9 @@ const Resume: FC = React.memo(() => {
       </div>
 
       <div className={`mt-20`}>
-        <h2 className={`text-[17px] font-medium mb-3`}>Experiences</h2>
+        <h2 className={`text-[17px] font-medium mb-3 font-workSans`}>
+          Experiences
+        </h2>
 
         <div className={`flex flex-col gap-4`}>
           {datas.data.map((experience) => (

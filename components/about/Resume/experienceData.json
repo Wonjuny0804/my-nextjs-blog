@@ -4,8 +4,8 @@
       "id": 1,
       "title": "HanaVision Sofrware Engineer Intern",
       "period": {
-        "from": "2019.09",
-        "to": "2020.01"
+        "from": "2019-09",
+        "to": "2020-01"
       },
       "desc": "Worked on surveilance cameras and smart CCTVs. Building ML models to detect anomalies and implement it on surveilance systems.",
       "techStacks": ["Python", "Ubuntu", "Mysql"]
@@ -14,8 +14,8 @@
       "id": 2,
       "title": "Concentrix QA Intern",
       "period": {
-        "from": "2020.07",
-        "to": "2020.08"
+        "from": "2020-07",
+        "to": "2020-08"
       },
       "desc": "Customer Web Application products, web page products quality assurance assisting. Such as requirements meet check, publication check.",
       "techStacks": ["HTML5", "CSS", "Javascript", "jQuery"]
@@ -24,10 +24,18 @@
       "id": 3,
       "title": "enkorwithus Frontend Developer",
       "period": {
-        "from": "2021.06"
+        "from": "2021-06"
       },
       "desc": "Wokred on enkor web products, enkor internal dashboard, enkorstay and host frontend and deployment.",
-      "techStacks": ["React", "Nextjs", "Tailwindcss", "Scss"]
+      "techStacks": [
+        "React",
+        "Nextjs",
+        "Typescript",
+        "Tailwindcss",
+        "Scss",
+        "MobX",
+        "Redux Toolkit"
+      ]
     }
   ]
 }
