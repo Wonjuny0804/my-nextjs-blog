@@ -13,41 +13,6 @@
   font-weight: 400 700;
 }
 
-@font-face {
-  font-family: "Noto Sans KR";
-  src: url("../public/assets/fonts/NotoSansKR-Regular.otf"),
-    url("../public/assets/fonts/NotoSansKR-Medium.otf"),
-    url("../public/assets/fonts/NotoSansKR-Bold.otf"),
-    url("../public/assets/fonts/NotoSansKR-Light.otf");
-  font-weight: 300 400 500 700;
-}
-
-@font-face {
-  font-family: "Work Sans";
-  src: url("../public/assets/fonts/WorkSans-Light.ttf"),
-    url("../public/assets/fonts/WorkSans-Bold.ttf"),
-    url("../public/assets/fonts/WorkSans-ExtraLight.ttf"),
-    url("../public/assets/fonts/WorkSans-Regular.ttf"),
-    url("../public/assets/fonts/WorkSans-Medium.ttf"),
-    url("../public/assets/fonts/WorkSans-SemiBold.ttf"),
-    url("../public/assets/fonts/WorkSans-ExtraBold.ttf"),
-    url("../public/assets/fonts/WorkSans-Thin.ttf");
-  font-weight: 100 200 300 400 500 600 700 800;
-}
-
-@font-face {
-  font-family: "Noto Sans";
-  src: url("../public/assets/fonts/NotoSans-Thin.ttf"),
-    url("../public/assets/fonts/NotoSans-Light.ttf"),
-    url("../public/assets/fonts/NotoSans-ExtraLight.ttf"),
-    url("../public/assets/fonts/NotoSans-Regular.ttf"),
-    url("../public/assets/fonts/NotoSans-Medium.ttf"),
-    url("../public/assets/fonts/NotoSans-SemiBold.ttf"),
-    url("../public/assets/fonts/NotoSans-ExtraBold.ttf"),
-    url("../public/assets/fonts/NotoSans-Bold.ttf");
-  font-weight: 100 200 300 400 500 600 700 800;
-}
-
 html,
 body {
   padding: 0;
