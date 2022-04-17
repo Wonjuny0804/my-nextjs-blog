@@ -11,7 +11,8 @@ const projects: Array<Props> = [
     desc: `A web application where you can find hiking mates and plan a hike with
     your buddies. Operated as the Project Manager, Backend, Frontend
     developer.`,
-    list: `<li>
+    list: `
+    <li>
     Mobile and Desktop layout using
     <span class="font-normal">Scss and @media query</span>
   </li>
@@ -40,6 +41,42 @@ const projects: Array<Props> = [
   </li>
   <li>Deployment and CI using Github and AWS EC2.</li>`,
     link: "https://github.com/Santa-Application/App",
+  },
+  {
+    period: {
+      from: "2021-07",
+      to: "2021-09",
+    },
+    projectTitle: "enkor stay platform",
+    team: "enkorwithus",
+    desc: `Longterm stay residence house register, reserve platform. Was in charge of Frontend development and deployment.`,
+    list: `
+    <li>
+    CI using Github and AWS Amplify.
+  </li>
+  <li>
+    Room reservation and 
+  </li>
+  <li>
+    In charge of
+    <span class="font-normal">
+      Backend Server using Nodejs Express, MongoDB.
+    </span>
+  </li>
+  <li>
+    Created
+    <span class="font-normal">
+      UI components according to WAI-ARIA accessibility specification.
+    </span>
+  </li>
+  <li>
+    <span class="font-normal">
+      Component UIs testing through Storybook.
+    </span>
+    So had to configure according to Webpack docs.
+  </li>
+  <li>Deployment and CI using Github and AWS EC2.</li>
+    `,
   },
 ];
 

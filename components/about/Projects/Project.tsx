@@ -29,7 +29,7 @@ const Project: FC<Props> = ({
       </span>
       {link ? (
         <a target={`_blank`} href={link} className={`hover:underline`}>
-          <h1 className={`font-bold text-xl font-notoSans`}>{projectTitle}</h1>
+          <h1 className={`font-bold text-xl font-workSans`}>{projectTitle}</h1>
         </a>
       ) : (
         <h1 className={`font-bold text-xl font-workSans`}>{projectTitle}</h1>
