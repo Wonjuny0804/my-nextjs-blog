@@ -25,6 +25,7 @@ import PostHeader from "../../components/PostHeader/PostHeader";
 import BLOCKQUOTE from "../../components/CustomeTags/BLOCKQUOTE";
 import A from "../../components/CustomeTags/A";
 import Footer from "../../components/Footer/Footer";
+import Image from "next/image";
 
 interface PostDetailProps {
   post: {
@@ -39,7 +40,7 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
       <PostHeader post={post} />
 
       <section
-        className={`min-w-[320px] px-4 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative`}
+        className={`min-w-[320px] font-notoSans px-4 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative`}
       >
         <MDXRemote
           {...post.source}
@@ -59,6 +60,14 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
             a: (props) => {
               return <A href={props.href}>{props.children}</A>;
             },
+            img: (props) => (
+              <Image
+                src={props?.src ?? ""}
+                alt={props?.alt ?? "Image"}
+                layout="responsive"
+                loading="lazy"
+              />
+            ),
           }}
         />
       </section>
