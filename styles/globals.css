@@ -24,8 +24,15 @@
 
 @font-face {
   font-family: "Work Sans";
-  src: url("../public/assets/fonts/WorkSans-VariableFont_wght.ttf");
-  font-weight: 300 400 500 700;
+  src: url("../public/assets/fonts/WorkSans-Light.ttf"),
+    url("../public/assets/fonts/WorkSans-Bold.ttf"),
+    url("../public/assets/fonts/WorkSans-ExtraLight.ttf"),
+    url("../public/assets/fonts/WorkSans-Regular.ttf"),
+    url("../public/assets/fonts/WorkSans-Medium.ttf"),
+    url("../public/assets/fonts/WorkSans-SemiBold.ttf"),
+    url("../public/assets/fonts/WorkSans-ExtraBold.ttf"),
+    url("../public/assets/fonts/WorkSans-Thin.ttf");
+  font-weight: 100 200 300 400 500 600 700 800;
 }
 
 @font-face {
