@@ -1,9 +1,13 @@
 /* eslint-disable react/display-name */
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import Image from "next/image";
 import myImage from "../../../public/assets/wonjun-2.png";
+import AOS from "aos";
 
 const Top: FC = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <section
       className={`flex flex-col font-workSans px-4
@@ -22,6 +26,8 @@ const Top: FC = () => {
         className={`font-bold text-[42px] leading-[52px] lg:text-[60px] lg:leading-[72px]
          text-transparent bg-clip-text bg-gradient-to-tr 
          from-primary-blue to-blue-300 tracking-tight`}
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-center"
       >
         Hi there, <br />
         this is Wonjun.
