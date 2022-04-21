@@ -21,3 +21,25 @@ author: "Wonjun Jang"
   src="https://zejmaqexuwsasytgncvx.supabase.co/storage/v1/object/sign/blog-post-images/blog/posts/IMG_2864-min.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJibG9nLXBvc3QtaW1hZ2VzL2Jsb2cvcG9zdHMvSU1HXzI4NjQtbWluLmpwZyIsImlhdCI6MTY1MDE3NTEyMCwiZXhwIjoxOTY1NTM1MTIwfQ.FDIpokhbk2Me0QrKHQhLmvwopF2cjNzqjPwwZshuiI8"
   alt="전체적인 아키텍처"
 />
+
+구조도를 보면 파이썬코드로 작성한 scrapper가 web에서 데이터를 가져오면 그것을 정제한다. 그때 필요한 정보들은 title, link, desc, img_url, date, source 정도이다.
+사실 thumbnail이미지가 없는 포스트들도 있어서 이 부분은 어떻게 해결할지 고민중이다. 결국에는 imgUrl을 가져오지 않는 방향으로 가지 않을까 싶긴하다.
+
+아무튼, 가져온 정보를 정제해서 python코드가 그 코드를 supabase로 만든 database에 저장한다. 그리고 그
+저장된 정보들을 Nextjs에서 supabase로 호출해서 가져오는 식의 순서구조도이다.
+
+## 봉착한 문제,
+
+### 그렇다면 어떻게 매번 스크롤해올 것인가? 새 글이 올라왔는지를 어떻게 알 수 있을 것인가?
+
+결국 내가 도달한 문제는 그렇다면 어떻게 새 글이 올라왔는지 알 것인가 였다.
+
+#### 문제를 해결하기 위한 시작,
+
+일단 문제는 **"어떻게 새 글이 올라왔는지 감지할 것인가"** 였다. 이 문제를 해결하는 여러가지 방법들이 있을 것이다.
+
+첫번째 스크래이핑을 주기적으로 cron job을 돌리되 가장 최신 포스트의 제목이 디비에 있으면 스크래이핑을 하지 않고 넘어간다.
+
+두번째 웹사이트에 webhook같은 것을 걸어서 새 글이 올라오면 내쪽으로 신호가 trigger되서 스크래이핑을 다시 해오게 한다.
+
+나에게는 두번째 옵션이 가장 ideal하다, 하지만 이것이 기술적으로 정말 가능한지는 찾아봐야할 것 같다.
