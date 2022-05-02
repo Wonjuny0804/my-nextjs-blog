@@ -5,6 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["jsx", "js", "tsx", "ts", "mdx", "md"],
   swcMinify: true,
+  images: {
+    domains: ["images.velog.io"],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

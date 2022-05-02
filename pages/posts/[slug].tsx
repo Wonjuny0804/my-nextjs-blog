@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getAllPosts, getPostFromSlug, PostMeta } from "../api/getAllPosts";
@@ -60,14 +61,9 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
             a: (props) => {
               return <A href={props.href}>{props.children}</A>;
             },
-            img: (props) => (
-              <Image
-                src={props?.src ?? ""}
-                alt={props?.alt ?? "Image"}
-                layout="responsive"
-                loading="lazy"
-              />
-            ),
+            img: (props) => {
+              return <img src={props?.src ?? ""} alt={props?.alt ?? "Image"} />;
+            },
           }}
         />
       </section>
