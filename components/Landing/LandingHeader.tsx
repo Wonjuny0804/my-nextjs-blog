@@ -2,16 +2,20 @@
 import React, { FC } from "react";
 import Link from "next/link";
 import Logo from "../../public/logo.svg";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 const LandingHeader: FC = React.memo(() => {
   return (
     <div
-      className={`border-b bg-[rgba(255, 255, 255, .8)] backdrop-blur-xl lg:backdrop-blur border-gray sticky top-0 z-10 h-16 flex items-center lg:justify-between lg:pl-10 lg:pr-10`}
+      className={` border-b bg-[rgba(255, 255, 255, .8)] 
+      backdrop-blur-xl lg:backdrop-blur border-gray sticky 
+      top-0 z-10 h-16 flex items-center justify-between px-3
+      lg:justify-between lg:pl-10 lg:pr-10`}
     >
       <div className={`flex items-center gap-3`}>
         <Link href={"/"}>
           <a
-            className={`w-fit text-[24px] block ml-[12px] py-[12px] font-workSans font-medium text-primary-dark`}
+            className={`w-fit text-[24px] block py-[12px] font-workSans font-medium text-primary-dark`}
           >
             <Logo className={`h-6`} />
           </a>
@@ -40,6 +44,7 @@ const LandingHeader: FC = React.memo(() => {
           </a>
         </Link>
       </div>
+      <MobileMenu />
     </div>
   );
 });

@@ -9,15 +9,14 @@
 code[class*="language-"],
 pre[class*="language-"] {
   color: #d6deeb;
-  font-family: MonoLisa, Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
   line-height: 1.5;
-  font-size: 1rem;
+  font-size: 14px;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
