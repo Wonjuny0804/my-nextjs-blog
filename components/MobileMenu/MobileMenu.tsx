@@ -8,7 +8,7 @@ const MobileMenu: FC = () => {
     <div
       className={`flex font-workSans text-primary-dark items-center lg:hidden`}
     >
-      <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="relative flex items-center text-left">
         <Menu.Button
           as="button"
           className={`focus:outline-none inline-flex w-full 
