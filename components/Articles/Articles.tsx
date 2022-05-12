@@ -20,7 +20,7 @@ const Articles: FC<Props> = ({ posts }) => {
               delay: index * 0.2,
             }}
             key={post.slug}
-            className={`group`}
+            className={`group border-[3px] px-4 py-5 rounded-[3px] border-[#000000]`}
           >
             <Link href={`/posts/${post.slug}`}>
               <a>

@@ -14,7 +14,7 @@ const Post: FC<Props> = ({ post }) => {
   return (
     <>
       <h4
-        className={`text-[18px] group-hover:text-primary-blue transition-all duration-700 font-bold font-notoSans text-primary-dark lg:text-[24px]`}
+        className={`text-[18px] group-hover:text-primary-blue transition-all duration-700 font-bold font-notoSans text-[#000000] lg:text-[24px]`}
       >
         {post.title}
       </h4>
@@ -27,7 +27,12 @@ const Post: FC<Props> = ({ post }) => {
         {post.tags.map((tag) => (
           <span
             key={`post-${post.title}-${tag}`}
-            className={`block font-workSans leading-[20px] text-xs text-[#555770] px-[10px] py-[3px] font-base bg-[#f2f2f5] rounded-3xl `}
+            className={`block font-workSans 
+            leading-[20px] text-xs text-[#000000] px-[10px] 
+            py-[3px] font-base bg-[#f2f2f5] rounded-3xl 
+            border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000]
+            hover:top-1 
+            `}
           >
             {tag}
           </span>
