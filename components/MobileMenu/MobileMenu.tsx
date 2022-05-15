@@ -12,13 +12,13 @@ const MobileMenu: FC = () => {
         <Menu.Button
           as="button"
           className={`focus:outline-none inline-flex w-full 
-          justify-center 
+          justify-center p-2
            text-sm font-medium text-white hover:bg-opacity-30
            focus-visible:ring-2 focus-visible:ring-white 
            focus-visible:ring-opacity-75`}
         >
           <MenuIcon
-            className={`w-5 h-5 text-primary-dark`}
+            className={`w-5 h-5 text-[#000000] font-bold`}
             aria-hidden="true"
           />
         </Menu.Button>

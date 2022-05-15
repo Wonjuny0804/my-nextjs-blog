@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import dynamic from "next/dynamic";
 import Projects from "../../components/about/Projects/Projects";
 import Head from "next/head";
+import Footer from "../../components/Footer/Footer";
 
 const Resume = dynamic(() => import("../../components/about/Resume/Resume"));
 const LandingHeader = dynamic(
@@ -21,6 +22,7 @@ const AboutPage: FC = () => {
         <Resume />
         <Projects />
       </main>
+      <Footer />
     </>
   );
 };
