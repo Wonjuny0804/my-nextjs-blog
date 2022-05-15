@@ -23,7 +23,7 @@ const Post: FC<Props> = ({ post }) => {
       >
         {post.excerpt}
       </p>
-      <ul className={`flex gap-3 mt-3 mb-3`}>
+      <ul className={`flex flex-wrap gap-3 mt-3 mb-3`}>
         {post.tags.map((tag) => (
           <span
             key={`post-${post.title}-${tag}`}

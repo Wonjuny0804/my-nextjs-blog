@@ -7,7 +7,7 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 const LandingHeader: FC = React.memo(() => {
   return (
     <div
-      className={` border-b-2 bg-[rgba(255,_255,_255,_1)] 
+      className={` border-b-2 bg-[#f4f4f0]
       backdrop-blur-xl lg:backdrop-blur border-[#000000] sticky 
       top-0 z-10 h-16 flex items-center justify-between px-3
       lg:justify-between lg:pl-10 lg:pr-10`}

@@ -39,7 +39,9 @@ const Experience: FC<Props> = ({ title, period, desc, techStacks }) => {
         {techStacks.map((techStack) => (
           <span
             key={techStack}
-            className={`block font-workSans leading-[20px] text-xs text-[#555770] px-[10px] py-[3px] font-base bg-[#f2f2f5] rounded-3xl `}
+            className={`block font-workSans leading-[20px] text-xs text-[#555770] px-[10px] py-[3px] font-base bg-[#f2f2f5] rounded-3xl 
+            border-2 border-real-black shadow-[2px_2px_0_0] shadow-black
+            `}
           >
             {techStack}
           </span>

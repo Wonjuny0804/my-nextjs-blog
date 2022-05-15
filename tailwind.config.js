@@ -18,6 +18,7 @@ module.exports = {
         "secondary-dark": "#4e5968",
         "tertiary-dark": "#8b95a1",
         "primary-blue": "#2563eb",
+        "real-black": "#000000",
         gray: "rgba(0,27,55,0.1)",
         blue: colors.blue,
       },

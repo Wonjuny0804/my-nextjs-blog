@@ -21,7 +21,7 @@ const PostHeader: FC<Props> = ({ post }) => {
       <LandingHeader />
       <section className={`px-4 lg:w-[800px] lg:m-auto`}>
         <h1
-          className={`text-[32px] lg:leading-[56px] mt-[40px] lg:mt-[100px] lg:text-[40px] font-bold font-workSans text-primary-dark`}
+          className={`text-[32px] lg:leading-[56px] mt-[40px] lg:mt-[100px] lg:text-[40px] font-bold font-workSans text-real-black`}
         >
           {post.meta.title}
         </h1>
@@ -29,16 +29,16 @@ const PostHeader: FC<Props> = ({ post }) => {
           <div
             className={`flex items-center text-sm lg:text-base mt-3 lg:mt-0`}
           >
-            <span className={`text-primary-dark font-workSans`}>
+            <span className={`text-[#000000] font-workSans`}>
               {post.meta.author}
             </span>
             &nbsp;/&nbsp;
-            <span className={`text-secondary-dark  font-workSans`}>
+            <span className={`text-real-black font-workSans`}>
               {moment(post.meta.date).format("MMM DD, YYYY")}
             </span>
           </div>
           <div
-            className={`text-secondary-dark  font-workSans text-sm lg:text-base`}
+            className={`text-real-black  font-workSans text-sm lg:text-base`}
           >
             {post.meta.readingTime.text}
           </div>

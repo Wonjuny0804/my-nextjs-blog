@@ -23,7 +23,7 @@ const Project: FC<Props> = ({
 }) => {
   return (
     <div>
-      <span className={`text-secondary-dark text-sm font-notoSansEng`}>
+      <span className={`text-real-black text-sm font-workSans`}>
         {moment(period.from).format("MMM YYYY")} ~{" "}
         {moment(period.to).format("MMM YYYY")}
       </span>
@@ -39,7 +39,7 @@ const Project: FC<Props> = ({
       >
         {team}
       </span>
-      <p className={`text-primary-dark font-notoSansEng`}>{desc}</p>
+      <p className={`text-real-black font-notoSansEng`}>{desc}</p>
       <h2 className={`font-medium text-lg mt-3 font-notoSans`}>Things I did</h2>
       <ul
         className={`list-disc pl-10 font-light font-notoSansEng flex flex-col gap-1 pt-3`}

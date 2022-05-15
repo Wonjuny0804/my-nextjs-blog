@@ -34,7 +34,7 @@ const Top: FC = () => {
       </h1>
 
       <h2
-        className={`font-medium text-[24px] lg:text-[36px] lg:leading-[40px] tracking-tight leading-[30px] mt-[120px] lg:mt-[30px] text-primary-dark`}
+        className={`font-medium text-[24px] lg:text-[36px] lg:leading-[40px] tracking-tight leading-[30px] mt-[120px] lg:mt-[30px] text-real-black`}
       >
         Currently on a <span className={`underline`}>UX journey.</span>
         <br />
@@ -45,7 +45,7 @@ const Top: FC = () => {
       <p
         className={`mt-5 font-[400] text-[16px] leading-[20px] 
         lg:text-[18px] lg:leading-[24px] 
-        text-primary-dark`}
+        text-real-black`}
       >
         As a frontend developer, I try to see the details and think about the
         journey users go through within the application. In other words,{" "}

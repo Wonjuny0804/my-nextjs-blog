@@ -5,8 +5,8 @@ import projects from "./projectDatas";
 
 const Projects: FC = React.memo(() => {
   return (
-    <section className={`mt-20 text-primary-dark px-4 lg:p-0 font-workSans `}>
-      <h1 className={`font-medium text-lg lg:text-2xl lg:text-primary-dark`}>
+    <section className={`mt-20 text-real-black px-4 lg:p-0 font-workSans `}>
+      <h1 className={`font-medium text-lg lg:text-2xl lg:text-real-black`}>
         Projects
       </h1>
       <ul className={`flex flex-col gap-3`}>
