@@ -15,7 +15,7 @@ const LandingHeader: FC = React.memo(() => {
       <div className={`flex items-center gap-3`}>
         <Link href={"/"}>
           <a
-            className={`w-fit text-[24px] block py-[12px] font-workSans font-medium text-primary-dark`}
+            className={`w-fit text-[24px] block py-[12px] font-workSans font-medium text-real-black`}
           >
             <Logo className={`h-6`} />
           </a>
@@ -24,21 +24,21 @@ const LandingHeader: FC = React.memo(() => {
       <div className={`hidden lg:flex lg:gap-8`}>
         <Link href={`/about`}>
           <a
-            className={`font-workSans text-primary-dark hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
+            className={`font-workSans text-real-black hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
           >
             about
           </a>
         </Link>
         <Link href={`/`}>
           <a
-            className={`font-workSans text-primary-dark hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
+            className={`font-workSans text-real-black hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
           >
             posts
           </a>
         </Link>
         <Link href={`/`}>
           <a
-            className={`font-workSans text-primary-dark text-base hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
+            className={`font-workSans text-real-black text-base hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
           >
             lab
           </a>

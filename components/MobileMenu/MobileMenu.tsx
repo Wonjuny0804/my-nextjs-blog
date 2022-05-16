@@ -47,7 +47,7 @@ const MobileMenu: FC = () => {
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link href="/">
+                  <Link href="/posts">
                     <a className={`block w-full border-b py-3 pl-6`}>posts</a>
                   </Link>
                 </Menu.Item>
