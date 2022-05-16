@@ -66,14 +66,14 @@ function Date({ month, day, date }: DateProps) {
 순서는 날짜, 요일, 월 순서이다.(외국의 표기 방식 상.. 그렇다고 한다)
 따라서 다음과 같이 마크업하기로 결정했다.
 
-```
+```jsx
 <div className={styles.dateClass}>
-    <p className={styles.date}>{displayDate}</p>
-    <div className={styles.dateMonth}>
-      <p>{displayDay}</p>
-      <p>{displayMonth}</p>
-    </div>
+  <p className={styles.date}>{displayDate}</p>
+  <div className={styles.dateMonth}>
+    <p>{displayDay}</p>
+    <p>{displayMonth}</p>
   </div>
+</div>
 ```
 
 그러고나서 상위에서 props를 내려받는데 이때 상위에서는 공통적으로 숫자 값을 내려주기 때문에 이것을 `text`로 변환 해줘야 한다. 여기서 그냥 switch case문을 사용할 수도 있겠지만 우리는 `useState`와 `useEffect` Hook을 이용해서 이 부분을 구현해보도록 하겠다.

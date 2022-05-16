@@ -72,6 +72,12 @@ pre[class*="language-"] {
   border: 2px solid #000000;
 }
 
+@media screen and (max-width: 765px) {
+  pre[class*="language-"] {
+    font-size: 14px;
+  }
+}
+
 /* Inline code */
 :not(pre) > code[class*="language-"] {
   padding: 0.2em 0.3em;
