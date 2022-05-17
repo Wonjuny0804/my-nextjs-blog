@@ -9,7 +9,7 @@ const Projects: FC = React.memo(() => {
       <h1 className={`font-medium text-lg lg:text-2xl lg:text-real-black`}>
         Projects
       </h1>
-      <ul className={`flex flex-col gap-3`}>
+      <ul className={`flex flex-col gap-3 lg:gap-10`}>
         {projects.map(({ period, projectTitle, team, desc, list, link }) => (
           <Project
             period={{

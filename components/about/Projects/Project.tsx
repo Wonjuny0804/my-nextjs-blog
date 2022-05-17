@@ -39,10 +39,10 @@ const Project: FC<Props> = ({
       >
         {team}
       </span>
-      <p className={`text-real-black font-notoSansEng`}>{desc}</p>
+      <p className={`text-real-black font-workSans`}>{desc}</p>
       <h2 className={`font-medium text-lg mt-3 font-notoSans`}>Things I did</h2>
       <ul
-        className={`list-disc pl-10 font-light font-notoSansEng flex flex-col gap-1 pt-3`}
+        className={`list-disc pl-10 font-light font-workSans flex flex-col gap-1 pt-3`}
         dangerouslySetInnerHTML={{
           __html: list,
         }}
