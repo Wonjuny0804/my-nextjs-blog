@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 // const withMdxEnhanced = require("next-mdx-enhanced");
+const withPWA = require("next-pwa");
+const runtimeCaching = require("next-pwa/cache");
 
 const nextConfig = {
   reactStrictMode: true,
@@ -7,6 +9,10 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["images.velog.io"],
+  },
+  pwa: {
+    dest: "public",
+    runtimeCaching,
   },
   webpack(config) {
     config.module.rules.push({
@@ -20,4 +26,4 @@ const nextConfig = {
 
 // module.exports = withMDX(nextConfig);
 
-module.exports = nextConfig;
+module.exports = withPWA(nextConfig);
