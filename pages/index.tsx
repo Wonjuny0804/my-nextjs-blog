@@ -5,6 +5,7 @@ import { getAllPosts, PostMeta } from "./api/getAllPosts";
 import { AnimatePresence, motion } from "framer-motion";
 import Script from "next/script";
 import { getAllTags } from "./api/getAllTags";
+import ShowAllTags from "../components/Landing/ShowAllTags/ShowAllTags";
 
 const Articles = dynamic(() => import("../components/Articles/Articles"));
 const LandingHeader = dynamic(
@@ -43,9 +44,10 @@ const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
             transition={{
               duration: 0.6,
             }}
-            className={`px-4 lg:w-[800px] lg:m-auto `}
+            className={`px-4 lg:w-[1000px] lg:m-auto lg:grid lg:grid-cols-[640px_300px] gap-10 lg:items-start`}
           >
             <Articles posts={posts} />
+            <ShowAllTags tags={tags} />
           </motion.section>
         </AnimatePresence>
       </main>
