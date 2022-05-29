@@ -16,11 +16,7 @@ const PWAMeta = () => {
       <meta name="theme-color" content="#000000" />
 
       <link rel="apple-touch-icon" href="/icons/touch-icon-iphone.png" />
-      <link
-        rel="apple-touch-icon"
-        sizes="152x152"
-        href="/icons/touch-icon-ipad.png"
-      />
+      <link rel="apple-touch-icon" sizes="152x152" href="/icons/Icon-152.png" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -53,22 +49,25 @@ const PWAMeta = () => {
       <link rel="shortcut icon" href="/favicon.ico" />
 
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:url" content="https://yourdomain.com" />
-      <meta name="twitter:title" content="PWA App" />
-      <meta name="twitter:description" content="Best PWA App in the world" />
+      <meta name="twitter:url" content="https://wonjundev.tech" />
+      <meta name="twitter:title" content="Wonjundev tech" />
+      <meta
+        name="twitter:description"
+        content="Wonjun dev blog made into PWA"
+      />
       <meta
         name="twitter:image"
-        content="https://yourdomain.com/icons/android-chrome-192x192.png"
+        content="https://wonjundev.tech/icons/Icon-196x196.png"
       />
-      <meta name="twitter:creator" content="@DavidWShadow" />
+      <meta name="twitter:creator" content="@Wonjun" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="PWA App" />
+      <meta property="og:title" content="Wonjundev tech" />
       <meta property="og:description" content="Best PWA App in the world" />
-      <meta property="og:site_name" content="PWA App" />
-      <meta property="og:url" content="https://yourdomain.com" />
+      <meta property="og:site_name" content="Wonjundev tech" />
+      <meta property="og:url" content="https://wonjundev.tech" />
       <meta
         property="og:image"
-        content="https://yourdomain.com/icons/apple-touch-icon.png"
+        content="https://wonjundev.tech/icons/Icons-512x512.png"
       />
     </>
   );

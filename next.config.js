@@ -24,6 +24,4 @@ const nextConfig = {
   },
 };
 
-// module.exports = withMDX(nextConfig);
-
 module.exports = withPWA(nextConfig);
