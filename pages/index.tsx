@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { getAllPosts, PostMeta } from "./api/getAllPosts";
 import { AnimatePresence, motion } from "framer-motion";
 import Script from "next/script";
+import { getAllTags } from "./api/getAllTags";
 
 const Articles = dynamic(() => import("../components/Articles/Articles"));
 const LandingHeader = dynamic(
@@ -11,7 +12,8 @@ const LandingHeader = dynamic(
 );
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
-const Home = ({ posts }: { posts: PostMeta[] }) => {
+const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
+  console.log(tags);
   return (
     <>
       <title>wonjundev.tech</title>
@@ -57,9 +59,12 @@ export async function getStaticProps() {
     .slice(0, 9)
     .map((post) => post.meta);
 
+  const allTags = getAllTags() ?? [];
+
   return {
     props: {
       posts,
+      tags: allTags,
     },
   };
 }
