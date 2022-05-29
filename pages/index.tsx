@@ -14,7 +14,6 @@ const LandingHeader = dynamic(
 const Footer = dynamic(() => import("../components/Footer/Footer"));
 
 const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
-  console.log(tags);
   return (
     <>
       <title>wonjundev.tech</title>
