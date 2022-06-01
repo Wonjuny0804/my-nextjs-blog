@@ -1,0 +1,92 @@
+---
+title: "Singleton pattern"
+date: "2022-06-01"
+tags: ["Design patterns", "Singleton", "Typescript", "Class"]
+excerpt: "It’s been quite long enough that I’ve studied design patterns in Software Architectures. I remembering taking a class at Uni about design patterns and wasn’t that successful, it was a hard class, especially trying to understand the importance of design pattern when I’ve never encountered the problems the design patterns were meant to solve. However.. I now have few experiences at work and it has come up to my mind that these design architectures are very important."
+author: "Wonjun Jang"
+---
+
+# SO... back to Design patterns
+
+It’s been quite long enough that I’ve studied design patterns in Software Architectures.
+
+I remembering taking a class at Uni about design patterns and wasn’t that successful, it was a hard class, especially trying to understand the importance of design pattern when I’ve never encountered the problems the design patterns were meant to solve.
+
+However.. I now have few experiences at work and it has come up to my mind that these design architectures are very important.
+
+So I have promised myself that I would start studying these architectures and post them on my blog as a proof to myself.
+
+## Starting with, Singleton
+
+The word singleton gives the person who’s hearing it a slight grasp of the meaning. Yes, there’s only “one” whatever it is.
+
+In a singleton pattern usaully there’s a class that you can create instances with. The thing about this pattern is that this pattern insures providing a single instance throughout the whole process. Other functions or entities that need to use a instance will only be able to use this instance.
+
+This can be achieved by two steps.
+
+1. Ensure that the class only has one instance.
+2. Provide a global access point to that instance.
+
+> - Make the default constructor `private`, to prevent other objects from using the `new` operator with the Singleton class.
+
+- `Create a static creation method` that acts as a constructor. Under the hood, this method calls the private constructor to create an object and saves it in a static field. All following calls to this method return the cached object.
+
+_- [refactoring.guru](http://refactoring.guru) -_
+
+>
+
+```tsx
+class SingleTon {
+  private static instance: SingleTon;
+
+  private constructor() {}
+
+  public static getInstance() {
+    if (!this.instance) {
+      this.instance = new SingleTon();
+    }
+
+    return this.instance;
+  }
+}
+
+class Application {
+  public constructor() {}
+
+  main() {
+    const instance1 = SingleTon.getInstance();
+    const instance2 = SingleTon.getInstance();
+
+    console.log(instance1, instance2);
+    console.log(instance1 === instance2);
+  }
+}
+
+const App = new Application();
+
+App.main();
+```
+
+So here’s an example of a Typescript code that I wrote according to the materials. As you can see there’s a SingleTon class. The constructor is a `private` and you can see that there’s been `private static instance` member that’s been declared.
+
+Once the getInstance method is being called. It would see whether the instance memeber exists. and if it doesn’t it shall create one and reference it throughout the whole process.
+
+So in the `main()` function inside the Application class. Eventhough instance1 and instance2 are getting instances from SingleTon class. You will see that instance1 and instance2 are the same which will endup returning `true`.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a274a6de-4106-4f36-873b-b863edd9aa38/Untitled.png)
+
+Resulting in such result is due to the fact that the instance that has been created is being referenced througout the whole process.
+
+### So when would one use such pattern?
+
+- Well, it’s quite obvious isn’t it? If there’s a need to use an instance only once and the instance contains a heavily important data you’ll probably want to use this type of pattern.
+  > **Use the Singleton pattern when a class in your program should have just a single instance available to all clients; for example, a single database object shared by different parts of the program. - [refactoring.guru](http://refactoring.guru) -**
+- You would probably want to use it when you want to have stricter control over your global variables.
+
+### Before going nuts with it, you would like to know..
+
+You would like to know the cons of using this type of pattern.
+
+- The pattern violates `Single Responsibility Principle` ⇒ meaning that it’s hard to track who was really responsible for the break down, because everyone’s using the same one.
+- The pattern requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times. ⇒ _personaly think this is the one that makes things tricky.._
+- Also it says it’s hard to write client code that has a Singleton because ususally the test library mocks the instances. But because the Singleton class itself is private and static, it cannot be mocked. The way to dodge this problem is to either find a way to mock this Singleton class or not write a testing code about this at all.
