@@ -1,9 +1,20 @@
+import Link from "next/link";
 import React, { FC } from "react";
 
 interface Props {}
 
 const LabMainPage: FC<Props> = () => {
-  return <section>LabMainPage</section>;
+  return (
+    <section>
+      <ol>
+        <li>
+          <Link href={`/lab/space-warp`}>
+            <a>My first Lab Project, The space warp effect using Threejs</a>
+          </Link>
+        </li>
+      </ol>
+    </section>
+  );
 };
 
 export default LabMainPage;

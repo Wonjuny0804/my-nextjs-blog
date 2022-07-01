@@ -29,14 +29,14 @@ const LandingHeader: FC = React.memo(() => {
             about
           </a>
         </Link>
-        <Link href={`/`}>
+        <Link href={`/posts`}>
           <a
             className={`font-workSans text-real-black hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
           >
             posts
           </a>
         </Link>
-        <Link href={`/`}>
+        <Link href={`/lab`}>
           <a
             className={`font-workSans text-real-black text-base hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
           >
