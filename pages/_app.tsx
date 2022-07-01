@@ -5,7 +5,7 @@ import NextNProgress from "nextjs-progressbar";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
   useEffect(() => {
     AOS.init({
       easing: "ease-out-cubic",

@@ -1,14 +1,18 @@
 import React, { FC } from "react";
 import dynamic from "next/dynamic";
-import Projects from "../../components/about/Projects/Projects";
 import Head from "next/head";
-import Footer from "../../components/Footer/Footer";
 
-const Resume = dynamic(() => import("../../components/about/Resume/Resume"));
+const Footer = dynamic(() => import("../../components/Footer/Footer")) as any;
+const Projects = dynamic(
+  () => import("../../components/about/Projects/Projects")
+) as any;
+const Resume = dynamic(
+  () => import("../../components/about/Resume/Resume")
+) as any;
 const LandingHeader = dynamic(
   () => import("../../components/Landing/LandingHeader")
-);
-const Top = dynamic(() => import("../../components/about/Top/Top"));
+) as any;
+const Top = dynamic(() => import("../../components/about/Top/Top")) as any;
 
 const AboutPage: FC = () => {
   return (

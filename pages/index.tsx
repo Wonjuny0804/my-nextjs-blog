@@ -7,11 +7,13 @@ import Script from "next/script";
 import { getAllTags } from "./api/getAllTags";
 import ShowAllTags from "../components/Landing/ShowAllTags/ShowAllTags";
 
-const Articles = dynamic(() => import("../components/Articles/Articles"));
+const Articles = dynamic(
+  () => import("../components/Articles/Articles")
+) as any;
 const LandingHeader = dynamic(
   () => import("../components/Landing/LandingHeader")
-);
-const Footer = dynamic(() => import("../components/Footer/Footer"));
+) as any;
+const Footer = dynamic(() => import("../components/Footer/Footer")) as any;
 
 const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
   return (
