@@ -1,0 +1,65 @@
+---
+title: "Trying out threejs tutorial"
+date: "2022-07-01"
+tags: ["React", "Threejs", "React three fiber"]
+excerpt: "Trying out react threejs tutorial and trying to grasp the concept of "
+author: "Bryan"
+---
+
+Frontend dev's very interesting in my opinion. There's so much to learn, variety of challenges.
+
+Because the requirements are so different. That being said, there's so many things to try out.
+
+Probably people that are reading the post are already familiar with `Three.js` a powerful 3d rendering library on the web browser.
+
+I was known it's existance for quite sometime now, but never have felt the need to learn it.
+
+However since I've started publishing my posts and started looking for things to learn. I have decided this was going to be One
+of the things I learned.
+
+So here it goes. The `react-three-fiber` tryout.
+
+### Following the tutorial
+
+We should know that threejs came out not just for react. Since react has it's own rendering strategies we have to modify threejs codes to a `React based` code.
+
+Which means, we'll have to create components and divide the code and write stuff using `JSX` which is the syntax `React` uses.
+
+Hence, we'll be using `react-three-fiber`.
+
+## Understanding the basic concepts of `Threejs`
+
+If you're still unfamiliar to `React`, probably should checkout React first.
+
+As for threejs. These `scene`, `camera`, `mesh`, `geometry`, `material` are the fundamentals to understand.
+
+I didn't know the core concept of threejs, so let me elaborate.
+
+There are somethings in Threejs for displaying "things" on the browser.
+
+These elements are called `scene`, `camera`, `renderer`.
+
+#### Essential things for displaying in Threejs
+
+- scene
+- camera
+- renderer
+
+Which means, in code term. In order to show something using Threejs there's always going to be
+a scene, camera, renderer code inside it.
+
+### Scene
+
+Scene is where things are being displayed. You might say it's the background of the whole threejs rendering situation.
+
+### camera
+
+So camera object decide how the things that are displayed inside the scene are "seen". It decides the aspect ratio, if it feels near, far. tilted?
+It's like controling the eyeball.
+
+There are many type of cameras that threejs offers. Usually these cameras are created using generators and they require attributes.
+
+1. field of View(FOV) => It's where you want to see(?) and the value is in degrees.
+2. aspect ratio => decides the aspect ratio of what you see. In most cases you'd want to just use `window.innerWidth / window.innerHeight`
+3. near => objects near than the value will not be rendered
+4. far => objects further than value will not be rendered
