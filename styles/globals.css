@@ -71,3 +71,7 @@ a {
     color: #14181d;
   }
 }
+
+canvas {
+  height: 800px;
+}

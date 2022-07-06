@@ -1,0 +1,215 @@
+---
+title: "Trying out threejs tutorial 2"
+date: "2022-07-02"
+tags: ["React", "threejs", "Nextjs"]
+excerpt: "Try to figure out what the space-warp effect code does. After that we will try to implement it as a React based code!"
+author: "Bryan"
+---
+
+So, we are here! No with the code...!
+
+```js
+let scene, camera, renderer, stars, starGeo;
+
+function init() {
+  scene = new THREE.Scene();
+
+  camera = new THREE.PerspectiveCamera(
+    60,
+    window.innerWidth / window.innerHeight,
+    1,
+    1000
+  );
+  camera.position.z = 1;
+  camera.rotation.x = Math.PI / 2;
+
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  starGeo = new THREE.Geometry();
+  for (let i = 0; i < 6000; i++) {
+    star = new THREE.Vector3(
+      Math.random() * 600 - 300,
+      Math.random() * 600 - 300,
+      Math.random() * 600 - 300
+    );
+    star.velocity = 0;
+    star.acceleration = 0.02;
+    starGeo.vertices.push(star);
+  }
+
+  let sprite = new THREE.TextureLoader().load("star.png");
+  let starMaterial = new THREE.PointsMaterial({
+    color: 0xaaaaaa,
+    size: 0.7,
+    map: sprite,
+  });
+
+  stars = new THREE.Points(starGeo, starMaterial);
+  scene.add(stars);
+
+  window.addEventListener("resize", onWindowResize, false);
+
+  animate();
+}
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+function animate() {
+  starGeo.vertices.forEach((p) => {
+    p.velocity += p.acceleration;
+    p.y -= p.velocity;
+
+    if (p.y < -200) {
+      p.y = 200;
+      p.velocity = 0;
+    }
+  });
+  starGeo.verticesNeedUpdate = true;
+  stars.rotation.y += 0.002;
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+init();
+```
+
+First, we'll look with scene, camera, renderer.
+
+```js
+scene = new THREE.Scene();
+
+camera = new THREE.PerspectiveCamera(
+  60,
+  window.innerWidth / window.innerHeight,
+  1,
+  1000
+);
+camera.position.z = 1;
+camera.rotation.x = Math.PI / 2;
+
+renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+```
+
+The camera is a `PerspectiveCamera` which we'll have to look for in `@react/three-fiber` Also, it's notable that the cameras' position and rotation was
+manipulated.
+
+It's using the `WebGLRenderer()`, so we'll have to look for that as well.
+
+If we go back a little, in `@react/three-fiber` there were no Scene, Cameras. So we'll have to look up how to solve this!.
+
+### Your first Scene,
+
+Like we suspected. [@react/three-fiber docs](https://docs.pmnd.rs/react-three-fiber/getting-started/your-first-scene) says that the `<Canvas />` component sets up The
+`scene`, `camera`.
+
+Based on the [docs](https://docs.pmnd.rs/react-three-fiber/api/canvas) we can see that it used `perspectiveCamera` internally.
+
+> It will also create the following scene internals:
+>
+> - A THREE.Perspective camera
+> - A THREE.Orthographic cam if orthographic is true
+> - A THREE.PCFSoftShadowMap if shadows is true
+> - A THREE.Scene (into which all the JSX is rendered) and a THREE.Raycaster
+
+<div
+  style={{
+    width: "100%",
+    height: "200px",
+    marginTop: "40px",
+    borderRadius: "10px",
+    overflow: "hidden",
+  }}
+>
+  <img src="/posts/react-three-fiber1.png" alt="picture" />
+</div>
+
+As from the docs, the `Canvas` takes in a prop naed `camera`.
+
+```js
+camera = new THREE.PerspectiveCamera(
+  60,
+  window.innerWidth / window.innerHeight,
+  1,
+  1000
+);
+camera.position.z = 1;
+camera.rotation.x = Math.PI / 2;
+```
+
+The fov is 60, aspect is `window.innerWidth / window.innerHeight`, near is 1, far is 1000 so we convert this into a javascript object.
+position x is `Math.PI / 2`, position z is 1. We'll assume that y is 0.
+
+```js
+{
+  fov: 60,
+  near: 1,
+  far: 1000,
+  position: [Math.PI / 2, 0, 1]
+}
+```
+
+after doing so, we'll give it to the props.
+
+```jsx
+<Canvas
+  camera={{
+    fov: 60,
+    near: 1,
+    far: 1000,
+    position: [Math.PI / 2, 0, 1],
+  }}
+>
+```
+
+The `@react-three/fiber` uses `WebGLRenderer` by default. So we won't have to manage that one.
+
+So now we're done with the set up of a scene. Let's move on to setting things up inside the scene.
+
+### Creating the stars
+
+```js
+starGeo = new THREE.Geometry();
+for (let i = 0; i < 6000; i++) {
+  star = new THREE.Vector3(
+    Math.random() * 600 - 300,
+    Math.random() * 600 - 300,
+    Math.random() * 600 - 300
+  );
+  star.velocity = 0;
+  star.acceleration = 0.02;
+  starGeo.vertices.push(star);
+}
+```
+
+As we look into the code, we can now see that there's a Geometry function that was called. Which means soon along the code there's going to be a `Material` and a `Mesh` code.
+First we'll start off with the Geometry because it's the first one we engaged.
+
+It's using a simple `Geometry` method to create it, so for this we'll create a `Star` component.
+
+```jsx
+import React, { useRef } from "react";
+import * as THREE from "three";
+
+const Star = (props: JSX.IntrinsicElements["mesh"]) => {
+  const mesh = useRef<THREE.Mesh>(null!);
+  return <mesh {...props} ref={mesh}></mesh>;
+};
+
+export default Star;
+```
+
+A simple, nothing written plain "Star" `component`. As we have seen before, we have to give the `geometry` as a children.
+
+```jsx
+<mesh {...props} ref={mesh}>
+  <bufferGeometry />
+</mesh>
+```
+
+The `for loop` code will go outside the `Star component`.

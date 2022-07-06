@@ -17,7 +17,7 @@ function Box(props: JSX.IntrinsicElements["mesh"]) {
       onPointerOut={(event) => setHover(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+      <meshStandardMaterial color={hovered ? "blue" : "orange"} />
     </mesh>
   );
 }
