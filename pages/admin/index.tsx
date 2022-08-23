@@ -8,15 +8,15 @@ const AdminPage = () => {
     console.log(event.target[1].value);
   }, []);
   return (
-    <div>
+    <div className="mx-4 lg:mx-0">
       Welcome to admin page
-      <h1>This is the admin page</h1>
+      <h1 className="text-2xl my-3">This is the admin page</h1>
       <form className="flex flex-col gap-3 max-w-xl" onSubmit={handleSubmit}>
-        <div className="flex">
+        <div className="grid grid-cols-[80px_1fr]">
           <label htmlFor="adminID">ID</label>
           <input id="adminID" type="email" />
         </div>
-        <div className="flex">
+        <div className="grid grid-cols-[80px_1fr]">
           <label htmlFor="adminPW">Password</label>
           <input id="adminPW" type="password" />
         </div>
