@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Script from "next/script";
 import { getAllTags } from "./api/getAllTags";
 import ShowAllTags from "../components/Landing/ShowAllTags/ShowAllTags";
+import { initializeApp } from "firebase/app";
 
 const Articles = dynamic(
   () => import("../components/Articles/Articles")

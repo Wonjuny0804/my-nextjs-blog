@@ -1,12 +1,21 @@
 import React, { useCallback } from "react";
+import singleAdminConroller from "../../service/admin";
 
 const AdminPage = () => {
-  const handleSubmit = useCallback((event) => {
+  const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
 
-    console.log(event.target[0].value);
-    console.log(event.target[1].value);
+    const email = event.target[0].value;
+    const password = event.target[1].value;
+
+    const userCredentials = await singleAdminConroller.signInWithIDPW({
+      email,
+      password,
+    });
+
+    console.log(userCredentials);
   }, []);
+
   return (
     <div className="mx-4 lg:mx-0">
       Welcome to admin page
