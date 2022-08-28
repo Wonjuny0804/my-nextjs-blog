@@ -19,7 +19,7 @@ class Admin {
         email,
         password
       );
-      return userCredentials;
+      return userCredentials; // not returning these informations here, probably need somekind of logic here too.
     } catch (error: unknown) {
       console.dir(error);
 
