@@ -6,14 +6,12 @@ const LabMainPage = dynamic(
   () => import("../../components/lab/LabMainPage")
 ) as any;
 
-const LandingHeader = dynamic(
-  () => import("../../components/Landing/LandingHeader")
-) as any;
+const NavBar = dynamic(() => import("../../components/Landing/NavBar")) as any;
 
 const LabPage: NextPage = () => {
   return (
     <>
-      <LandingHeader />
+      <NavBar />
       <LabMainPage />
     </>
   );

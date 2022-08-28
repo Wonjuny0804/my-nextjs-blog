@@ -6,26 +6,26 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 // import rehypeHighlight from "rehype-highlight";
-import H1 from "../../components/CustomeTags/H1";
+import H1 from "../../components/CustomTags/H1";
 import rehypePrism from "rehype-prism-plus";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeCodeTitles from "rehype-code-titles";
 import readingTime from "reading-time";
 import rehypetoc from "rehype-toc";
 
-import P from "../../components/CustomeTags/P";
-import CODE from "../../components/CustomeTags/CODE";
-import H2 from "../../components/CustomeTags/H2";
-import H3 from "../../components/CustomeTags/H3";
-import H4 from "../../components/CustomeTags/H4";
-import H5 from "../../components/CustomeTags/H5";
-import OL from "../../components/CustomeTags/OL";
-import LI from "../../components/CustomeTags/LI";
-import UL from "../../components/CustomeTags/UL";
+import P from "../../components/CustomTags/P";
+import CODE from "../../components/CustomTags/CODE";
+import H2 from "../../components/CustomTags/H2";
+import H3 from "../../components/CustomTags/H3";
+import H4 from "../../components/CustomTags/H4";
+import H5 from "../../components/CustomTags/H5";
+import OL from "../../components/CustomTags/OL";
+import LI from "../../components/CustomTags/LI";
+import UL from "../../components/CustomTags/UL";
 import PostHeader from "../../components/PostHeader/PostHeader";
-import BLOCKQUOTE from "../../components/CustomeTags/BLOCKQUOTE";
-import A from "../../components/CustomeTags/A";
-import Footer from "../../components/Footer/Footer";
+import BLOCKQUOTE from "../../components/CustomTags/BLOCKQUOTE";
+import A from "../../components/CustomTags/A";
+import Footer from "../../components/common/Footer/Footer";
 import Image from "next/image";
 
 interface PostDetailProps {

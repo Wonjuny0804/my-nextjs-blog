@@ -2,9 +2,11 @@
 import React, { FC } from "react";
 import Link from "next/link";
 import Logo from "../../public/logo.svg";
-import MobileMenu from "../MobileMenu/MobileMenu";
+import dynamic from "next/dynamic";
 
-const LandingHeader: FC = React.memo(() => {
+const MobileMenu = dynamic(() => import("../common/MobileMenu/MobileMenu"));
+
+const NavBar: FC = React.memo(() => {
   return (
     <div
       className={` border-b-2 bg-[#f4f4f0]
@@ -49,4 +51,4 @@ const LandingHeader: FC = React.memo(() => {
   );
 });
 
-export default LandingHeader;
+export default NavBar;

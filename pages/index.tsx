@@ -1,25 +1,20 @@
 import React from "react";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 
 import { getAllPosts, PostMeta } from "./api/getAllPosts";
-import { AnimatePresence, motion } from "framer-motion";
-import Script from "next/script";
 import { getAllTags } from "./api/getAllTags";
-import ShowAllTags from "../components/Landing/ShowAllTags/ShowAllTags";
-import { initializeApp } from "firebase/app";
+import { AnimatePresence, motion } from "framer-motion";
 
-const Articles = dynamic(
-  () => import("../components/Articles/Articles")
-) as any;
-const LandingHeader = dynamic(
-  () => import("../components/Landing/LandingHeader")
-) as any;
-const Footer = dynamic(() => import("../components/Footer/Footer")) as any;
+const ShowAllTags = dynamic(
+  () => import("../components/Landing/ShowAllTags/ShowAllTags")
+);
+const Layout = dynamic(() => import("../components/common/Layout"));
+const Articles = dynamic(() => import("../components/Articles/Articles"));
 
 const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
   return (
     <>
-      <title>wonjundev.tech</title>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${
           process.env.GA_ID || process.env.NEXT_PUBLIC_GA_ID
@@ -37,8 +32,11 @@ const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
          }');
         `}
       </Script>
-      <main>
-        <LandingHeader />
+      <Layout
+        metaData={{
+          title: "wonjundev.tech",
+        }}
+      >
         <AnimatePresence>
           <motion.section
             initial={{ opacity: 0 }}
@@ -52,8 +50,7 @@ const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
             <ShowAllTags tags={tags} />
           </motion.section>
         </AnimatePresence>
-      </main>
-      <Footer />
+      </Layout>
     </>
   );
 };
