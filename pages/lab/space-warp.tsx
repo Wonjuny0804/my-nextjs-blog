@@ -1,6 +1,6 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import LandingHeader from "../../components/Landing/LandingHeader";
+import NavBar from "../../components/Landing/NavBar";
 import Star from "../../components/lab/space-warp/Star";
 import * as THREE from "three";
 import Box from "../../components/lab/space-warp/Box";
@@ -21,7 +21,7 @@ const SpaceWarpPage = () => {
 
   return (
     <>
-      <LandingHeader />
+      <NavBar />
       <Canvas
       // camera={{
       //   fov: 30,
