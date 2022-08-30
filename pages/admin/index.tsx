@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import TextEditor from "../../components/TextEditor/TextEditor";
 import Admin from "../../service/admin";
 import useAuth from "../../stores/auth";
 
@@ -50,6 +51,7 @@ const AdminPage = () => {
         <>
           <h1 className="text-2xl my-3">Welcome home master</h1>
           <p>You are now securely authenticated. What would you like to do?</p>
+          <TextEditor />
         </>
       )}
     </div>
