@@ -4,6 +4,9 @@ import "../styles/globals.css";
 import NextNProgress from "nextjs-progressbar";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
   useEffect(() => {
@@ -27,7 +30,9 @@ function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
           showSpinner: false,
         }}
       />
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </>
   );
 }

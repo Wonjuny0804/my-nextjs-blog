@@ -27,6 +27,15 @@ class Admin {
       throw new Error("There was an error while logging in.");
     }
   }
+
+  validateSignIn() {
+    const cookies = document.cookie;
+
+    return !!cookies
+      .split("; ")
+      .find((row) => row.startsWith("token="))
+      ?.split("=")[1];
+  }
 }
 
 const singleAdminConroller = new Admin();

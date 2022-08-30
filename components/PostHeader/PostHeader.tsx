@@ -3,7 +3,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import Head from "next/head";
 import React, { FC } from "react";
 import { PostMeta } from "../../pages/api/getAllPosts";
-import LandingHeader from "../Landing/LandingHeader";
+import LandingHeader from "../Landing/NavBar";
 
 interface Props {
   post: {
