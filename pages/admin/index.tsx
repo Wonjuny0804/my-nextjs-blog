@@ -1,7 +1,14 @@
 import React, { useCallback } from "react";
-import TextEditor from "../../components/TextEditor/TextEditor";
+import dynamic from "next/dynamic";
 import Admin from "../../service/admin";
 import useAuth from "../../stores/auth";
+
+const TextEditor = dynamic(
+  () => import("../../components/TextEditor/TextEditor"),
+  {
+    ssr: false,
+  }
+);
 
 const AdminPage = () => {
   const signIn = useAuth((state) => state.signIn);
