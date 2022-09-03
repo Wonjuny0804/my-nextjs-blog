@@ -14,12 +14,13 @@ const Post: FC<Props> = ({ post }) => {
   return (
     <>
       <h4
-        className={`text-[18px] group-hover:text-primary-blue transition-all duration-700 font-bold font-notoSans text-[#000000] lg:text-[24px]`}
+        className={`text-[18px] line-clamp-1 group-hover:text-primary-blue transition-all duration-700 font-bold font-workSans text-[#000000] lg:text-[24px]`}
       >
         {post.title}
       </h4>
       <p
-        className={`text-secondary-dark text-sm mt-2 group-hover:text-secondary-dark lg:text-sm font-workSans lg:mt-4`}
+        className={`text-secondary-dark line-clamp-3 text-sm mt-2 group-hover:text-secondary-dark lg:text-sm font-workSans lg:mt-4
+        `}
       >
         {post.excerpt}
       </p>

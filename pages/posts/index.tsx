@@ -19,9 +19,9 @@ const PostsPage = ({ posts }: { posts: PostMeta[] }) => {
             transition={{
               duration: 0.6,
             }}
-            className={`px-4 lg:w-[800px] lg:m-auto `}
+            className={`px-4 lg:w-[1024px] lg:m-auto xl:w-[1280px] `}
           >
-            <Articles posts={posts} />
+            <Articles posts={posts} grid={true} />
           </motion.section>
         </AnimatePresence>
       </main>

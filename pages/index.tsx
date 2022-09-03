@@ -46,7 +46,7 @@ const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
             }}
             className={`px-4 lg:w-[1000px] lg:m-auto lg:grid lg:grid-cols-[640px_300px] gap-10 lg:items-start`}
           >
-            <Articles posts={posts} />
+            <Articles posts={posts} grid={false} />
             <ShowAllTags tags={tags} />
           </motion.section>
         </AnimatePresence>
