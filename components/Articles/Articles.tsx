@@ -30,7 +30,7 @@ const Articles: FC<Props> = ({ posts, grid }) => {
             className={`group border-[3px] px-4 py-5 rounded-[3px] border-[#000000]`}
           >
             <Link href={`/posts/${post.slug}`}>
-              <a>
+              <a className="h-full">
                 <Post post={post} />
               </a>
             </Link>
