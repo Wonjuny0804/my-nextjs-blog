@@ -70,15 +70,22 @@ const AdminPage = () => {
             <p className="leading-4">
               You are now securely authenticated. What would you like to do?
             </p>
-            <ul>
+
+            <h3 className="font-medium text-xl mt-4">Menus</h3>
+            <ul className="mt-2 flex flex-col gap-4">
               <li>
                 <Link href="/admin/write">
-                  <a>Write new post</a>
+                  <a className="admin-btn">Write new post</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/blog">
+                  <a className="admin-btn">Edit posts</a>
                 </Link>
               </li>
             </ul>
 
-            <ol>
+            {/* <ol>
               {posts.map((post) => (
                 <li key="post.id">
                   <Link href={`/admin/write/${post.id}`}>
@@ -89,7 +96,7 @@ const AdminPage = () => {
                   </Link>
                 </li>
               ))}
-            </ol>
+            </ol> */}
           </div>
         )}
       </div>

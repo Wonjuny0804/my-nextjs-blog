@@ -10,6 +10,8 @@ import {
   query,
   type Firestore,
   DocumentData,
+  serverTimestamp,
+  updateDoc,
 } from "firebase/firestore";
 import serviceInstance from "./service";
 
@@ -29,16 +31,20 @@ class PostService {
     const { title, content, author } = postData;
 
     try {
-      console.log(this.db);
       await addDoc(collection(this.db, "posts"), {
         title,
         content,
         ...(author ? { author } : { author: "Wonjun Jang" }),
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+        published: false,
+        excerpt: "",
+        tags: [],
+        thumbnailImageUrl: "",
       });
 
       alert("Saved!");
-
-      // redirect to outside.
+      return "success";
     } catch (error) {
       console.dir(error);
     }
@@ -51,6 +57,17 @@ class PostService {
     postId: string;
   }) {
     // TODO: Add a editing post logic here.
+    const postRef = doc(this.db, "posts", postData.postId);
+
+    await updateDoc(postRef, {
+      title: postData.title,
+      content: postData.content,
+      author: postData.author,
+      updatedAt: serverTimestamp(),
+    });
+
+    alert("Update complete!");
+    return "Success";
   }
 
   async deletePost(postId: string) {
@@ -70,6 +87,26 @@ class PostService {
       console.log("No such document!");
       return null;
     }
+  }
+
+  async getPostByTitle(title: string) {
+    const postsRef = collection(this.db, "posts");
+    const q = query(postsRef, where("title", "==", title));
+    const querySnapShot = await getDocs(q);
+
+    const posts: Array<{
+      id: string;
+      data: DocumentData;
+    }> = [];
+
+    querySnapShot.forEach((doc) =>
+      posts.push({
+        id: doc.id,
+        data: doc.data(),
+      })
+    );
+
+    return posts;
   }
 
   async getPosts(page: number, pageSize: number) {

@@ -6,6 +6,12 @@
 @import url("./prism-oneLight.css");
 /* @import url("./prism-newStyle.css"); */
 
+@layer components {
+  .admin-btn {
+    @apply border px-1 py-2 rounded-full hover:bg-black hover:text-milk;
+  }
+}
+
 @font-face {
   font-family: "MonoLisa";
   src: url("../public/assets/fonts/MonoLisa-Regular.otf"),
