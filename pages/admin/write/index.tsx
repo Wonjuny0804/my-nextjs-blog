@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
@@ -17,6 +17,9 @@ const pageMetaData = {
 };
 
 const WritePostPage = () => {
+  const [title, setTitle] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
+
   return (
     <Layout metaData={pageMetaData}>
       <div>
@@ -29,6 +32,7 @@ const WritePostPage = () => {
             id="title"
             placeholder="Please write your title"
             className={`lg:text-3xl font-workSans outline-none bg-[#f4f4f0] flex-grow`}
+            onChange={(event) => setTitle(event.target.value)}
           />
         </div>
         <div className="flex gap-3 my-2">
@@ -38,9 +42,10 @@ const WritePostPage = () => {
             id="author"
             placeholder="Please write author name"
             className="bg-[#f4f4f0] outline-none flex-grow"
+            onChange={(event) => setAuthor(event.target.value)}
           />
         </div>
-        <TextEditor />
+        <TextEditor title={title} author={author} />
         <Link href="/admin">
           <a>Go back</a>
         </Link>

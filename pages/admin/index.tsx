@@ -63,9 +63,11 @@ const AdminPage = () => {
             </form>
           </>
         ) : (
-          <div className={`lg:w-[1024px] xl:w-[1280px] lg:m-auto`}>
+          <div
+            className={`lg:w-[1024px] xl:w-[1280px] lg:m-auto font-workSans`}
+          >
             <h1 className="text-2xl my-3">Admin page</h1>
-            <p>
+            <p className="leading-4">
               You are now securely authenticated. What would you like to do?
             </p>
             <ul>
@@ -81,8 +83,8 @@ const AdminPage = () => {
                 <li key="post.id">
                   <Link href={`/admin/write/${post.id}`}>
                     <a>
+                      {console.log(post)}
                       {post.data.title}
-                      <span></span>
                     </a>
                   </Link>
                 </li>
