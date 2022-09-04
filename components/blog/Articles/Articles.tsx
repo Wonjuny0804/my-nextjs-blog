@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { PostMeta } from "../../pages/api/getAllPosts";
+import { PostMeta } from "../../../pages/api/getAllPosts";
 
 const Post = dynamic(() => import("../Post/Post"));
 

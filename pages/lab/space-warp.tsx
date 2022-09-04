@@ -1,6 +1,6 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import NavBar from "../../components/Landing/NavBar";
+import NavBar from "../../components/common/NavBar";
 import Star from "../../components/lab/space-warp/Star";
 import * as THREE from "three";
 import Box from "../../components/lab/space-warp/Box";

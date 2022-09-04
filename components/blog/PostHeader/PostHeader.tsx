@@ -2,8 +2,8 @@ import moment from "moment";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import Head from "next/head";
 import React, { FC } from "react";
-import { PostMeta } from "../../pages/api/getAllPosts";
-import LandingHeader from "../Landing/NavBar";
+import { PostMeta } from "../../../pages/api/getAllPosts";
+import LandingHeader from "../../common/NavBar";
 
 interface Props {
   post: {

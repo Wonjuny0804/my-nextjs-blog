@@ -4,7 +4,7 @@ import Link from "next/link";
 import Logo from "../../public/logo.svg";
 import dynamic from "next/dynamic";
 
-const MobileMenu = dynamic(() => import("../common/MobileMenu/MobileMenu"));
+const MobileMenu = dynamic(() => import("./MobileMenu/MobileMenu"));
 
 const NavBar: FC = React.memo(() => {
   return (

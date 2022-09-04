@@ -10,7 +10,7 @@ const ShowAllTags = dynamic(
   () => import("../components/Landing/ShowAllTags/ShowAllTags")
 );
 const Layout = dynamic(() => import("../components/common/Layout"));
-const Articles = dynamic(() => import("../components/Articles/Articles"));
+const Articles = dynamic(() => import("../components/blog/Articles/Articles"));
 
 const Home = ({ posts, tags }: { posts: PostMeta[]; tags: string[] }) => {
   return (

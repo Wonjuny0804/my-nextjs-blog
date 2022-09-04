@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
-import Articles from "../../components/Articles/Articles";
+import Articles from "../../components/blog/Articles/Articles";
 import Footer from "../../components/common/Footer/Footer";
-import LandingHeader from "../../components/Landing/NavBar";
+import LandingHeader from "../../components/common/NavBar";
 import { getAllPosts, PostMeta } from "../api/getAllPosts";
 
 const PostsPage = ({ posts }: { posts: PostMeta[] }) => {

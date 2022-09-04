@@ -2,8 +2,14 @@ import {
   collection,
   getFirestore,
   setDoc,
+  doc,
+  getDoc,
   addDoc,
+  where,
+  getDocs,
+  query,
   type Firestore,
+  DocumentData,
 } from "firebase/firestore";
 import serviceInstance from "./service";
 
@@ -52,11 +58,42 @@ class PostService {
   }
 
   async getPost(postId: string) {
-    // TODO: get Post logic here
+    const docRef = doc(this.db, "posts", postId);
+
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      return docSnap.data();
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+      return null;
+    }
   }
 
   async getPosts(page: number, pageSize: number) {
-    // TODO: get posts from db
+    const posts: Array<{
+      id: string;
+      data: DocumentData;
+    }> = [];
+    const q = query(collection(this.db, "posts"));
+    try {
+      const querySnapShot = await getDocs(q);
+
+      querySnapShot.forEach((doc) => {
+        const postData = {
+          id: doc.id,
+          data: doc.data(),
+        };
+        posts.push(postData);
+      });
+
+      return posts;
+    } catch (error: unknown) {
+      console.dir(error);
+      // FIXME: probably do something here where it redirects to another page..?
+    }
   }
 }
 

@@ -7,7 +7,7 @@ const Projects = dynamic(
   () => import("../../components/about/Projects/Projects")
 );
 const Resume = dynamic(() => import("../../components/about/Resume/Resume"));
-const NavBar = dynamic(() => import("../../components/Landing/NavBar"));
+const NavBar = dynamic(() => import("../../components/common/NavBar"));
 const Top = dynamic(() => import("../../components/about/Top/Top"));
 
 const AboutPage: FC = () => {

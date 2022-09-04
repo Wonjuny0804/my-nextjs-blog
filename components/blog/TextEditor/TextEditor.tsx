@@ -2,9 +2,14 @@ import React, { useRef } from "react";
 import "@toast-ui/editor/dist/toastui-editor.css";
 
 import { Editor } from "@toast-ui/react-editor";
-import PostServiceInstance from "../../service/posts";
+import PostServiceInstance from "../../../service/posts";
 
-const TextEditor = () => {
+interface Props {
+  title?: string;
+  author?: string;
+}
+
+const TextEditor = ({ title, author }: Props) => {
   const EditorRef = useRef<Editor>(null);
 
   const handleSaveEdit = async () => {
@@ -15,14 +20,15 @@ const TextEditor = () => {
 
     await PostServiceInstance.createNewPost({
       content,
-      title: "Test Title",
+      title: title ?? "New Post Title",
+      author,
     });
   };
 
   return (
     <>
       <Editor
-        initialValue="hello react editor world!"
+        initialValue="Now, write something you want to share with the world"
         previewStyle="vertical"
         height="600px"
         initialEditType="markdown"
