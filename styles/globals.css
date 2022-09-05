@@ -95,3 +95,34 @@ a {
 canvas {
   height: 800px;
 }
+
+/* get rid of preview of editor */
+.toastui-editor-md-splitter,
+.toastui-editor-md-preview {
+  display: none !important;
+}
+
+.toastui-editor-main.toastui-editor-md-vertical-style.toastui-editor-md-splitter.toastui-editor-md-splitter {
+  display: none !important;
+}
+
+.toastui-editor.md-mode {
+  width: 100% !important;
+}
+
+.toastui-editor-defaultUI {
+  border: 2px solid #000000 !important;
+}
+
+.toastui-editor-defaultUI-toolbar {
+  border-bottom: 2px solid #000000 !important;
+}
+
+.toastui-editor-mode-switch {
+  display: none !important;
+}
+
+.ProseMirror {
+  font-family: "Work Sans" !important;
+  font-size: 16px !important;
+}

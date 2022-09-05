@@ -12,10 +12,11 @@ interface Props {
     author?: string;
     image?: string;
   };
+  noNav?: boolean;
 }
 
 const Layout = (props: Props) => {
-  const { metaData, children, fullWidth } = props;
+  const { metaData, children, fullWidth, noNav } = props;
 
   return (
     <>
@@ -39,7 +40,7 @@ const Layout = (props: Props) => {
         />
       </Head>
       <main>
-        <NavBar />
+        {!noNav && <NavBar />}
         {children}
       </main>
       <Footer />

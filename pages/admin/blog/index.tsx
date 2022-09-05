@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         createdAt: post.data.createdAt.toString(),
         updatedAt: post.data.updatedAt.toString(),
         id: post.id,
-        url: convertTitleToURL(post.data.title),
+        url: post.data.url,
       })),
     },
   };

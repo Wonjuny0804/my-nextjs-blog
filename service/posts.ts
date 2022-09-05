@@ -13,6 +13,7 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
+import { convertTitleToURL } from "../utils/convertTitles";
 import serviceInstance from "./service";
 
 class PostService {
@@ -41,6 +42,7 @@ class PostService {
         excerpt: "",
         tags: [],
         thumbnailImageUrl: "",
+        url: convertTitleToURL(title),
       });
 
       alert("Saved!");
@@ -91,7 +93,7 @@ class PostService {
 
   async getPostByTitle(title: string) {
     const postsRef = collection(this.db, "posts");
-    const q = query(postsRef, where("title", "==", title));
+    const q = query(postsRef, where("url", "==", title));
     const querySnapShot = await getDocs(q);
 
     const posts: Array<{

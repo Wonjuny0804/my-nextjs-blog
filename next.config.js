@@ -8,7 +8,7 @@ const nextConfig = {
   pageExtensions: ["jsx", "js", "tsx", "ts", "mdx", "md"],
   swcMinify: true,
   images: {
-    domains: ["images.velog.io"],
+    domains: ["images.velog.io", "cdn.thenewstack.io"],
   },
   pwa: {
     dest: "public",
