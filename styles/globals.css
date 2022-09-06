@@ -10,6 +10,10 @@
   .admin-btn {
     @apply border px-1 py-2 rounded-full hover:bg-black hover:text-milk;
   }
+
+  .basic-btn {
+    @apply px-1 py-2 rounded-full border-2 hover:translate-x-[-4px] hover:-translate-y-[4px] hover:shadow-[3px_3px_0_0_#000];
+  }
 }
 
 @font-face {
