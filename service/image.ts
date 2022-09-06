@@ -4,7 +4,9 @@ import {
   type FirebaseStorage,
   ref,
   uploadBytes,
+  getDownloadURL,
 } from "firebase/storage";
+import { uploadImageData } from "../types/image";
 
 class ImageService {
   storage: FirebaseStorage;
@@ -17,15 +19,24 @@ class ImageService {
     );
   }
 
-  async uploadBlogPostThumbnail(imageFile: any) {
-    const blogRef = ref(this.storage, "blog");
+  async uploadBlogPostThumbnail(imageFile: File) {
+    const blogRef = ref(this.storage, `blog/${imageFile?.name}`);
 
     const snapShot = await uploadBytes(blogRef, imageFile, {
       contentType: "image/jpeg",
     });
-    console.log(snapShot);
 
-    return "success";
+    const downloadUrl = await getDownloadURL(snapShot.ref);
+    const imageData: uploadImageData = {
+      imageUrl: downloadUrl,
+      contentType: snapShot.metadata.contentType ?? "image/png",
+      contentDisposition:
+        snapShot.metadata.contentDisposition ?? "inline; filename*=utf-8",
+      name: snapShot.metadata.name,
+      bucket: snapShot.metadata.bucket,
+    };
+
+    return imageData;
   }
 }
 

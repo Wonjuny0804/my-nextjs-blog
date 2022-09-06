@@ -1,12 +1,32 @@
 import { GetStaticProps } from "next";
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import PostItem from "../../../components/blog/Post/PostItem";
 import Layout from "../../../components/common/Layout";
 import useBlog from "../../../stores/blog";
+import ImageServiceInstance from "../../../service/image";
+import { uploadImageData } from "../../../types/image";
 
 const PublishPostPage = () => {
   const { data } = useBlog();
-  console.log(data);
+  const { title } = data;
+
+  const [excerpt, setExcerpt] = useState<string>("");
+  const [imageData, setImageData] = useState<uploadImageData>({
+    imageUrl: "/posts/default-image.png",
+    contentType: "",
+    name: "",
+    bucket: "",
+  });
+
+  const handleUploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
+    const imageFile = event.target.files;
+    if (!imageFile) return;
+
+    const imageData = await ImageServiceInstance.uploadBlogPostThumbnail(
+      imageFile[0]
+    );
+    setImageData(imageData);
+  };
 
   return (
     <Layout noNav>
@@ -18,27 +38,34 @@ const PublishPostPage = () => {
         <textarea
           className="min-h-[140px] mt-8 rounded-md border-[2px] px-2 py-1 font-workSans outline-none resize-none"
           autoComplete="off"
-          maxLength={100}
+          maxLength={200}
           placeholder={"Please write an excerpt for the post"}
+          onChange={(e) => setExcerpt(e.target.value)}
         />
 
         <div className="mt-4">
           <label className="font-medium">Thumbnail Image</label>
-          <input type="file" accept="image/*" />
+          <input type="file" accept="image/*" onChange={handleUploadImage} />
         </div>
 
-        <PostItem
-          id={"1"}
-          title={"My new blog first Post!"}
-          excerpt={
-            "I am happy to announce to everyone that now I have a new blog posting CMS function in my blog I want to share how I did this journey"
-          }
-          tags={["react", "nextjs", "firebase"]}
-          createdDate={new Date().toDateString()}
-          thumbnailImageUrl={
-            "https://cdn.thenewstack.io/media/2022/01/10b88c68-typescript-logo.png"
-          }
-        />
+        <section className="mt-6">
+          <h3 className="text-lg font-workSans font-medium leading-5 mb-3">
+            How the post would look like from the list view
+          </h3>
+          <PostItem
+            id={"1"}
+            title={title}
+            excerpt={excerpt}
+            tags={["react", "nextjs", "firebase"]}
+            createdDate={new Date().toDateString()}
+            thumbnailImageUrl={imageData.imageUrl}
+          />
+        </section>
+
+        <section className="outline-green-300 outline flex justify-between mt-4 font-workSans">
+          <button className="basic-btn">save</button>
+          <button className="basic-btn">publish</button>
+        </section>
       </div>
     </Layout>
   );
