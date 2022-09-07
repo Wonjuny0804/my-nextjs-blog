@@ -57,7 +57,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string };
   const { content, meta } = getPostFromSlug(slug);
 
-  const mdxSource = await serialize(content, serializeOptions);
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      rehypePlugins: [
+        rehypePrism,
+        rehypeCodeTitles,
+        [
+          rehypeAutolinkHeadings,
+          {
+            properties: {
+              className: "anchor",
+            },
+          },
+        ],
+        rehypetoc,
+      ],
+    },
+  });
 
   return {
     props: {

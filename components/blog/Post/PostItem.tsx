@@ -30,7 +30,7 @@ const PostItem = (props: Props) => {
         <h2 className="text-xl font-medium mt-3 mb-3 line-clamp-2">{title}</h2>
         <p className="text-sm line-clamp-3">{excerpt}</p>
 
-        <span className="text-sm font-medium block mt-4">Read More -></span>
+        <span className="text-sm font-medium block mt-4">Read More -{">"}</span>
       </div>
     </article>
   );
