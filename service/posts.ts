@@ -13,6 +13,7 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
+import { uploadImageData } from "../types/image";
 import { convertTitleToURL } from "../utils/convertTitles";
 import serviceInstance from "./service";
 
@@ -28,8 +29,10 @@ class PostService {
     title: string;
     content: string;
     author?: string;
+    excerpt?: string;
+    thumbnailImage?: uploadImageData;
   }) {
-    const { title, content, author } = postData;
+    const { title, content, author, excerpt, thumbnailImage } = postData;
 
     try {
       await addDoc(collection(this.db, "posts"), {
@@ -39,9 +42,9 @@ class PostService {
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
         published: false,
-        excerpt: "",
+        excerpt: excerpt ?? "",
         tags: [],
-        thumbnailImageUrl: "",
+        thumbnailImage: thumbnailImage ?? null,
         url: convertTitleToURL(title),
       });
 
