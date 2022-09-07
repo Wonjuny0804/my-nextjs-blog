@@ -31,8 +31,10 @@ class PostService {
     author?: string;
     excerpt?: string;
     thumbnailImage?: uploadImageData;
+    publish?: boolean;
   }) {
-    const { title, content, author, excerpt, thumbnailImage } = postData;
+    const { title, content, author, excerpt, thumbnailImage, publish } =
+      postData;
 
     try {
       await addDoc(collection(this.db, "posts"), {
@@ -41,7 +43,7 @@ class PostService {
         ...(author ? { author } : { author: "Wonjun Jang" }),
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
-        published: false,
+        published: publish ?? false,
         excerpt: excerpt ?? "",
         tags: [],
         thumbnailImage: thumbnailImage ?? null,

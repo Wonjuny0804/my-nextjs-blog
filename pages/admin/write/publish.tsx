@@ -50,10 +50,27 @@ const PublishPostPage = () => {
     }
   };
 
-  const handlePublish = async () => {
+  const handlePublish = async (data: {
+    title: string;
+    content: string;
+    author?: string;
+    excerpt?: string;
+    thumbnailImage?: uploadImageData;
+  }) => {
     // TODO: Add a publishing logic
     // 1. save the whole file to DB with a publish "true"
     // 2. navigate to /posts/{published post} page to show how it looks.
+    if (!data.title || !data.content) return;
+
+    const result = await PostServiceInstance.createNewPost({
+      ...data,
+      publish: true,
+    });
+
+    if (result === "success") {
+      resetData();
+      router.push("/admin/blog");
+    }
   };
 
   return (
@@ -103,7 +120,18 @@ const PublishPostPage = () => {
           >
             save
           </button>
-          <button className="basic-btn">publish</button>
+          <button
+            className="basic-btn"
+            onClick={() =>
+              handlePublish({
+                ...data,
+                excerpt,
+                thumbnailImage: imageData,
+              })
+            }
+          >
+            publish
+          </button>
         </section>
       </div>
     </Layout>
