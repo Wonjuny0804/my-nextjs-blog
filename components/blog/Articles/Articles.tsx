@@ -1,17 +1,24 @@
 import React, { FC } from "react";
-import { PostMeta } from "../../pages/api/getAllPosts";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import Post from "../Post/Post";
+import { PostMeta } from "../../../pages/api/getAllPosts";
+
+const Post = dynamic(() => import("../Post/Post"));
 
 interface Props {
   posts: PostMeta[];
+  grid: boolean;
 }
 
-const Articles: FC<Props> = ({ posts }) => {
+const Articles: FC<Props> = ({ posts, grid }) => {
   return (
     <AnimatePresence>
-      <ul className={`mt-10 flex flex-col gap-14 list-none`}>
+      <ul
+        className={`mt-10 flex flex-col gap-14 list-none ${
+          grid && "lg:grid lg:grid-cols-3"
+        }`}
+      >
         {posts.map((post, index) => (
           <motion.li
             initial={{ opacity: 0 }}
@@ -23,7 +30,7 @@ const Articles: FC<Props> = ({ posts }) => {
             className={`group border-[3px] px-4 py-5 rounded-[3px] border-[#000000]`}
           >
             <Link href={`/posts/${post.slug}`}>
-              <a>
+              <a className="h-full">
                 <Post post={post} />
               </a>
             </Link>

@@ -6,7 +6,7 @@ const LabMainPage = dynamic(
   () => import("../../components/lab/LabMainPage")
 ) as any;
 
-const NavBar = dynamic(() => import("../../components/Landing/NavBar")) as any;
+const NavBar = dynamic(() => import("../../components/common/NavBar")) as any;
 
 const LabPage: NextPage = () => {
   return (
