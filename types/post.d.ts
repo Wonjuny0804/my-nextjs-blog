@@ -1,4 +1,5 @@
 import { DocumentData, Timestamp } from "firebase/firestore";
+import { uploadImageData } from "./image";
 
 export interface PostDocument {
   id: string;
@@ -7,4 +8,6 @@ export interface PostDocument {
   author: string;
   createdAt: Timestamp;
   updatedAt: Timestamp;
+  thumbnailImage: uploadImageData;
+  published: boolean;
 }

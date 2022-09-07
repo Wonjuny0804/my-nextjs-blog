@@ -6,7 +6,7 @@ import Logo from "../../../public/logo.svg";
 const Footer: FC = React.memo(() => {
   return (
     <footer
-      className={`pt-[60px] pb-10 px-10 border-t border-gray mt-20 flex flex-col items-center`}
+      className={`pt-[60px] pb-10 px-10 border-t border-black mt-20 flex flex-col items-center`}
     >
       <Link href={"/"}>
         <a
