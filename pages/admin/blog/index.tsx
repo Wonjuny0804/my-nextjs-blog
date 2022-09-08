@@ -4,15 +4,13 @@ import Link from "next/link";
 import Layout from "../../../components/common/Layout";
 import PostServiceInstance from "../../../service/posts";
 import { PostDocument } from "../../../types/post";
-import { convertTitleToURL } from "../../../utils/convertTitles";
 import moment from "moment";
 import Image from "next/image";
-
-// TODO: get all posts from database and show them as a list
 
 interface PostData extends PostDocument {
   url: string;
   imageUrl: string;
+  excerpt: string;
 }
 
 interface Props {
@@ -20,10 +18,9 @@ interface Props {
 }
 
 const BlogAdminPage = ({ posts }: Props) => {
-  console.log(posts);
   return (
     <Layout metaData={{ title: "Blog admin page" }}>
-      <div className="mt-4">
+      <div className="mt-4 lg:w-[1024px] lg:mx-auto ">
         <Link href="/admin/write">
           <a className="block border-2 mx-4 px-4 py-2 font-workSans font-bold">
             Write new Post
@@ -32,15 +29,22 @@ const BlogAdminPage = ({ posts }: Props) => {
         <section className="mx-4 mt-4 font-workSans grid grid-cols-2 gap-4">
           {posts &&
             posts.map((post, index) => {
-              const { title, url, createdAt, thumbnailImage, published } = post;
+              const {
+                title,
+                url,
+                createdAt,
+                thumbnailImage,
+                published,
+                excerpt,
+              } = post;
               const imageUrl = thumbnailImage?.imageUrl;
               const createdDate = moment.unix(+createdAt).format("YYYY/MM/DD");
               return (
                 <Link key={post.id + index + ""} href={`/admin/blog/${url}`}>
                   <a className="font-medium">
-                    <div className="grid grid-cols-2 justify-between border-2 min-h-[160px]">
+                    <div className="grid grid-cols-2 justify-between border-2 min-h-[160px] lg:h-[320px]">
                       {imageUrl && (
-                        <div className="relative h-full w-full">
+                        <div className="relative h-full w-full border-r-2">
                           <Image
                             src={imageUrl ?? "/posts/default-image.png"}
                             alt="."
@@ -57,6 +61,9 @@ const BlogAdminPage = ({ posts }: Props) => {
                           <span className="font-workSans font-normal text-xs">
                             {createdDate}
                           </span>
+                          <p className="lg:line-clamp-6 font-normal">
+                            {excerpt}
+                          </p>
                         </div>
                         <span
                           className={` block text-xs px-1 py-1 w-fit font-light ${

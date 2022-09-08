@@ -56,6 +56,11 @@ const MobileMenu: FC = () => {
                     <a className={`block w-full border-b py-3 pl-6`}>lab</a>
                   </Link>
                 </Menu.Item>
+                <Menu.Item as="li">
+                  <Link href="/admin">
+                    <a className={`block w-full border-b py-3 pl-6`}>admin</a>
+                  </Link>
+                </Menu.Item>
               </Menu.Items>
             </Transition>
           </>

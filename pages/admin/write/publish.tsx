@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import PostItem from "../../../components/blog/Post/PostItem";
 import Layout from "../../../components/common/Layout";
 import useBlog from "../../../stores/blog";
@@ -9,7 +9,7 @@ import { uploadImageData } from "../../../types/image";
 import { useRouter } from "next/router";
 
 const PublishPostPage = () => {
-  const { data, resetData } = useBlog();
+  const { data, resetData, savePost } = useBlog();
   const { title } = data;
   const router = useRouter();
 
@@ -20,6 +20,8 @@ const PublishPostPage = () => {
     name: "",
     bucket: "",
   });
+  const [published, setPublished] = useState<boolean>(false);
+  const [postId, setPostId] = useState<string>("");
 
   const handleUploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
     const imageFile = event.target.files;
@@ -38,9 +40,6 @@ const PublishPostPage = () => {
     excerpt?: string;
     thumbnailImage?: uploadImageData;
   }) => {
-    // TODO: Add a saving logic
-    // 1. Save the post to DB
-    // 2. navigate to posts page inside admin
     if (!data.title || !data.content) return;
 
     const result = await PostServiceInstance.createNewPost(data);
@@ -56,16 +55,20 @@ const PublishPostPage = () => {
     author?: string;
     excerpt?: string;
     thumbnailImage?: uploadImageData;
+    postId?: string;
   }) => {
-    // TODO: Add a publishing logic
-    // 1. save the whole file to DB with a publish "true"
-    // 2. navigate to /posts/{published post} page to show how it looks.
     if (!data.title || !data.content) return;
 
-    const result = await PostServiceInstance.createNewPost({
-      ...data,
-      publish: true,
-    });
+    const result = data?.postId
+      ? await PostServiceInstance.editPost({
+          ...data,
+          published: !published,
+          postId: data?.postId,
+        })
+      : await PostServiceInstance.createNewPost({
+          ...data,
+          publish: true,
+        });
 
     if (result === "success") {
       resetData();
@@ -73,10 +76,37 @@ const PublishPostPage = () => {
     }
   };
 
+  useEffect(() => {
+    const getPostData = async () => {
+      const postId = router.query?.postId as string;
+      if (!postId) return;
+
+      try {
+        const data = await PostServiceInstance.getPost(postId);
+        if (!data) return;
+
+        const { excerpt, thumbnailImage, published, title, author, content } =
+          data;
+        setExcerpt(excerpt);
+        setImageData(thumbnailImage);
+        setPublished(published);
+        setPostId(postId);
+        savePost({
+          title,
+          author,
+          content,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPostData();
+  }, [router.query, savePost]);
+
   return (
     <Layout noNav>
-      <div className="mx-4 mt-4 flex flex-col">
-        <h1 className="text-xl font-workSans font-medium">
+      <div className="mx-4 mt-4 flex flex-col lg:w-[780px] xl:w-[780px] lg:m-auto">
+        <h1 className="text-xl font-workSans font-medium lg:mt-10">
           This is where you will decide the meta data for the posts
         </h1>
 
@@ -86,6 +116,7 @@ const PublishPostPage = () => {
           maxLength={200}
           placeholder={"Please write an excerpt for the post"}
           onChange={(e) => setExcerpt(e.target.value)}
+          value={excerpt}
         />
 
         <div className="mt-4">
@@ -107,7 +138,7 @@ const PublishPostPage = () => {
           />
         </section>
 
-        <section className="outline-green-300 outline flex justify-between mt-4 font-workSans">
+        <section className="flex justify-between mt-4 font-workSans">
           <button
             className="basic-btn"
             onClick={() =>
@@ -127,10 +158,11 @@ const PublishPostPage = () => {
                 ...data,
                 excerpt,
                 thumbnailImage: imageData,
+                postId,
               })
             }
           >
-            publish
+            {published ? "unpubish" : "publish"}
           </button>
         </section>
       </div>

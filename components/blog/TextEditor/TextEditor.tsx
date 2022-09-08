@@ -7,7 +7,6 @@ import useBlog from "../../../stores/blog";
 import { useRouter } from "next/router";
 
 interface Props {
-  handleSaveSuccess: () => void;
   mode: "create" | "edit";
   title?: string;
   author?: string;
@@ -18,14 +17,7 @@ interface Props {
   height?: string;
 }
 
-const TextEditor = ({
-  title,
-  author,
-  editData,
-  handleSaveSuccess,
-  mode,
-  height,
-}: Props) => {
+const TextEditor = ({ title, author, editData, mode, height }: Props) => {
   const EditorRef = useRef<Editor>(null);
   const { savePost } = useBlog();
   const router = useRouter();
@@ -48,10 +40,11 @@ const TextEditor = ({
         content: content ?? "",
         author: author ?? "",
       });
+
+      router.push(`/admin/write/publish?postId=${editData?.postId}`);
     }
 
-    router.push("/admin/write/publish");
-    // handleSaveSuccess();
+    router.push(`/admin/write/publish`);
   };
 
   useEffect(() => {

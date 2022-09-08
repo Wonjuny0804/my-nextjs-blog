@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 
 const Layout = dynamic(() => import("../../../components/common/Layout"), {
   ssr: true,
@@ -21,12 +20,8 @@ const WritePostPage = () => {
   const [title, setTitle] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
 
-  const router = useRouter();
-
-  const handleSaveSuccess = () => router.push("/admin");
-
   return (
-    <Layout metaData={pageMetaData} noNav>
+    <Layout metaData={pageMetaData} noNav fullWidth={false}>
       <div className="mx-4 mt-4 lg:mx-auto lg:w-[1024px] xl:w-[1280px]">
         <div className="mb-8">
           <div className="flex gap-3 mt-3 font-workSans">
@@ -63,7 +58,6 @@ const WritePostPage = () => {
           title={title}
           author={author}
           editData={null}
-          handleSaveSuccess={handleSaveSuccess}
         />
         <Link href="/admin">
           <a

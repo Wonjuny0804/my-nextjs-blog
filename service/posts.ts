@@ -60,10 +60,12 @@ class PostService {
   async editPost(postData: {
     title: string;
     content: string;
-    author: string;
+    author?: string;
     postId: string;
+    excerpt?: string;
+    thumbnailImage?: uploadImageData;
+    published?: boolean;
   }) {
-    // TODO: Add a editing post logic here.
     const postRef = doc(this.db, "posts", postData.postId);
 
     await updateDoc(postRef, {
@@ -71,14 +73,22 @@ class PostService {
       content: postData.content,
       author: postData.author,
       updatedAt: serverTimestamp(),
+      ...(postData.published !== undefined && {
+        published: postData.published,
+      }),
     });
 
     alert("Update complete!");
-    return "Success";
+    return "success";
   }
 
   async deletePost(postId: string) {
-    // TODO: add a delete post logic here. (not really delete, but probably just add a true to deleted column)
+    const postRef = doc(this.db, "posts", postId);
+    await updateDoc(postRef, {
+      deleted: true,
+    });
+
+    return "success";
   }
 
   async getPost(postId: string) {
@@ -87,7 +97,6 @@ class PostService {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
       return docSnap.data();
     } else {
       // doc.data() will be undefined in this case

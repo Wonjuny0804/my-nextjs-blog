@@ -14,13 +14,13 @@ const PostItem = (props: Props) => {
   const { title, id, excerpt, tags, createdDate, thumbnailImageUrl } = props;
 
   return (
-    <article className={`border-2 rounded-md `}>
+    <article className={`border-2 rounded-md max-w-[400px] overflow-hidden`}>
       <div className="relative min-h-[184px] border-b-2">
         <Image
           layout="fill"
           src={thumbnailImageUrl}
           alt={excerpt}
-          className="border-b max-w-full h-full"
+          className="border-b max-w-full h-full bg-white"
           loading="lazy"
           objectFit="cover"
         />

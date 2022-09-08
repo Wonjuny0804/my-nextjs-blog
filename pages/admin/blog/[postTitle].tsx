@@ -3,7 +3,6 @@ import { GetServerSideProps } from "next";
 import Layout from "../../../components/common/Layout";
 import PostServiceInstance from "../../../service/posts";
 import { PostDocument } from "../../../types/post";
-import { convertURLToTitle } from "../../../utils/convertTitles";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
@@ -20,12 +19,9 @@ interface Props {
 
 const EditBlogPostPage = ({ data }: Props) => {
   const { content, author: postAuthor, title: postTitle, id } = data;
-  const router = useRouter();
 
   const [author, setAuthor] = useState<string>("");
   const [title, setTitle] = useState<string>("");
-
-  const handleSaveEdit = () => router.push("/admin/blog");
 
   useEffect(() => {
     setTitle(postTitle);
@@ -63,7 +59,6 @@ const EditBlogPostPage = ({ data }: Props) => {
           />
         </div>
         <TextEditor
-          handleSaveSuccess={handleSaveEdit}
           editData={{
             content,
             postId: id,
@@ -73,6 +68,12 @@ const EditBlogPostPage = ({ data }: Props) => {
           mode="edit"
           height={"800px"}
         />
+        <button
+          type="button"
+          className="border-2 border-red-700 text-red-700 rounded-full px-1 py-1 mt-2 shadow-[3px_3px_0_red]"
+        >
+          Delete post
+        </button>
       </div>
     </Layout>
   );
