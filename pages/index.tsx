@@ -3,16 +3,9 @@ import React from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 
-import { getAllPosts } from "./api/getAllPosts";
-import { getAllTags } from "./api/getAllTags";
-import { AnimatePresence, motion } from "framer-motion";
 import { DocumentData } from "firebase/firestore";
 
-const ShowAllTags = dynamic(
-  () => import("../components/Landing/ShowAllTags/ShowAllTags")
-);
 const Layout = dynamic(() => import("../components/common/Layout"));
-const Articles = dynamic(() => import("../components/blog/Articles/Articles"));
 
 const Home = ({
   posts,
