@@ -72,6 +72,7 @@ class PostService {
       title: postData.title,
       content: postData.content,
       author: postData.author,
+      thumbnailImage: postData?.thumbnailImage ?? null,
       updatedAt: serverTimestamp(),
       ...(postData.published !== undefined && {
         published: postData.published,

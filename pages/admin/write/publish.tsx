@@ -39,10 +39,18 @@ const PublishPostPage = () => {
     author?: string;
     excerpt?: string;
     thumbnailImage?: uploadImageData;
+    postId?: string;
   }) => {
     if (!data.title || !data.content) return;
 
-    const result = await PostServiceInstance.createNewPost(data);
+    const result = data?.postId
+      ? await PostServiceInstance.editPost({
+          ...data,
+          published,
+          postId: data.postId,
+        })
+      : await PostServiceInstance.createNewPost(data);
+
     if (result === "success") {
       resetData();
       router.push("/admin/blog");
@@ -148,6 +156,7 @@ const PublishPostPage = () => {
                 ...data,
                 excerpt,
                 thumbnailImage: imageData,
+                postId,
               })
             }
           >
