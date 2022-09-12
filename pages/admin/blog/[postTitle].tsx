@@ -19,9 +19,15 @@ interface Props {
 
 const EditBlogPostPage = ({ data }: Props) => {
   const { content, author: postAuthor, title: postTitle, id } = data;
+  const router = useRouter();
 
   const [author, setAuthor] = useState<string>("");
   const [title, setTitle] = useState<string>("");
+
+  const handleDeleteClick = async (postId: string) => {
+    await PostServiceInstance.deletePost(postId);
+    router.push("/admin/blog");
+  };
 
   useEffect(() => {
     setTitle(postTitle);
@@ -67,13 +73,21 @@ const EditBlogPostPage = ({ data }: Props) => {
           author={author}
           mode="edit"
           height={"800px"}
+          deleted={data.deleted}
         />
-        <button
-          type="button"
-          className="border-2 border-red-700 text-red-700 rounded-full px-1 py-1 mt-2 shadow-[3px_3px_0_red]"
-        >
-          Delete post
-        </button>
+        {!data.deleted ? (
+          <button
+            type="button"
+            className="border-2 border-red-700 text-red-700 rounded-full px-1 py-1 mt-2 shadow-[3px_3px_0_red]"
+            onClick={() => handleDeleteClick(id)}
+          >
+            Delete post
+          </button>
+        ) : (
+          <span className="block border-2 w-fit p-1 rounded-[4px] mt-3 shadow-[3px_3px_0_#000000]">
+            Post is deleted
+          </span>
+        )}
       </div>
     </Layout>
   );
@@ -90,6 +104,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         id: post[0].id,
         updatedAt: post[0].data.updatedAt.seconds,
         createdAt: post[0].data.createdAt.seconds,
+        deletedAt: post[0].data?.deletedAt
+          ? post[0].data.deletedAt.seconds
+          : null,
+        deleted: post[0].data?.deleted ?? false,
       },
     },
   };

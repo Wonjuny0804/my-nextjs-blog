@@ -10,4 +10,6 @@ export interface PostDocument {
   updatedAt: Timestamp;
   thumbnailImage: uploadImageData;
   published: boolean;
+  deleted?: boolean;
+  deletedAt?: number;
 }

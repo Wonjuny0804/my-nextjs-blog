@@ -15,9 +15,17 @@ interface Props {
     postId?: string;
   } | null;
   height?: string;
+  deleted?: boolean;
 }
 
-const TextEditor = ({ title, author, editData, mode, height }: Props) => {
+const TextEditor = ({
+  title,
+  author,
+  editData,
+  mode,
+  height,
+  deleted,
+}: Props) => {
   const EditorRef = useRef<Editor>(null);
   const { savePost } = useBlog();
   const router = useRouter();
@@ -68,13 +76,15 @@ const TextEditor = ({ title, author, editData, mode, height }: Props) => {
         theme={"dark"}
         ref={EditorRef}
       />
-      <button
-        type="button"
-        onClick={handleSaveEdit}
-        className="mt-3 w-fit items-end font-workSans border-2 block h-fit px-2 py-1 bg-[#f2f2f5] rounded-full shadow-[3px_3px_0px_0px_#000000]"
-      >
-        Save
-      </button>
+      {!deleted && (
+        <button
+          type="button"
+          onClick={handleSaveEdit}
+          className="mt-3 w-fit items-end font-workSans border-2 block h-fit px-2 py-1 bg-[#f2f2f5] rounded-full shadow-[3px_3px_0px_0px_#000000]"
+        >
+          Save
+        </button>
+      )}
     </div>
   );
 };

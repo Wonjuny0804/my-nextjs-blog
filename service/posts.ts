@@ -87,6 +87,8 @@ class PostService {
     const postRef = doc(this.db, "posts", postId);
     await updateDoc(postRef, {
       deleted: true,
+      published: false,
+      deletedAt: serverTimestamp(),
     });
 
     return "success";

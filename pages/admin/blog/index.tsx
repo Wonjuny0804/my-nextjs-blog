@@ -11,6 +11,7 @@ interface PostData extends PostDocument {
   url: string;
   imageUrl: string;
   excerpt: string;
+  deleted: boolean;
 }
 
 interface Props {
@@ -26,7 +27,7 @@ const BlogAdminPage = ({ posts }: Props) => {
             Write new Post
           </a>
         </Link>
-        <section className="mx-4 mt-4 font-workSans grid grid-cols-2 gap-4">
+        <section className="mx-4 mt-4 font-workSans grid gap-4">
           {posts &&
             posts.map((post, index) => {
               const {
@@ -36,8 +37,10 @@ const BlogAdminPage = ({ posts }: Props) => {
                 thumbnailImage,
                 published,
                 excerpt,
+                deleted,
               } = post;
-              const imageUrl = thumbnailImage?.imageUrl;
+              const imageUrl =
+                thumbnailImage?.imageUrl ?? "/posts/default-image.png";
               const createdDate = moment.unix(+createdAt).format("YYYY/MM/DD");
               return (
                 <Link key={post.id + index + ""} href={`/admin/blog/${url}`}>
@@ -53,27 +56,34 @@ const BlogAdminPage = ({ posts }: Props) => {
                           />
                         </div>
                       )}
-                      <div className="p-2 flex flex-col justify-between">
+                      <div className="p-2 flex flex-col justify-between overflow-hidden">
                         <div>
-                          <h3 className="font-workSans text-2xl font-medium">
+                          <h3 className="font-workSans text-2xl font-medium line-clamp-3">
                             {title}
                           </h3>
                           <span className="font-workSans font-normal text-xs">
                             {createdDate}
                           </span>
-                          <p className="lg:line-clamp-6 font-normal">
+                          <p className="lg:line-clamp-6 font-normal line-clamp-5">
                             {excerpt}
                           </p>
                         </div>
-                        <span
-                          className={` block text-xs px-1 py-1 w-fit font-light ${
-                            published
-                              ? "text-primary-blue border-primary-blue border"
-                              : "border"
-                          }`}
-                        >
-                          {published ? "published" : "yet"}
-                        </span>
+                        <div className="flex gap-3">
+                          <span
+                            className={` block text-xs px-1 py-1 w-fit font-light ${
+                              published
+                                ? "text-primary-blue border-primary-blue border"
+                                : "border"
+                            }`}
+                          >
+                            {published ? "published" : "yet"}
+                          </span>
+                          {deleted && (
+                            <span className="block text-xs px-1 py-1 w-fit font-light border border-red-700 text-red-700">
+                              deleted
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </a>
@@ -95,6 +105,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
         ...post.data,
         createdAt: post.data.createdAt.seconds,
         updatedAt: post.data.updatedAt.seconds,
+        deleted: post.data?.deleted ?? false,
+        deletedAt: post.data?.deletedAt ? post.data.deletedAt.seconds : null,
         id: post.id,
         url: post.data.url,
       })),
