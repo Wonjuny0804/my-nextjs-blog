@@ -28,7 +28,7 @@ export interface PostMeta {
   title: string;
   tags: string[];
   author: string;
-  date: string;
+  createdAt: number;
   readingTime: {
     text: string;
     minutes?: number;
@@ -49,7 +49,7 @@ export const getPostFromSlug = (slug: string): Post => {
       slug,
       title: data.title ?? slug,
       tags: (data.tags ?? []).sort(),
-      date: (data.date ?? new Date()).toString(),
+      createdAt: (data.date ?? new Date()).toString(),
       author: data.author ?? "Bryan",
       readingTime: {
         text: data.readingTime?.text ?? "3 min read",
@@ -62,10 +62,10 @@ export const getAllPosts = () => {
   const posts = getSlugs()
     .map((slug) => getPostFromSlug(slug))
     .sort((postA, postB) => {
-      if (postA.meta.date < postB.meta.date) {
+      if (postA.meta.createdAt < postB.meta.createdAt) {
         return -1;
       }
-      if (postA.meta.date > postB.meta.date) {
+      if (postA.meta.createdAt > postB.meta.createdAt) {
         return 1;
       }
       return 0;

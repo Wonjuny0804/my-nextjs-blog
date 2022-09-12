@@ -1,13 +1,16 @@
 import React, { FC } from "react";
 import dynamic from "next/dynamic";
+import moment from "moment";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { PostMeta } from "../../../pages/api/getAllPosts";
+import { DocumentData } from "firebase/firestore";
 
-const Post = dynamic(() => import("../Post/Post"));
-
+const PostItem = dynamic(() => import("../Post/PostItem"));
 interface Props {
-  posts: PostMeta[];
+  posts: Array<{
+    id: string;
+    data: DocumentData;
+  }>;
   grid: boolean;
 }
 
@@ -15,7 +18,7 @@ const Articles: FC<Props> = ({ posts, grid }) => {
   return (
     <AnimatePresence>
       <ul
-        className={`mt-10 flex flex-col gap-14 list-none ${
+        className={`mt-10 flex flex-col md:grid md:grid-cols-2 justify-self-stretch gap-14 list-none ${
           grid && "lg:grid lg:grid-cols-3"
         }`}
       >
@@ -26,12 +29,20 @@ const Articles: FC<Props> = ({ posts, grid }) => {
             transition={{
               delay: index * 0.2,
             }}
-            key={post.slug}
-            className={`group border-[3px] px-4 py-5 rounded-[3px] border-[#000000]`}
+            key={post.id}
           >
-            <Link href={`/posts/${post.slug}`}>
+            <Link href={`/posts/${post.data.url}`}>
               <a className="h-full">
-                <Post post={post} />
+                <PostItem
+                  id={post.id}
+                  title={post.data.title}
+                  excerpt={post.data.excerpt}
+                  tags={post.data.tags}
+                  createdDate={moment
+                    .unix(post.data.createdAt)
+                    .format("MMM Do YYYY")}
+                  thumbnailImageUrl={post.data.thumbnailImage.imageUrl}
+                />
               </a>
             </Link>
           </motion.li>

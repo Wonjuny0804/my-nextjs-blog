@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { FC } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getAllPosts, getPostFromSlug, PostMeta } from "../api/getAllPosts";
+import { PostMeta } from "../api/getAllPosts";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import rehypePrism from "rehype-prism-plus";
@@ -12,6 +11,7 @@ import rehypetoc from "rehype-toc";
 import PostHeader from "../../components/blog/PostHeader/PostHeader";
 import Footer from "../../components/common/Footer/Footer";
 import MDXRenderer from "../../components/blog/MDXRenderer";
+import PostServiceInstance from "../../service/posts";
 
 export const serializeOptions = {
   mdxOptions: {
@@ -54,8 +54,17 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as { slug: string };
-  const { content, meta } = getPostFromSlug(slug);
+  const { url } = params as { url: string };
+  const posts = await PostServiceInstance.getPostByTitle(url);
+  const { data } = posts[0];
+  const { content } = data;
+  const meta = {
+    author: data.author,
+    excerpt: data.excerpt,
+    createdAt: data.createdAt.seconds,
+    updatedAt: data.updatedAt.seconds,
+    title: data.title,
+  };
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
@@ -89,10 +98,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
+  const posts = await PostServiceInstance.getPosts({ published: true });
+  if (!posts)
+    //FIXME: please fix this place logic...!
+    return {
+      paths: [],
+      fallback: true,
+    };
+
   const paths = posts.map((post) => ({
     params: {
-      slug: post.meta.slug,
+      url: post.data.url,
     },
   }));
 

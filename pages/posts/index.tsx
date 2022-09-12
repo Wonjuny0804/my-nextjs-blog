@@ -1,41 +1,67 @@
-import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
-import Articles from "../../components/blog/Articles/Articles";
-import Footer from "../../components/common/Footer/Footer";
-import LandingHeader from "../../components/common/NavBar";
-import { getAllPosts, PostMeta } from "../api/getAllPosts";
+import { AnimatePresence, motion } from "framer-motion";
+import PostServiceInstance from "../../service/posts";
+import { DocumentData } from "firebase/firestore";
+import dynamic from "next/dynamic";
+import Layout from "../../components/common/Layout";
 
-const PostsPage = ({ posts }: { posts: PostMeta[] }) => {
+const Footer = dynamic(() => import("../../components/common/Footer/Footer"));
+const LandingHeader = dynamic(() => import("../../components/common/NavBar"));
+const Articles = dynamic(
+  () => import("../../components/blog/Articles/Articles")
+);
+
+interface Props {
+  posts: Array<{
+    id: string;
+    data: DocumentData;
+  }>;
+}
+
+const PostsPage = ({ posts }: Props) => {
   return (
-    <>
-      <title>wonjundev.tech all posts</title>
-      <main>
-        <LandingHeader />
-
-        <AnimatePresence>
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.6,
-            }}
-            className={`px-4 lg:w-[1024px] lg:m-auto xl:w-[1280px] `}
-          >
-            <Articles posts={posts} grid={true} />
-          </motion.section>
-        </AnimatePresence>
-      </main>
-      <Footer />
-    </>
+    <Layout
+      metaData={{
+        title: "wonjundev.tech all posts",
+        description:
+          "This is a page where you can see all posts of Wonjun dev tech blog",
+      }}
+    >
+      <AnimatePresence>
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.6,
+          }}
+          className={`px-4 lg:w-[1024px] lg:m-auto xl:w-[1280px] `}
+        >
+          <Articles posts={posts} grid={true} />
+        </motion.section>
+      </AnimatePresence>
+    </Layout>
   );
 };
 
 export const getStaticProps = async () => {
-  const posts = getAllPosts().map((post) => post.meta);
+  const posts = await PostServiceInstance.getPosts({ published: true });
+  const postsTimeMap = posts?.map((post) => ({
+    ...post,
+    data: {
+      ...post.data,
+      createdAt: post.data.createdAt?.seconds,
+      updatedAt: post.data.updatedAt?.seconds,
+      thumbnailImage: post.data.thumbnailImage?.imageUrl
+        ? post.data.thumbnailImage
+        : {
+            imageUrl: "/posts/default-image.png",
+          },
+    },
+  }));
 
   return {
     props: {
-      posts,
+      posts: postsTimeMap,
     },
   };
 };

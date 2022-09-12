@@ -134,7 +134,9 @@ const PublishPostPage = () => {
             excerpt={excerpt}
             tags={["react", "nextjs", "firebase"]}
             createdDate={new Date().toDateString()}
-            thumbnailImageUrl={imageData.imageUrl}
+            thumbnailImageUrl={
+              imageData?.imageUrl ?? "/posts/default-image.png"
+            }
           />
         </section>
 
@@ -162,7 +164,7 @@ const PublishPostPage = () => {
               })
             }
           >
-            {published ? "unpubish" : "publish"}
+            {published ? "unpublish" : "publish"}
           </button>
         </section>
       </div>

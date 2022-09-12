@@ -125,12 +125,19 @@ class PostService {
     return posts;
   }
 
-  async getPosts(page: number, pageSize: number) {
+  async getPosts(params?: {
+    page?: number;
+    pageSize?: number;
+    published?: boolean;
+  }) {
     const posts: Array<{
       id: string;
       data: DocumentData;
     }> = [];
-    const q = query(collection(this.db, "posts"));
+    const q = params?.published
+      ? query(collection(this.db, "posts"), where("published", "==", true))
+      : query(collection(this.db, "posts"));
+
     try {
       const querySnapShot = await getDocs(q);
 

@@ -34,7 +34,7 @@ const PostHeader: FC<Props> = ({ post }) => {
             </span>
             &nbsp;/&nbsp;
             <span className={`text-real-black font-workSans`}>
-              {moment(post.meta.date).format("MMM DD, YYYY")}
+              {moment.unix(post.meta.createdAt).format("MMM DD, YYYY")}
             </span>
           </div>
           <div

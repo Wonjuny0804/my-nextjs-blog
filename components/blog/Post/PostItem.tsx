@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -11,10 +11,12 @@ interface Props {
 }
 
 const PostItem = (props: Props) => {
-  const { title, id, excerpt, tags, createdDate, thumbnailImageUrl } = props;
+  const { title, excerpt, createdDate, thumbnailImageUrl } = props;
 
   return (
-    <article className={`border-2 rounded-md max-w-[400px] overflow-hidden`}>
+    <article
+      className={`border-2 rounded-md max-w-[400px] overflow-hidden md:h-full`}
+    >
       <div className="relative min-h-[184px] border-b-2">
         <Image
           layout="fill"
