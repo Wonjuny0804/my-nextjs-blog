@@ -33,7 +33,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     const getPosts = async () => {
-      const posts = await PostServiceInstance.getPosts(1, 1);
+      const posts = await PostServiceInstance.getPosts();
       if (posts) setPosts(posts);
     };
 

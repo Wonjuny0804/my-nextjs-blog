@@ -87,7 +87,7 @@ const BlogAdminPage = ({ posts }: Props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const posts = await PostServiceInstance.getPosts(1, 1);
+  const posts = await PostServiceInstance.getPosts();
 
   return {
     props: {
