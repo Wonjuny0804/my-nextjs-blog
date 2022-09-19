@@ -116,6 +116,7 @@ canvas {
 
 .toastui-editor-defaultUI {
   border: 2px solid #000000 !important;
+  border-radius: 0px !important;
 }
 
 .toastui-editor-defaultUI-toolbar {

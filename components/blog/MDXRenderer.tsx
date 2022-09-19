@@ -31,7 +31,6 @@ const MDXRenderer = ({ source }: Props) => {
         ol: (props) => <OL>{props.children}</OL>,
         ul: (props) => <UL>{props.children}</UL>,
         li: (props) => <LI>{props.children}</LI>,
-        // code: (props) => <CODE>{props.children}</CODE>,
         blockquote: (props) => <BLOCKQUOTE>{props.children}</BLOCKQUOTE>,
         a: (props) => {
           return <A href={props.href}>{props.children}</A>;

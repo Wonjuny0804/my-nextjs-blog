@@ -23,6 +23,7 @@ const EditBlogPostPage = ({ data }: Props) => {
 
   const [author, setAuthor] = useState<string>("");
   const [title, setTitle] = useState<string>("");
+  const [preview, setPreview] = useState<boolean>(true);
 
   const handleDeleteClick = async (postId: string) => {
     await PostServiceInstance.deletePost(postId);
@@ -74,6 +75,7 @@ const EditBlogPostPage = ({ data }: Props) => {
           mode="edit"
           height={"800px"}
           deleted={data.deleted}
+          preview={preview}
         />
         {!data.deleted ? (
           <button
