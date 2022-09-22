@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import PostItem from "../../../components/blog/Post/PostItem";
 import Layout from "../../../components/common/Layout";
 import useBlog from "../../../stores/blog";
@@ -22,15 +22,18 @@ const PublishPostPage = () => {
   });
   const [published, setPublished] = useState<boolean>(false);
   const [postId, setPostId] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleUploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
     const imageFile = event.target.files;
     if (!imageFile) return;
+    setLoading(true);
 
     const imageData = await ImageServiceInstance.uploadBlogPostThumbnail(
       imageFile[0]
     );
     setImageData(imageData);
+    setLoading(false);
   };
 
   const handleSave = async (data: {
@@ -145,6 +148,7 @@ const PublishPostPage = () => {
             thumbnailImageUrl={
               imageData?.imageUrl ?? "/posts/default-image.png"
             }
+            loading={loading}
           />
         </section>
 

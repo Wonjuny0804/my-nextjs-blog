@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Loader from "../../common/Loader/Loader";
 
 interface Props {
   title: string;
@@ -8,24 +9,33 @@ interface Props {
   createdDate: string;
   tags: Array<string>;
   thumbnailImageUrl: string;
+  loading?: boolean;
 }
 
 const PostItem = (props: Props) => {
-  const { title, excerpt, createdDate, thumbnailImageUrl } = props;
+  const { title, excerpt, createdDate, thumbnailImageUrl, loading } = props;
 
   return (
     <article
       className={`border-2 rounded-md max-w-[400px] overflow-hidden md:h-full`}
     >
-      <div className="relative min-h-[184px] border-b-2">
-        <Image
-          layout="fill"
-          src={thumbnailImageUrl}
-          alt={excerpt}
-          className="border-b max-w-full h-full bg-white"
-          loading="lazy"
-          objectFit="cover"
-        />
+      <div className="relative min-h-[184px] h-[184px] border-b-2">
+        {loading ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <Loader />
+          </div>
+        ) : (
+          <Image
+            layout="fill"
+            src={thumbnailImageUrl}
+            alt={excerpt}
+            className="border-b max-w-full h-full bg-white"
+            loading="lazy"
+            objectFit="cover"
+            blurDataURL={thumbnailImageUrl}
+            placeholder="blur"
+          />
+        )}
       </div>
       <div className="px-4 py-4 font-workSans">
         <span className="text-sm">{createdDate}</span>

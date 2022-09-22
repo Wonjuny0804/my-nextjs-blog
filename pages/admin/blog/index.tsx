@@ -53,6 +53,9 @@ const BlogAdminPage = ({ posts }: Props) => {
                             alt="."
                             layout="fill"
                             objectFit="cover"
+                            blurDataURL={imageUrl ?? "/posts/default-image.png"}
+                            placeholder="blur"
+                            loading="lazy"
                           />
                         </div>
                       )}

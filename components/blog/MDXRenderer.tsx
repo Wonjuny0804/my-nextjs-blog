@@ -36,7 +36,13 @@ const MDXRenderer = ({ source }: Props) => {
           return <A href={props.href}>{props.children}</A>;
         },
         img: (props) => {
-          return <img src={props?.src ?? ""} alt={props?.alt ?? "Image"} />;
+          return (
+            <img
+              src={props?.src ?? ""}
+              alt={props?.alt ?? "Image"}
+              loading="lazy"
+            />
+          );
         },
       }}
     />

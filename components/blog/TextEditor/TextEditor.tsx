@@ -9,7 +9,6 @@ import { serialize } from "next-mdx-remote/serialize";
 import rehypePrism from "rehype-prism-plus";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypetoc from "rehype-toc";
 import MDXRenderer from "../MDXRenderer";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
@@ -129,8 +128,11 @@ const TextEditor = ({
         />
         {source.compiledSource && (
           <div
+            style={{
+              height,
+            }}
             className={`hidden lg:block border-2 ${
-              height ? `h-[${height}]` : "h-[600px]"
+              height ? `` : "h-[600px]"
             } overflow-y-scroll px-12 font-workSans`}
           >
             <MDXRenderer source={source} />
