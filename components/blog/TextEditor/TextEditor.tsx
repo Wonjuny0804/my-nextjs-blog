@@ -100,7 +100,6 @@ const TextEditor = ({
 
       const currentTexts = EditorRef.current.getInstance().getMarkdown();
       const serializedSource = await serializeToSource(currentTexts);
-      console.log(serializedSource);
       setSource(serializedSource);
     };
     if (!EditorRef.current) return;

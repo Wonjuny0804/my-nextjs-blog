@@ -12,6 +12,8 @@ import {
   DocumentData,
   serverTimestamp,
   updateDoc,
+  orderBy,
+  Query,
 } from "firebase/firestore";
 import { uploadImageData } from "../types/image";
 import { convertTitleToURL } from "../utils/convertTitles";
@@ -140,7 +142,6 @@ class PostService {
     const q = params?.published
       ? query(collection(this.db, "posts"), where("published", "==", true))
       : query(collection(this.db, "posts"));
-
     try {
       const querySnapShot = await getDocs(q);
 

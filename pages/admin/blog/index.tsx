@@ -101,18 +101,21 @@ const BlogAdminPage = ({ posts }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const posts = await PostServiceInstance.getPosts();
+  const postsData = posts?.map((post) => ({
+    ...post.data,
+    createdAt: post.data.createdAt.seconds,
+    updatedAt: post.data.updatedAt.seconds,
+    deleted: post.data?.deleted ?? false,
+    deletedAt: post.data?.deletedAt ? post.data.deletedAt.seconds : null,
+    id: post.id,
+    url: post.data.url,
+  }));
+
+  postsData?.sort((postA, postB) => postB.updatedAt - postA.updatedAt);
 
   return {
     props: {
-      posts: posts?.map((post) => ({
-        ...post.data,
-        createdAt: post.data.createdAt.seconds,
-        updatedAt: post.data.updatedAt.seconds,
-        deleted: post.data?.deleted ?? false,
-        deletedAt: post.data?.deletedAt ? post.data.deletedAt.seconds : null,
-        id: post.id,
-        url: post.data.url,
-      })),
+      posts: postsData,
     },
   };
 };

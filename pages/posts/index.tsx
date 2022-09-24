@@ -3,10 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import PostServiceInstance from "../../service/posts";
 import { DocumentData } from "firebase/firestore";
 import dynamic from "next/dynamic";
-import Layout from "../../components/common/Layout";
 
-const Footer = dynamic(() => import("../../components/common/Footer/Footer"));
-const LandingHeader = dynamic(() => import("../../components/common/NavBar"));
+const Layout = dynamic(() => import("../../components/common/Layout"));
 const Articles = dynamic(
   () => import("../../components/blog/Articles/Articles")
 );
@@ -44,26 +42,38 @@ const PostsPage = ({ posts }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const posts = await PostServiceInstance.getPosts({ published: true });
-  const postsTimeMap = posts?.map((post) => ({
-    ...post,
-    data: {
-      ...post.data,
-      createdAt: post.data.createdAt?.seconds,
-      updatedAt: post.data.updatedAt?.seconds,
-      thumbnailImage: post.data.thumbnailImage?.imageUrl
-        ? post.data.thumbnailImage
-        : {
-            imageUrl: "/posts/default-image.png",
-          },
-    },
-  }));
+  try {
+    const posts = await PostServiceInstance.getPosts({ published: true });
+    const postsTimeMap = posts?.map((post) => ({
+      ...post,
+      data: {
+        ...post.data,
+        createdAt: post.data.createdAt.seconds,
+        updatedAt: post.data.updatedAt.seconds,
+        thumbnailImage: post.data.thumbnailImage?.imageUrl
+          ? post.data.thumbnailImage
+          : {
+              imageUrl: "/posts/default-image.png",
+            },
+      },
+    }));
 
-  return {
-    props: {
-      posts: postsTimeMap,
-    },
-  };
+    postsTimeMap?.sort(
+      (postA, postB) => postB.data.createdAt - postA.data.createdAt
+    );
+
+    return {
+      props: {
+        posts: postsTimeMap,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
 };
 
 export default PostsPage;
