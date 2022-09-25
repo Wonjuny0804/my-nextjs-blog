@@ -3,20 +3,9 @@ import React from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 
-import { DocumentData } from "firebase/firestore";
-
 const Layout = dynamic(() => import("../components/common/Layout"));
 
-const Home = ({
-  posts,
-  tags,
-}: {
-  posts: Array<{
-    id: string;
-    data: DocumentData;
-  }>;
-  tags: string[];
-}) => {
+const Home = () => {
   return (
     <>
       <Script
