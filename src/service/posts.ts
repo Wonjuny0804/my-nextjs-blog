@@ -15,7 +15,7 @@ import {
   orderBy,
   Query,
 } from "firebase/firestore";
-import { uploadImageData } from "../types/image";
+import { uploadImageData } from "../../types/image";
 import { convertTitleToURL } from "../utils/convertTitles";
 import serviceInstance from "./service";
 

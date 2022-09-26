@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React, { FC, useEffect } from "react";
 import Image from "next/image";
-import myImage from "../../../public/assets/wonjun-2.png";
+import myImage from "../../../../public/assets/wonjun-2.png";
 import AOS from "aos";
 
 const Top: FC = () => {

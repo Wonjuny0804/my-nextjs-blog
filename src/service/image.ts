@@ -6,7 +6,7 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
-import { uploadImageData } from "../types/image";
+import { uploadImageData } from "../../types/image";
 
 class ImageService {
   storage: FirebaseStorage;

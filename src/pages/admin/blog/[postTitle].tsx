@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import Layout from "../../../components/common/Layout";
 import PostServiceInstance from "../../../service/posts";
-import { PostDocument } from "../../../types/post";
+import { PostDocument } from "../../../../types/post";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 

@@ -1,6 +1,6 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { uploadImageData } from "../types/image";
+import { uploadImageData } from "../../types/image";
 
 export interface BlogSlice {
   data: {

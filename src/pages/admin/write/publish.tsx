@@ -5,7 +5,7 @@ import Layout from "../../../components/common/Layout";
 import useBlog from "../../../stores/blog";
 import ImageServiceInstance from "../../../service/image";
 import PostServiceInstance from "../../../service/posts";
-import { uploadImageData } from "../../../types/image";
+import { uploadImageData } from "../../../../types/image";
 import { useRouter } from "next/router";
 
 const PublishPostPage = () => {

@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import Link from "next/link";
 import Layout from "../../../components/common/Layout";
 import PostServiceInstance from "../../../service/posts";
-import { PostDocument } from "../../../types/post";
+import { PostDocument } from "../../../../types/post";
 import moment from "moment";
 import Image from "next/image";
 

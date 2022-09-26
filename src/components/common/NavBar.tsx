@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React, { FC } from "react";
 import Link from "next/link";
-import Logo from "../../public/logo.svg";
+import Logo from "../../../public/logo.svg";
 import dynamic from "next/dynamic";
 
 const MobileMenu = dynamic(() => import("./MobileMenu/MobileMenu"));

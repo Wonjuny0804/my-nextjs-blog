@@ -1,6 +1,6 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { UserInfo } from "../types/auth";
+import { UserInfo } from "../../types/auth";
 
 export interface AuthSlice {
   isAuthenticated: boolean;
