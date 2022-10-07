@@ -1,40 +1,23 @@
-import React from "react";
+/* eslint-disable @next/next/no-sync-scripts */
+import React, { useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import NavBar from "../../components/common/NavBar";
-import Star from "../../components/lab/space-warp/Star";
 import * as THREE from "three";
 import Box from "../../components/lab/space-warp/Box";
-import BufferPoints from "../../components/lab/space-warp/BufferPoints";
+import Donut from "components/lab/space-warp/Donut";
 import CameraController from "../../components/lab/space-warp/CameraControls";
+import Blob from "../../components/lab/shader/Blob";
 
 const SpaceWarpPage = () => {
-  // const stars = new Array(6000).map((element, index) => (
-  //   <Star
-  //     key={`star-${index}`}
-  //     position={[
-  //       Math.random() * 600 - 300,
-  //       Math.random() * 600 - 300,
-  //       Math.random() * 600 - 300,
-  //     ]}
-  //   />
-  // ));
+  const donutRef = useRef<THREE.SphereGeometry>(null!);
 
   return (
     <>
-      <NavBar />
-      <Canvas
-      // camera={{
-      //   fov: 30,
-      //   near: 1,
-      //   far: 1000,
-      //   position: [-40, 30, 1],
-      // }}
-      >
+      <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <Star position={[5, 0, 0]} />
-        <Box position={[1.2, 0, 0]} />
-        <BufferPoints />
+        <Donut position={[0, 0, 0]} />
+        {/* <Box position={[1.2, 0, 0]} /> */}
+        <Blob />
         <CameraController />
       </Canvas>
     </>
