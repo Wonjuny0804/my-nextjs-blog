@@ -32,7 +32,7 @@ const Home = () => {
             "This is the main page of Wonjundev tech blog. Please come and rest all programmers",
         }}
       >
-        <div className="mx-4 font-montserrat xl:w-[1280px] lg:mt-32 lg:m-auto ">
+        <div className="mx-4 font-montserrat xl:w-[1280px] lg:mt-16 lg:m-auto ">
           <h1 className="text-white text-3xl md:text-5xl lg:text-[96px] lg:w-[642px] underline underline-offset-[10px] md:mt-12 md:mb-14 font-bold mt-8 mb-9 xl:leading-[120px] decoration-[4px] ">
             Welcome to a developers tech blog
           </h1>
