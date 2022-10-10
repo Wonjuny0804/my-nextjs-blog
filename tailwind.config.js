@@ -12,6 +12,7 @@ module.exports = {
         workSans: ["Work Sans", "sans-serif"],
         monoLisa: ["Mono Lisa", "sans-serif"],
         notoSansEng: ["Noto Sans"],
+        montserrat: ["Montserrat"],
       },
       colors: {
         "primary-dark": "#333d4b",

@@ -32,15 +32,15 @@ const Home = () => {
             "This is the main page of Wonjundev tech blog. Please come and rest all programmers",
         }}
       >
-        <div className="mx-4 font-workSans lg:w-[1028px] lg:m-auto lg:min-h-[560px]">
-          <h1 className="text-3xl md:text-5xl md:mt-12 md:mb-14 font-bold mt-8 mb-9 text-primary-dark">
+        <div className="mx-4 font-montserrat xl:w-[1280px] lg:mt-32 lg:m-auto ">
+          <h1 className="text-white text-3xl md:text-5xl lg:text-[96px] lg:w-[642px] underline underline-offset-[10px] md:mt-12 md:mb-14 font-bold mt-8 mb-9 xl:leading-[120px] decoration-[4px] ">
             Welcome to a developers tech blog
           </h1>
-          <p className="md:text-lg">
+          <p className="md:text-lg text-[#9D9D9D] lg:w-[427px]">
             Where you are right now is a tech blog of mine. I am a developer
             based in{" "}
             <a
-              className="underline"
+              className="underline text-white"
               href="https://www.google.com/maps/place/Seoul/data=!4m5!3m4!1s0x357ca2012d5c39cf:0x7e11eca1405bf29b!8m2!3d37.566535!4d126.9779692"
               target={"_blank"}
               rel="noreferrer"
@@ -51,7 +51,7 @@ const Home = () => {
             <br />
             <br />
             This blog was built using{" "}
-            <span className="font-medium">
+            <span className="font-medium text-white">
               <a href="https://nextjs.org/" target={"_blank"} rel="noreferrer">
                 Nextjs
               </a>{" "}
@@ -62,12 +62,15 @@ const Home = () => {
               href="https://firebase.google.com/"
               target={"_blank"}
               rel="noreferrer"
-              className="font-medium"
+              className="font-medium text-white"
             >
-              Firebase
+              NestJS and PostgreSQL
             </a>{" "}
-            from Google. If you have any inqueries please{" "}
-            <a href="mailTo:wonwonjun@gmail.com" className="underline">
+            If you have any inqueries please{" "}
+            <a
+              href="mailTo:wonwonjun@gmail.com"
+              className="underline text-white"
+            >
               send me a mail
             </a>{" "}
             and I'll get back to you.

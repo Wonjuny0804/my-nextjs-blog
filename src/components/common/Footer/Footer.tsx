@@ -1,12 +1,12 @@
 /* eslint-disable react/display-name */
 import React, { FC } from "react";
 import Link from "next/link";
-import Logo from "../../../../public/logo.svg";
+import Logo from "../../../../public/wonjundevtech-designLogo.svg";
 
 const Footer: FC = React.memo(() => {
   return (
     <footer
-      className={`pt-[60px] pb-10 px-10 border-t border-black mt-20 flex flex-col items-center`}
+      className={`pt-[60px] bg-transparent pb-10 px-10 border-t mt-20 flex flex-col items-center`}
     >
       <Link href={"/"}>
         <a
@@ -15,7 +15,9 @@ const Footer: FC = React.memo(() => {
           <Logo className={`h-6`} />
         </a>
       </Link>
-      <p className={`font-regular font-workSans text-sm font-light`}>
+      <p
+        className={`font-regular text-white font-montserrat text-sm font-light`}
+      >
         © All rights reserved to Wonjun Jang
       </p>
     </footer>
