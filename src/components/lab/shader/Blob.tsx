@@ -40,7 +40,7 @@ const Blob = () => {
     <mesh
       ref={mesh}
       position={[0, 0, 0]}
-      scale={1.5}
+      scale={1}
       onPointerOver={() => (hover.current = true)}
       onPointerOut={() => (hover.current = false)}
     >
@@ -52,16 +52,6 @@ const Blob = () => {
         wireframe={false}
       />
     </mesh>
-  );
-};
-
-const Scene = () => {
-  return (
-    <Canvas camera={{ position: [0.0, 0.0, 8.0] }}>
-      <Blob />
-      {/* <axesHelper /> */}
-      <OrbitControls />
-    </Canvas>
   );
 };
 
