@@ -33,14 +33,14 @@ const Home = () => {
             "This is the main page of Wonjundev tech blog. Please come and rest all programmers",
         }}
       >
-        <div className={`relative`}>
+        <div className={`relative md:p-10`}>
           <div
             className={`absolute lg:relative z-10 mx-4 font-montserrat xl:w-[1280px] lg:mt-16 lg:m-auto`}
           >
             <h1
               className={`text-white 
-              text-6xl md:text-5xl lg:text-[96px]
-              md:mt-12 md:mb-14 mt-8 mb-9
+              text-6xl md:text-8xl lg:text-8xl
+              md:mt-16 md:mb-14 mt-8 mb-9
               lg:w-[642px] underline underline-offset-[10px]  font-bold 
               xl:leading-[120px] decoration-[4px]
                `}
@@ -86,7 +86,9 @@ const Home = () => {
               and I'll get back to you.
             </p>
           </div>
-          <section className={`top-0 right-[13%] lg:absolute lg:w-[50vw]`}>
+          <section
+            className={`top-0 right-[13%] md:right-0 lg:right-[14%] lg:absolute lg:w-[50vw]`}
+          >
             <MainScene />
           </section>
         </div>
