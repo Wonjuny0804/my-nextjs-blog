@@ -20,7 +20,7 @@ const MobileMenu: FC = () => {
            focus-visible:ring-opacity-75`}
             >
               <MenuIcon
-                className={`w-5 h-5 text-[#000000] font-bold`}
+                className={`w-5 h-5 text-white font-bold`}
                 aria-hidden="true"
               />
             </Menu.Button>

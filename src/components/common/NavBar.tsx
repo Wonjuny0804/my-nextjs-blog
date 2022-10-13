@@ -11,6 +11,7 @@ const NavBar: FC = React.memo(() => {
     <div
       className={` sticky 
       top-0 z-10 flex justify-between px-3 xl:w-[1280px] xl:m-auto xl:px-0 xl:pr-0 xl:pt-6
+      bg-black
        lg:pl-10 lg:pr-10`}
     >
       <div className={`flex items-center gap-3 font-montserrat self-start`}>

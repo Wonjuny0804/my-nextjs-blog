@@ -34,8 +34,17 @@ const Home = () => {
         }}
       >
         <div className={`relative`}>
-          <div className="mx-4 font-montserrat xl:w-[1280px] lg:mt-16 lg:m-auto">
-            <h1 className="text-white text-3xl md:text-5xl lg:text-[96px] lg:w-[642px] underline underline-offset-[10px] md:mt-12 md:mb-14 font-bold mt-8 mb-9 xl:leading-[120px] decoration-[4px] ">
+          <div
+            className={`absolute lg:relative z-10 mx-4 font-montserrat xl:w-[1280px] lg:mt-16 lg:m-auto`}
+          >
+            <h1
+              className={`text-white 
+              text-6xl md:text-5xl lg:text-[96px]
+              md:mt-12 md:mb-14 mt-8 mb-9
+              lg:w-[642px] underline underline-offset-[10px]  font-bold 
+              xl:leading-[120px] decoration-[4px]
+               `}
+            >
               Welcome to a developers tech blog
             </h1>
             <p className="md:text-lg text-[#9D9D9D] lg:w-[427px]">
@@ -64,14 +73,9 @@ const Home = () => {
                 and Typescript
               </span>
               . For Backend data and storage I am using{" "}
-              <a
-                href="https://firebase.google.com/"
-                target={"_blank"}
-                rel="noreferrer"
-                className="font-medium text-white"
-              >
-                NestJS and PostgreSQL
-              </a>{" "}
+              <span className="font-medium text-white">
+                Golang and PostgreSQL
+              </span>{" "}
               If you have any inqueries please{" "}
               <a
                 href="mailTo:wonwonjun@gmail.com"
@@ -82,7 +86,7 @@ const Home = () => {
               and I'll get back to you.
             </p>
           </div>
-          <section className={`absolute top-0 right-[13%] w-[50vw]`}>
+          <section className={`top-0 right-[13%] lg:absolute lg:w-[50vw]`}>
             <MainScene />
           </section>
         </div>
