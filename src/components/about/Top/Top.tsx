@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import Image from "next/image";
 import myImage from "../../../../public/assets/wonjun-2.png";
 import AOS from "aos";
@@ -8,9 +8,26 @@ const Top: FC = () => {
   useEffect(() => {
     AOS.init();
   }, []);
+
+  const ptagRef = useRef<HTMLParagraphElement>(null);
+
+  const ptagOffset = ptagRef.current?.scrollTop;
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      console.log(ptagOffset);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", () => {
+        console.log(ptagOffset);
+      });
+    };
+  }, [ptagOffset]);
+
   return (
     <section
-      className={`flex flex-col font-workSans px-4
+      className={`flex flex-col font-montserrat px-4
         lg:gap-14
       lg:mt-10 lg:px-0
       `}
@@ -24,8 +41,8 @@ const Top: FC = () => {
       </div>
       <h1
         className={`font-bold text-[42px] leading-[52px] lg:text-[60px] lg:leading-[72px]
-         text-transparent bg-clip-text bg-gradient-to-tr 
-         from-primary-blue to-blue-300 tracking-tight`}
+         text-transparent bg-clip-text bg-gradient-to-tr underline decoration-white underline-offset-2 decoration-1
+         from-white to-blue-300 tracking-tight`}
         data-aos="fade-up"
         data-aos-anchor-placement="top-center"
       >
@@ -34,7 +51,7 @@ const Top: FC = () => {
       </h1>
 
       <h2
-        className={`font-medium text-[24px] lg:text-[36px] lg:leading-[40px] tracking-tight leading-[30px] mt-[120px] lg:mt-[30px] text-real-black`}
+        className={`font-medium text-[24px] lg:text-[36px] lg:leading-[40px] tracking-tight leading-[30px] mt-[80px] lg:mt-[30px] text-white`}
       >
         Currently on a <span className={`underline`}>UX journey.</span>
         <br />
@@ -43,9 +60,10 @@ const Top: FC = () => {
       </h2>
 
       <p
-        className={`mt-5 font-[400] text-[16px] leading-[20px] 
-        lg:text-[18px] lg:leading-[24px] 
-        text-real-black`}
+        className={`mt-6 font-[400] text-[16px] leading-[20px] 
+        lg:text-[18px] lg:leading-[24px]
+        text-grey`}
+        ref={ptagRef}
       >
         As a frontend developer, I try to see the details and think about the
         journey users go through within the application. In other words,{" "}

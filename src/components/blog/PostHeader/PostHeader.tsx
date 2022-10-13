@@ -3,7 +3,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import Head from "next/head";
 import React, { FC } from "react";
 import { PostMeta } from "../../../pages/api/getAllPosts";
-import LandingHeader from "../../common/NavBar";
+import NavBar from "../../common/NavBar";
 
 interface Props {
   post: {
@@ -18,10 +18,10 @@ const PostHeader: FC<Props> = ({ post }) => {
       <Head>
         <title>{post.meta.title}</title>
       </Head>
-      <LandingHeader />
+      <NavBar />
       <section className={`px-4 lg:w-[800px] lg:m-auto`}>
         <h1
-          className={`text-[32px] lg:leading-[56px] mt-[40px] lg:mt-[100px] lg:text-[40px] font-bold font-workSans text-real-black`}
+          className={`text-[32px] lg:leading-[56px] mt-[40px] lg:mt-[100px] lg:text-[40px] font-bold font-montserrat text-white`}
         >
           {post.meta.title}
         </h1>
@@ -29,17 +29,15 @@ const PostHeader: FC<Props> = ({ post }) => {
           <div
             className={`flex items-center text-sm lg:text-base mt-3 lg:mt-0`}
           >
-            <span className={`text-[#000000] font-workSans`}>
+            <span className={`text-white font-montserrat`}>
               {post.meta.author}
             </span>
             &nbsp;/&nbsp;
-            <span className={`text-real-black font-workSans`}>
+            <span className={`text-white font-montserrat`}>
               {moment.unix(post.meta.createdAt).format("MMM DD, YYYY")}
             </span>
           </div>
-          <div
-            className={`text-real-black  font-workSans text-sm lg:text-base`}
-          >
+          <div className={`text-white  font-montserrat text-sm lg:text-base`}>
             {post.meta.readingTime.text}
           </div>
         </div>

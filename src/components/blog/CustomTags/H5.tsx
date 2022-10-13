@@ -6,7 +6,9 @@ interface Props {
 
 const H5: FC<Props> = ({ children }) => {
   return (
-    <h5 className={`text-[16px] font-medium text-primary-dark`}>{children}</h5>
+    <h5 className={`text-[16px] font-medium text-white font-montserrat`}>
+      {children}
+    </h5>
   );
 };
 

@@ -11,13 +11,13 @@ const Resume: FC = React.memo(() => {
   );
 
   return (
-    <section className={`px-4 mt-20 text-real-black lg:px-0`}>
-      <h1 className={`text-[17px] lg:text-2xl font-medium font-workSans`}>
+    <section className={`px-4 mt-20 text-white lg:px-0`}>
+      <h1 className={`text-[17px] lg:text-2xl font-medium font-montserrat`}>
         Skills and experiences
       </h1>
 
       <div className={`mt-3`}>
-        <h2 className={`text-xl font-bold font-workSans`}>
+        <h2 className={`text-xl font-bold font-montserrat`}>
           Creating a product
         </h2>
         <ul
@@ -73,7 +73,7 @@ const Resume: FC = React.memo(() => {
         </ul>
       </div>
       <div className={`mt-6`}>
-        <h2 className={`text-xl font-bold font-workSans`}>
+        <h2 className={`text-xl font-bold font-montserrat`}>
           Operating with others
         </h2>
         <ul className={`font-notoSansEng mt-4 list-none flex flex-col gap-2`}>
@@ -109,7 +109,7 @@ const Resume: FC = React.memo(() => {
 
       <div className={`mt-20`}>
         <h2
-          className={`text-[17px] font-medium mb-3 lg:text-2xl font-workSans`}
+          className={`text-[17px] font-medium mb-3 lg:text-2xl font-montserrat`}
         >
           Experiences
         </h2>

@@ -23,26 +23,28 @@ const Project: FC<Props> = ({
 }) => {
   return (
     <div>
-      <span className={`text-real-black text-sm font-workSans`}>
+      <span className={`text-white text-sm font-montserrat`}>
         {moment(period.from).format("MMM YYYY")} ~{" "}
         {moment(period.to).format("MMM YYYY")}
       </span>
       {link ? (
         <a target={`_blank`} href={link} className={`hover:underline`}>
-          <h1 className={`font-bold text-xl font-workSans`}>{projectTitle}</h1>
+          <h1 className={`font-bold text-xl font-montserrat`}>
+            {projectTitle}
+          </h1>
         </a>
       ) : (
-        <h1 className={`font-bold text-xl font-workSans`}>{projectTitle}</h1>
+        <h1 className={`font-bold text-xl font-montserrat`}>{projectTitle}</h1>
       )}
       <span
-        className={`font-light italic text-[#797979] mb-1 block font-workSans`}
+        className={`font-light italic text-[#797979] mb-1 block font-montserrat`}
       >
         {team}
       </span>
-      <p className={`text-real-black font-workSans`}>{desc}</p>
+      <p className={`text-white font-montserrat`}>{desc}</p>
       <h2 className={`font-medium text-lg mt-3 font-notoSans`}>Things I did</h2>
       <ul
-        className={`list-disc pl-10 font-light font-workSans flex flex-col gap-1 pt-3`}
+        className={`list-disc pl-10 font-light font-montserrat flex flex-col gap-1 pt-3`}
         dangerouslySetInnerHTML={{
           __html: list,
         }}

@@ -1,6 +1,6 @@
 .ol {
   padding-left: 32px;
-  color: #000000;
+  color: #ffffff;
   font-family: "Noto Sans KR", sans-serif;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 
 .ul {
   padding-left: 32px;
-  color: #000000;
+  color: #ffffff;
   font-family: "Noto Sans KR", sans-serif;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
 }
 
 .ol > .li::marker {
-  color: #000000;
+  color: #ffffff;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
 }
@@ -38,7 +38,7 @@
 .ul > .li::marker {
   content: "•";
   width: 16px;
-  color: #000000;
+  color: #ffffff;
 }
 
 @media (min-width: 1024px) {
