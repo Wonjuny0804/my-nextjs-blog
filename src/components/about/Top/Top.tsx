@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import myImage from "../../../../public/assets/wonjun-2.png";
 import AOS from "aos";
@@ -10,20 +10,21 @@ const Top: FC = () => {
   }, []);
 
   const ptagRef = useRef<HTMLParagraphElement>(null);
+  const ptag = ptagRef.current;
 
-  const ptagOffset = ptagRef.current?.scrollTop;
+  const [opacity, setOpacity] = useState<number>(0);
+
+  const handleScroll = () => {
+    console.log(ptag?.getBoundingClientRect().top, window.innerHeight);
+  };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      console.log(ptagOffset);
-    });
+    document.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", () => {
-        console.log(ptagOffset);
-      });
+      document.removeEventListener("scroll", handleScroll);
     };
-  }, [ptagOffset]);
+  }, [ptag]);
 
   return (
     <section

@@ -17,7 +17,7 @@ const Resume: FC = React.memo(() => {
       </h1>
 
       <div className={`mt-3`}>
-        <h2 className={`text-xl font-bold font-montserrat`}>
+        <h2 className={`text-2xl font-bold font-montserrat underline`}>
           Creating a product
         </h2>
         <ul
@@ -73,7 +73,7 @@ const Resume: FC = React.memo(() => {
         </ul>
       </div>
       <div className={`mt-6`}>
-        <h2 className={`text-xl font-bold font-montserrat`}>
+        <h2 className={`text-2xl font-bold font-montserrat underline`}>
           Operating with others
         </h2>
         <ul className={`font-notoSansEng mt-4 list-none flex flex-col gap-2`}>

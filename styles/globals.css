@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url("./prism-nightowl.css"); */
-@import url("./prism-oneLight.css");
+@import url("./prism-nightowl.css");
+/* @import url("./prism-oneLight.css"); */
 /* @import url("./prism-newStyle.css"); */
 
 @layer components {
