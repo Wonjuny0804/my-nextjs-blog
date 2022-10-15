@@ -38,10 +38,10 @@ const EditBlogPostPage = ({ data }: Props) => {
   return (
     <Layout>
       <div className="lg:w-[1024px] xl:w-[1280px] lg:m-auto">
-        <div className="flex gap-3 mt-3 font-workSans">
+        <div className="flex gap-3 mt-3 font-montserrat">
           <label
             htmlFor="title"
-            className={`text-lg font-bold lg:text-3xl font-workSans`}
+            className={`text-lg font-bold lg:text-3xl font-montserrat text-white`}
           >
             Title:
           </label>
@@ -50,18 +50,18 @@ const EditBlogPostPage = ({ data }: Props) => {
             id="title"
             value={title}
             placeholder="Please write your title"
-            className={`text-lg font-bold lg:text-3xl font-workSans outline-none bg-[#f4f4f0] flex-grow`}
+            className={`text-lg font-bold lg:text-3xl font-montserrat outline-none bg-black text-white flex-grow`}
             onChange={(event) => setTitle(event.target.value)}
           />
         </div>
         <div className="flex gap-3 mb-2">
-          <label className="font-medium">author: </label>
+          <label className="font-medium text-white">author: </label>
           <input
             type="text"
             id="author"
             placeholder="Please write author name"
             value={author}
-            className="bg-[#f4f4f0] outline-none flex-grow font-medium"
+            className=" outline-none flex-grow font-medium bg-black text-white font-montserrat"
             onChange={(event) => setAuthor(event.target.value)}
           />
         </div>
