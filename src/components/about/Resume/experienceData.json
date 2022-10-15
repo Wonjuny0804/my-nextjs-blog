@@ -24,7 +24,8 @@
       "id": 3,
       "title": "enkorwithus Frontend Developer",
       "period": {
-        "from": "2021-06"
+        "from": "2021-06",
+        "to": "2022-08"
       },
       "desc": "Wokred on enkor web products, enkor internal dashboard, enkorstay and host frontend and deployment.",
       "techStacks": [
@@ -35,6 +36,21 @@
         "Scss",
         "MobX",
         "Redux Toolkit"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Paula's Choice Frontend Developer",
+      "period": {
+        "from": "2022-08"
+      },
+      "desc": "Paulas Choice APAC Storefront SFCC(SalesForce Commerce Cloud) and React, Typescript based frontend product",
+      "techStacks": [
+        "React",
+        "Typescript",
+        "Styled-Component",
+        "Context API",
+        "SFCC"
       ]
     }
   ]

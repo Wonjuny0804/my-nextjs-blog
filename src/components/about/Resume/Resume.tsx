@@ -21,7 +21,7 @@ const Resume: FC = React.memo(() => {
           Creating a product
         </h2>
         <ul
-          className={`font-notoSansEng font-normal mt-4 list-none flex flex-col gap-2`}
+          className={`font-montserrat font-normal mt-4 list-none flex flex-col gap-2`}
         >
           <li
             className={`before:content-[""] before:w-[6px] before:h-[2px] 
@@ -76,7 +76,7 @@ const Resume: FC = React.memo(() => {
         <h2 className={`text-2xl font-bold font-montserrat underline`}>
           Operating with others
         </h2>
-        <ul className={`font-notoSansEng mt-4 list-none flex flex-col gap-2`}>
+        <ul className={`font-montserrat mt-4 list-none flex flex-col gap-2`}>
           <li
             className={`before:content-[""] before:w-[6px] before:h-[2px] 
             before:inline-block before:mb-[5px] before:mr-[8px] before:bg-[#9ca3af]
