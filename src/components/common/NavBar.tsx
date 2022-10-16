@@ -6,10 +6,14 @@ import dynamic from "next/dynamic";
 
 const MobileMenu = dynamic(() => import("./MobileMenu/MobileMenu"));
 
-const NavBar: FC = React.memo(() => {
+interface Props {
+  position?: "sticky" | "fixed";
+}
+
+const NavBar = ({ position = "sticky" }: Props) => {
   return (
     <div
-      className={` sticky 
+      className={` ${position === "sticky" && position} 
       top-0 z-10 flex justify-between px-3 xl:w-[1280px] xl:m-auto xl:px-0 xl:pr-0 xl:pt-6
       bg-black lg:bg-transparent
        lg:pl-10 lg:pr-10`}
@@ -58,6 +62,5 @@ const NavBar: FC = React.memo(() => {
       <MobileMenu />
     </div>
   );
-});
-
+};
 export default NavBar;

@@ -1,36 +1,18 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Layout from "../../components/common/Layout";
-import Admin from "../../service/admin";
-import useAuth from "../../stores/auth";
+import AdminServiceInstance from "../../service/admin";
+
 import PostServiceInstance from "../../service/posts";
 import { DocumentData } from "firebase/firestore";
 import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
 
 const AdminPage = () => {
-  const signIn = useAuth((state) => state.signIn);
-  const isAuthenticated = useAuth((state) => state.isAuthenticated);
+  const router = useRouter();
   const [posts, setPosts] = useState<Array<{ id: string; data: DocumentData }>>(
     []
   );
-
-  const handleSubmit = useCallback(async (event) => {
-    event.preventDefault();
-
-    const email = event.target[0].value;
-    const password = event.target[1].value;
-
-    const userCredentials = await Admin.signInWithIDPW({
-      email,
-      password,
-    });
-
-    signIn({
-      name: userCredentials.user.displayName ?? "",
-      userId: userCredentials.user.uid,
-      email: userCredentials.user?.email ?? email,
-    });
-  }, []);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -41,28 +23,18 @@ const AdminPage = () => {
     getPosts();
   }, []);
 
-  if (!isAuthenticated)
-    return (
-      <>
-        <h1 className="text-2xl my-3">This is the admin page</h1>
-        <form className="flex flex-col gap-3 max-w-xl" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-[80px_1fr]">
-            <label htmlFor="adminID">ID</label>
-            <input id="adminID" type="email" />
-          </div>
-          <div className="grid grid-cols-[80px_1fr]">
-            <label htmlFor="adminPW">Password</label>
-            <input id="adminPW" type="password" />
-          </div>
-
-          <button className="border-2 bg-white">login</button>
-        </form>
-      </>
+  useEffect(() => {
+    AdminServiceInstance.validateSignIn(
+      () => {},
+      () => {
+        router.replace("/admin/signin");
+      }
     );
+  }, [router]);
 
   return (
     <Layout>
-      <div className="mx-4 lg:mx-0">
+      <div className="mx-4 lg:mx-0 font-montserrat">
         <div
           className={`lg:w-[1024px] lg:min-h-[600px] xl:w-[1280px] lg:m-auto`}
         >
@@ -92,12 +64,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {},
   };
 };
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   console.log(context.req);
-//   return {
-//     props: {},
-//   };
-// };
 
 export default AdminPage;

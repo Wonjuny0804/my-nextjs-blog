@@ -1,4 +1,9 @@
-import { getAuth, signInWithEmailAndPassword, type Auth } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  type Auth,
+  onAuthStateChanged,
+} from "firebase/auth";
 import ServiceInstance from "./service";
 
 class Admin {
@@ -19,6 +24,7 @@ class Admin {
         email,
         password
       );
+      console.log(userCredentials);
       return userCredentials; // not returning these informations here, probably need somekind of logic here too.
     } catch (error: unknown) {
       console.dir(error);
@@ -28,13 +34,14 @@ class Admin {
     }
   }
 
-  validateSignIn() {
-    const cookies = document.cookie;
-
-    return !!cookies
-      .split("; ")
-      .find((row) => row.startsWith("token="))
-      ?.split("=")[1];
+  async validateSignIn(onAuthenticated: () => void, onFailed: () => void) {
+    onAuthStateChanged(this.auth, async (user) => {
+      if (user) {
+        onAuthenticated();
+      } else {
+        onFailed();
+      }
+    });
   }
 }
 

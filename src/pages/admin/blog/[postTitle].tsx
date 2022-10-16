@@ -36,7 +36,7 @@ const EditBlogPostPage = ({ data }: Props) => {
   }, []);
 
   return (
-    <Layout>
+    <Layout fixedHeader>
       <div className="lg:w-[1024px] xl:w-[1280px] lg:m-auto">
         <div className="flex gap-3 mt-3 font-montserrat">
           <label

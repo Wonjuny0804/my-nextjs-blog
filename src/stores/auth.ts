@@ -1,3 +1,4 @@
+import { UserProfile } from "firebase/auth";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 import { UserInfo } from "../../types/auth";

@@ -6,6 +6,7 @@ import Footer from "./Footer/Footer";
 interface Props {
   children: React.ReactNode;
   fullWidth?: boolean;
+  fixedHeader?: boolean;
   metaData?: {
     title?: string;
     description?: string;
@@ -16,7 +17,7 @@ interface Props {
 }
 
 const Layout = (props: Props) => {
-  const { metaData, children, fullWidth, noNav } = props;
+  const { metaData, children, fullWidth, noNav, fixedHeader } = props;
 
   return (
     <>
@@ -40,7 +41,7 @@ const Layout = (props: Props) => {
         />
       </Head>
       <main>
-        {!noNav && <NavBar />}
+        {!noNav && <NavBar position={fixedHeader ? "fixed" : "sticky"} />}
         {children}
       </main>
       <Footer />
