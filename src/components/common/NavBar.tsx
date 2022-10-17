@@ -32,7 +32,7 @@ const NavBar = ({ position = "sticky" }: Props) => {
       >
         <Link href={`/about`}>
           <a
-            className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
+            className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75 hover-underline`}
           >
             Home
           </a>
