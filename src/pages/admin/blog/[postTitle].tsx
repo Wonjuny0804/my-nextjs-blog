@@ -5,6 +5,7 @@ import PostServiceInstance from "../../../service/posts";
 import { PostDocument } from "../../../../types/post";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import AdminServiceInstance from "../../../service/admin";
 
 const TextEditor = dynamic(
   () => import("../../../components/blog/TextEditor/TextEditor"),
@@ -34,6 +35,15 @@ const EditBlogPostPage = ({ data }: Props) => {
     setTitle(postTitle);
     setAuthor(postAuthor);
   }, []);
+
+  useEffect(() => {
+    AdminServiceInstance.validateSignIn(
+      () => {},
+      () => {
+        router.replace("/admin/signin");
+      }
+    );
+  }, [router]);
 
   return (
     <Layout fixedHeader>

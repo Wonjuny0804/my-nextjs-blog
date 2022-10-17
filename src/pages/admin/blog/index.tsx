@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import Layout from "../../../components/common/Layout";
@@ -6,6 +6,8 @@ import PostServiceInstance from "../../../service/posts";
 import { PostDocument } from "../../../../types/post";
 import moment from "moment";
 import Image from "next/image";
+import AdminServiceInstance from "../../../service/admin";
+import { useRouter } from "next/router";
 
 interface PostData extends PostDocument {
   url: string;
@@ -19,6 +21,16 @@ interface Props {
 }
 
 const BlogAdminPage = ({ posts }: Props) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    AdminServiceInstance.validateSignIn(
+      () => {},
+      () => {
+        router.replace("/admin/signin");
+      }
+    );
+  }, [router]);
   return (
     <Layout metaData={{ title: "Blog admin page" }}>
       <div className="mt-4 lg:w-[1024px] lg:mx-auto ">
@@ -44,10 +56,10 @@ const BlogAdminPage = ({ posts }: Props) => {
               const createdDate = moment.unix(+createdAt).format("YYYY/MM/DD");
               return (
                 <Link key={post.id + index + ""} href={`/admin/blog/${url}`}>
-                  <a className="font-medium">
-                    <div className="grid grid-cols-2 justify-between border-2 min-h-[160px] lg:h-[320px]">
+                  <a className="font-medium text-white border-1 border-white">
+                    <div className="grid grid-cols-2 justify-between  min-h-[160px] lg:h-[320px]">
                       {imageUrl && (
-                        <div className="relative h-full w-full border-r-2">
+                        <div className="relative h-full w-full border-r-1">
                           <Image
                             src={imageUrl ?? "/posts/default-image.png"}
                             alt="."

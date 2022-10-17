@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import AdminServiceInstance from "../../../service/admin";
+import { useRouter } from "next/router";
 
 const Layout = dynamic(() => import("../../../components/common/Layout"), {
   ssr: true,
@@ -19,6 +21,15 @@ const pageMetaData = {
 const WritePostPage = () => {
   const [title, setTitle] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
+
+  const router = useRouter();
+
+  useEffect(() => {
+    AdminServiceInstance.validateSignIn(
+      () => {},
+      () => router.replace("/admin/signin")
+    );
+  }, [router]);
 
   return (
     <Layout metaData={pageMetaData} noNav fullWidth={false}>

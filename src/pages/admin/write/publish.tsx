@@ -4,6 +4,7 @@ import PostItem from "../../../components/blog/Post/PostItem";
 import Layout from "../../../components/common/Layout";
 import useBlog from "../../../stores/blog";
 import ImageServiceInstance from "../../../service/image";
+import AdminServiceInstance from "../../../service/admin";
 import PostServiceInstance from "../../../service/posts";
 import { uploadImageData } from "../../../../types/image";
 import { useRouter } from "next/router";
@@ -113,6 +114,13 @@ const PublishPostPage = () => {
     };
     getPostData();
   }, [router.query, savePost]);
+
+  useEffect(() => {
+    AdminServiceInstance.validateSignIn(
+      () => {},
+      () => router.replace("/admin/signin")
+    );
+  }, [router]);
 
   return (
     <Layout noNav>
