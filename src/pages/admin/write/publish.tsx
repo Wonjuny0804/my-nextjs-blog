@@ -99,6 +99,7 @@ const PublishPostPage = () => {
 
         const { excerpt, thumbnailImage, published, title, author, content } =
           data;
+        console.log(data);
         setExcerpt(excerpt);
         setImageData(thumbnailImage);
         setPublished(published);

@@ -33,12 +33,12 @@ const WritePostPage = () => {
 
   return (
     <Layout metaData={pageMetaData} noNav fullWidth={false}>
-      <div className="mx-4 mt-4 lg:mx-auto lg:w-[1024px] xl:w-[1280px]">
+      <div className="mx-4 mt-4 lg:mx-auto text-white lg:w-[1024px] xl:w-[1280px]">
         <div className="mb-8">
-          <div className="flex gap-3 mt-3 font-workSans">
+          <div className="flex gap-3 mt-3 font-montserrat">
             <label
               htmlFor="title"
-              className={`text-xl font-bold lg:text-3xl font-workSans`}
+              className={`text-xl font-bold lg:text-3xl font-montserrat`}
             >
               Title:
             </label>
@@ -47,19 +47,19 @@ const WritePostPage = () => {
               id="title"
               autoFocus
               placeholder="Please write your title"
-              className={`text-xl font-bold lg:text-3xl font-workSans outline-none bg-[#f4f4f0] flex-grow`}
+              className={`text-xl font-bold lg:text-3xl font-montserrat outline-none bg-black flex-grow`}
               onChange={(event) => setTitle(event.target.value)}
             />
           </div>
           <div className="flex gap-3 mb-2">
-            <label className="font-medium font-workSans capitalize">
+            <label className="font-medium font-montserrat capitalize">
               author:{" "}
             </label>
             <input
               type="text"
               id="author"
               placeholder="Please write author name"
-              className="bg-[#f4f4f0] outline-none flex-grow font-medium font-workSans"
+              className="bg-black outline-none flex-grow font-medium font-montserrat"
               onChange={(event) => setAuthor(event.target.value)}
             />
           </div>
@@ -73,7 +73,7 @@ const WritePostPage = () => {
         <Link href="/admin">
           <a
             className={`block w-fit self-end font-workSans border-2 h-fit px-2
-             py-1 bg-[#f2f2f5] rounded-full shadow-[3px_3px_0px_0px_#000000]
+             py-1 bg-black rounded-full shadow-[3px_3px_0px_0px_#000000]
              `}
           >
             Go back

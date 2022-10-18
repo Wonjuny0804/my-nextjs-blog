@@ -132,7 +132,7 @@ const TextEditor = ({
             }}
             className={`hidden lg:block border-2 ${
               height ? `` : "h-[600px]"
-            } overflow-y-scroll px-12 font-workSans`}
+            } overflow-y-scroll px-12 scrollbar-hide`}
           >
             <MDXRenderer source={source} />
           </div>

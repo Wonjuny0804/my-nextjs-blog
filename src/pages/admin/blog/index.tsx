@@ -35,11 +35,11 @@ const BlogAdminPage = ({ posts }: Props) => {
     <Layout metaData={{ title: "Blog admin page" }}>
       <div className="mt-4 lg:w-[1024px] lg:mx-auto ">
         <Link href="/admin/write">
-          <a className="block border-2 mx-4 px-4 py-2 font-workSans font-bold">
+          <a className="block border-2 mx-4 px-4 py-2 font-montserrat text-white font-bold">
             Write new Post
           </a>
         </Link>
-        <section className="mx-4 mt-4 font-workSans grid gap-4">
+        <section className="mx-4 mt-4 font-montserrat grid gap-4">
           {posts &&
             posts.map((post, index) => {
               const {
@@ -73,10 +73,10 @@ const BlogAdminPage = ({ posts }: Props) => {
                       )}
                       <div className="p-2 flex flex-col justify-between overflow-hidden">
                         <div>
-                          <h3 className="font-workSans text-2xl font-medium line-clamp-3">
+                          <h3 className="font-montserrat text-2xl font-medium line-clamp-3">
                             {title}
                           </h3>
-                          <span className="font-workSans font-normal text-xs">
+                          <span className="font-montserrat font-normal text-xs">
                             {createdDate}
                           </span>
                           <p className="lg:line-clamp-6 font-normal line-clamp-5">
