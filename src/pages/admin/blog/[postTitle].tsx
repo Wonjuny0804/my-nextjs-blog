@@ -47,7 +47,7 @@ const EditBlogPostPage = ({ data }: Props) => {
 
   return (
     <Layout fixedHeader>
-      <div className="lg:w-[1024px] xl:w-[1280px] lg:m-auto">
+      <div className="mx-4 lg:mx-0 lg:w-[1024px] xl:w-[1280px] lg:m-auto">
         <div className="flex gap-3 mt-3 font-montserrat">
           <label
             htmlFor="title"

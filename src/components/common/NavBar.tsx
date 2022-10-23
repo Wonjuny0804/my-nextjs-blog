@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { FC } from "react";
+import React from "react";
 import Link from "next/link";
 import Logo from "../../../public/wonjundevtech-designLogo.svg";
 import dynamic from "next/dynamic";

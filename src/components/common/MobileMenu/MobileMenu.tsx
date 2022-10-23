@@ -5,9 +5,7 @@ import Link from "next/link";
 
 const MobileMenu: FC = () => {
   return (
-    <div
-      className={`flex font-workSans text-real-black items-center lg:hidden`}
-    >
+    <div className={`flex font-montserrat items-center lg:hidden`}>
       <Menu as="div" className=" flex items-center text-left">
         {({ open }) => (
           <>
@@ -34,31 +32,41 @@ const MobileMenu: FC = () => {
                 as="ul"
                 className={`absolute top-0 left-0 w-screen h-screen
            flex flex-col min-w-[160px] py-6 
-          bg-[#f4f4f0]`}
+          bg-black`}
               >
                 <Menu.Item as="li">
                   <Link href="/">
-                    <a className={`block w-full border-b py-3 pl-6`}>main</a>
+                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
+                      main
+                    </a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
                   <Link href="/about">
-                    <a className={`block w-full border-b py-3 pl-6`}>about</a>
+                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
+                      about
+                    </a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
                   <Link href="/posts">
-                    <a className={`block w-full border-b py-3 pl-6`}>posts</a>
+                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
+                      posts
+                    </a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
                   <Link href="/lab">
-                    <a className={`block w-full border-b py-3 pl-6`}>lab</a>
+                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
+                      lab
+                    </a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
                   <Link href="/admin">
-                    <a className={`block w-full border-b py-3 pl-6`}>admin</a>
+                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
+                      admin
+                    </a>
                   </Link>
                 </Menu.Item>
               </Menu.Items>

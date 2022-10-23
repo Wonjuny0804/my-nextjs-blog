@@ -56,7 +56,7 @@ const BlogAdminPage = ({ posts }: Props) => {
               const createdDate = moment.unix(+createdAt).format("YYYY/MM/DD");
               return (
                 <Link key={post.id + index + ""} href={`/admin/blog/${url}`}>
-                  <a className="font-medium text-white border-1 border-white">
+                  <a className="font-medium text-white border border-white">
                     <div className="grid grid-cols-2 justify-between  min-h-[160px] lg:h-[320px]">
                       {imageUrl && (
                         <div className="relative h-full w-full border-r-1">
