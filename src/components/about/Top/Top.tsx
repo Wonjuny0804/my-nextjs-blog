@@ -41,7 +41,7 @@ const Top: FC = () => {
         />
       </div>
       <h1
-        className={`font-bold text-[42px] leading-[52px] lg:text-[60px] lg:leading-[72px]
+        className={`font-bold text-[42px] leading-[52px] lg:text-[60px] lg:leading-[72px] 
          text-transparent bg-clip-text bg-gradient-to-tr underline decoration-white underline-offset-2 decoration-1
          from-white to-blue-300 tracking-tight`}
         data-aos="fade-up"
@@ -52,7 +52,10 @@ const Top: FC = () => {
       </h1>
 
       <h2
-        className={`font-medium text-[24px] lg:text-[36px] lg:leading-[40px] tracking-tight leading-[30px] mt-[80px] lg:mt-[30px] text-white`}
+        className={`font-medium text-[24px] 
+        lg:text-[36px] lg:leading-[40px] 
+        tracking-tight leading-[30px] mt-[80px] font-montserrat
+        lg:mt-[30px] text-white`}
       >
         Currently on a <span className={`underline`}>UX journey.</span>
         <br />

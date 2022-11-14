@@ -126,7 +126,7 @@ const PublishPostPage = () => {
   return (
     <Layout noNav>
       <div className="mx-4 mt-4 flex flex-col lg:w-[780px] xl:w-[780px] lg:m-auto">
-        <h1 className="text-xl font-workSans font-medium lg:mt-10">
+        <h1 className="text-xl font-montserrat text-white font-medium lg:mt-10">
           This is where you will decide the meta data for the posts
         </h1>
 
