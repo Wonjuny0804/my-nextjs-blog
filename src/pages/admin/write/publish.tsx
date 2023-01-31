@@ -3,9 +3,9 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import PostItem from "../../../components/blog/Post/PostItem";
 import Layout from "../../../components/common/Layout";
 import useBlog from "../../../stores/blog";
-import ImageServiceInstance from "../../../service/image";
-import AdminServiceInstance from "../../../service/admin";
-import PostServiceInstance from "../../../service/posts";
+import ImageServiceInstance from "../../../services/image";
+import AdminServiceInstance from "../../../services/admin";
+import PostServiceInstance from "../../../services/posts";
 import { uploadImageData } from "../../../../types/image";
 import { useRouter } from "next/router";
 

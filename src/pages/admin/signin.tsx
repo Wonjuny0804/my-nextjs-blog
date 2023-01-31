@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import Layout from "components/common/Layout";
 import useAuth from "../../stores/auth";
-import AdminServiceInstance from "../../service/admin";
+import AdminServiceInstance from "../../services/admin";
 import { useRouter } from "next/router";
 
 const AdminSignInPage = () => {

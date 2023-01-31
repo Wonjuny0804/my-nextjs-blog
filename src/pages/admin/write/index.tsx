@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import AdminServiceInstance from "../../../service/admin";
+import AdminServiceInstance from "../../../services/admin";
 import { useRouter } from "next/router";
 
 const Layout = dynamic(() => import("../../../components/common/Layout"), {

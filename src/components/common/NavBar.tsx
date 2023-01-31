@@ -32,7 +32,7 @@ const NavBar = ({ position = "sticky" }: Props) => {
       >
         <Link href={`/about`}>
           <a
-            className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75 hover-underline`}
+            className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
           >
             Home
           </a>
@@ -51,11 +51,11 @@ const NavBar = ({ position = "sticky" }: Props) => {
             posts
           </a>
         </Link>
-        <Link href={`/lab`}>
+        <Link href={`/gcc`}>
           <a
             className={` text-white text-base hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
           >
-            lab
+            gangnam coding club
           </a>
         </Link>
       </div>

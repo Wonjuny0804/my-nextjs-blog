@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "@toast-ui/editor/dist/toastui-editor.css";
 
 import { Editor } from "@toast-ui/react-editor";
-import PostServiceInstance from "../../../service/posts";
+import PostServiceInstance from "../../../services/posts";
 import useBlog from "../../../stores/blog";
 import { useRouter } from "next/router";
 import { serialize } from "next-mdx-remote/serialize";

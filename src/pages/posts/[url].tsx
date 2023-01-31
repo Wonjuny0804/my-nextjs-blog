@@ -11,7 +11,7 @@ import rehypetoc from "rehype-toc";
 import PostHeader from "../../components/blog/PostHeader/PostHeader";
 import Footer from "../../components/common/Footer/Footer";
 import MDXRenderer from "../../components/blog/MDXRenderer";
-import PostServiceInstance from "../../service/posts";
+import PostServiceInstance from "../../services/posts";
 
 export const serializeOptions = {
   mdxOptions: {

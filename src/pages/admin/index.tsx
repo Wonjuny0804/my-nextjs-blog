@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Layout from "../../components/common/Layout";
-import AdminServiceInstance from "../../service/admin";
+import AdminServiceInstance from "../../services/admin";
 
-import PostServiceInstance from "../../service/posts";
+import PostServiceInstance from "../../services/posts";
 import { DocumentData } from "firebase/firestore";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import Layout from "../../../components/common/Layout";
-import PostServiceInstance from "../../../service/posts";
+import PostServiceInstance from "../../../services/posts";
 import { PostDocument } from "../../../../types/post";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import AdminServiceInstance from "../../../service/admin";
+import AdminServiceInstance from "../../../services/admin";
 
 const TextEditor = dynamic(
   () => import("../../../components/blog/TextEditor/TextEditor"),

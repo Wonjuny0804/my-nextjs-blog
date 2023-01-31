@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import Layout from "../../../components/common/Layout";
-import PostServiceInstance from "../../../service/posts";
+import PostServiceInstance from "../../../services/posts";
 import { PostDocument } from "../../../../types/post";
 import moment from "moment";
 import Image from "next/image";
-import AdminServiceInstance from "../../../service/admin";
+import AdminServiceInstance from "../../../services/admin";
 import { useRouter } from "next/router";
 
 interface PostData extends PostDocument {

@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import PostServiceInstance from "../../service/posts";
+import PostServiceInstance from "../../services/posts";
 import { DocumentData } from "firebase/firestore";
 import dynamic from "next/dynamic";
 
