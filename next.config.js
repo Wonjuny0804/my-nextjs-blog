@@ -26,6 +26,7 @@ const nextConfig = {
 
     return config;
   },
+  output: "standalone", // this is for docker purposes
 };
 
 module.exports = withPWA(nextConfig);
