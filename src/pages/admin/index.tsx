@@ -46,10 +46,11 @@ const AdminPage = () => {
           <h3 className="font-medium text-xl mt-4">Services</h3>
           <ul className="mt-3 flex flex-col gap-4">
             <li>
-              <Link href="/admin/blog">
-                <a className="px-4 py-2 border-2 font-medium text-white">
-                  Blog CMS
-                </a>
+              <Link
+                href="/admin/blog"
+                className="px-4 py-2 border-2 font-medium text-white"
+              >
+                Blog CMS
               </Link>
             </li>
           </ul>

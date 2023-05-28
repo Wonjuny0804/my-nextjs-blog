@@ -70,14 +70,13 @@ const WritePostPage = () => {
           author={author}
           editData={null}
         />
-        <Link href="/admin">
-          <a
-            className={`block w-fit self-end font-workSans border-2 h-fit px-2
+        <Link
+          href="/admin"
+          className={`block w-fit self-end font-workSans border-2 h-fit px-2
              py-1 bg-black rounded-full shadow-[3px_3px_0px_0px_#000000]
              `}
-          >
-            Go back
-          </a>
+        >
+          Go back
         </Link>
       </div>
     </Layout>

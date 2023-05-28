@@ -19,44 +19,38 @@ const NavBar = ({ position = "sticky" }: Props) => {
        lg:pl-10 lg:pr-10`}
     >
       <div className={`flex items-center gap-3 font-montserrat self-start`}>
-        <Link href={"/"}>
-          <a
-            className={`w-fit text-[24px] block py-[12px]  font-medium text-white`}
-          >
-            <Logo className={`h-6`} />
-          </a>
+        <Link href={"/"} passHref>
+          <Logo
+            className={`h-6 w-fit text-[24px] block py-[12px]  font-medium text-white`}
+          />
         </Link>
       </div>
       <div
         className={`hidden mt-4 lg:flex lg:flex-col lg:gap-2 font-montserrat uppercase`}
       >
-        <Link href={`/about`}>
-          <a
-            className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75 hover-underline`}
-          >
-            Home
-          </a>
+        <Link
+          href={`/about`}
+          className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75 hover-underline`}
+        >
+          Home
         </Link>
-        <Link href={`/about`}>
-          <a
-            className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
-          >
-            about
-          </a>
+        <Link
+          href={`/about`}
+          className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
+        >
+          about
         </Link>
-        <Link href={`/posts`}>
-          <a
-            className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
-          >
-            posts
-          </a>
+        <Link
+          href={`/posts`}
+          className={` text-white hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
+        >
+          posts
         </Link>
-        <Link href={`/lab`}>
-          <a
-            className={` text-white text-base hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
-          >
-            lab
-          </a>
+        <Link
+          href={`/lab`}
+          className={` text-white text-base hover:text-primary-blue hover:cursor-pointer transition-all delay-75`}
+        >
+          lab
         </Link>
       </div>
       <MobileMenu />

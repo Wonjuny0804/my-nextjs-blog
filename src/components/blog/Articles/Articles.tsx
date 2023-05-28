@@ -30,20 +30,19 @@ const Articles: FC<Props> = ({ posts, grid }) => {
               delay: index * 0.2,
             }}
             key={post.id}
+            className="h-full"
           >
-            <Link href={`/posts/${post.data.url}`}>
-              <a className="h-full">
-                <PostItem
-                  id={post.id}
-                  title={post.data.title}
-                  excerpt={post.data.excerpt}
-                  tags={post.data.tags}
-                  createdDate={moment
-                    .unix(post.data.createdAt)
-                    .format("MMM Do YYYY")}
-                  thumbnailImageUrl={post.data.thumbnailImage.imageUrl}
-                />
-              </a>
+            <Link href={`/posts/${post.data.url}`} passHref legacyBehavior>
+              <PostItem
+                id={post.id}
+                title={post.data.title}
+                excerpt={post.data.excerpt}
+                tags={post.data.tags}
+                createdDate={moment
+                  .unix(post.data.createdAt)
+                  .format("MMM Do YYYY")}
+                thumbnailImageUrl={post.data.thumbnailImage.imageUrl}
+              />
             </Link>
           </motion.li>
         ))}

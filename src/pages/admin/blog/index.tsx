@@ -34,10 +34,11 @@ const BlogAdminPage = ({ posts }: Props) => {
   return (
     <Layout metaData={{ title: "Blog admin page" }}>
       <div className="mt-4 lg:w-[1024px] lg:mx-auto ">
-        <Link href="/admin/write">
-          <a className="block border-2 mx-4 px-4 py-2 font-montserrat text-white font-bold">
-            Write new Post
-          </a>
+        <Link
+          href="/admin/write"
+          className="block border-2 mx-4 px-4 py-2 font-montserrat text-white font-bold"
+        >
+          Write new Post
         </Link>
         <section className="mx-4 mt-4 font-montserrat grid gap-4">
           {posts &&
@@ -55,53 +56,56 @@ const BlogAdminPage = ({ posts }: Props) => {
                 thumbnailImage?.imageUrl ?? "/posts/default-image.png";
               const createdDate = moment.unix(+createdAt).format("YYYY/MM/DD");
               return (
-                <Link key={post.id + index + ""} href={`/admin/blog/${url}`}>
-                  <a className="font-medium text-white border border-white">
-                    <div className="grid grid-cols-2 justify-between  min-h-[160px] lg:h-[320px]">
-                      {imageUrl && (
-                        <div className="relative h-full w-full border-r-1">
-                          <Image
-                            src={imageUrl ?? "/posts/default-image.png"}
-                            alt="."
-                            layout="fill"
-                            objectFit="cover"
-                            blurDataURL={imageUrl ?? "/posts/default-image.png"}
-                            placeholder="blur"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-                      <div className="p-2 flex flex-col justify-between overflow-hidden">
-                        <div>
-                          <h3 className="font-montserrat text-2xl font-medium line-clamp-3">
-                            {title}
-                          </h3>
-                          <span className="font-montserrat font-normal text-xs">
-                            {createdDate}
+                <Link
+                  key={post.id + index + ""}
+                  className="font-medium text-white border border-white"
+                  href={`/admin/blog/${url}`}
+                  passHref
+                >
+                  <div className="grid grid-cols-2 justify-between  min-h-[160px] lg:h-[320px]">
+                    {imageUrl && (
+                      <div className="relative h-full w-full border-r-1">
+                        <Image
+                          src={imageUrl ?? "/posts/default-image.png"}
+                          alt="."
+                          layout="fill"
+                          objectFit="cover"
+                          blurDataURL={imageUrl ?? "/posts/default-image.png"}
+                          placeholder="blur"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+                    <div className="p-2 flex flex-col justify-between overflow-hidden">
+                      <div>
+                        <h3 className="font-montserrat text-2xl font-medium line-clamp-3">
+                          {title}
+                        </h3>
+                        <span className="font-montserrat font-normal text-xs">
+                          {createdDate}
+                        </span>
+                        <p className="lg:line-clamp-6 font-normal line-clamp-5">
+                          {excerpt}
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <span
+                          className={` block text-xs px-1 py-1 w-fit font-light ${
+                            published
+                              ? "text-primary-blue border-primary-blue border"
+                              : "border"
+                          }`}
+                        >
+                          {published ? "published" : "yet"}
+                        </span>
+                        {deleted && (
+                          <span className="block text-xs px-1 py-1 w-fit font-light border border-red-700 text-red-700">
+                            deleted
                           </span>
-                          <p className="lg:line-clamp-6 font-normal line-clamp-5">
-                            {excerpt}
-                          </p>
-                        </div>
-                        <div className="flex gap-3">
-                          <span
-                            className={` block text-xs px-1 py-1 w-fit font-light ${
-                              published
-                                ? "text-primary-blue border-primary-blue border"
-                                : "border"
-                            }`}
-                          >
-                            {published ? "published" : "yet"}
-                          </span>
-                          {deleted && (
-                            <span className="block text-xs px-1 py-1 w-fit font-light border border-red-700 text-red-700">
-                              deleted
-                            </span>
-                          )}
-                        </div>
+                        )}
                       </div>
                     </div>
-                  </a>
+                  </div>
                 </Link>
               );
             })}

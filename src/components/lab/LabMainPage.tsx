@@ -9,7 +9,7 @@ const LabMainPage: FC<Props> = () => {
       <ol>
         <li>
           <Link href={`/lab/space-warp`}>
-            <a>My first Lab Project, The space warp effect using Threejs</a>
+            My first Lab Project, The space warp effect using Threejs
           </Link>
         </li>
       </ol>

@@ -35,38 +35,43 @@ const MobileMenu: FC = () => {
           bg-black`}
               >
                 <Menu.Item as="li">
-                  <Link href="/">
-                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
-                      main
-                    </a>
+                  <Link
+                    href="/"
+                    className={`block w-full border-b py-3 pl-6 text-white`}
+                  >
+                    main
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link href="/about">
-                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
-                      about
-                    </a>
+                  <Link
+                    href="/about"
+                    className={`block w-full border-b py-3 pl-6 text-white`}
+                  >
+                    about
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link href="/posts">
-                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
-                      posts
-                    </a>
+                  <Link
+                    href="/posts"
+                    className={`block w-full border-b py-3 pl-6 text-white`}
+                  >
+                    posts
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link href="/lab">
-                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
-                      lab
-                    </a>
+                  <Link
+                    href="/lab"
+                    className={`block w-full border-b py-3 pl-6 text-white`}
+                  >
+                    lab
                   </Link>
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link href="/admin">
-                    <a className={`block w-full border-b py-3 pl-6 text-white`}>
-                      admin
-                    </a>
+                  <Link
+                    href="/admin"
+                    className={`block w-full border-b py-3 pl-6 text-white`}
+                  >
+                    admin
                   </Link>
                 </Menu.Item>
               </Menu.Items>
