@@ -14,9 +14,7 @@ const Top: FC = () => {
 
   const [opacity, setOpacity] = useState<number>(0);
 
-  const handleScroll = () => {
-    console.log(ptag?.getBoundingClientRect().top, window.innerHeight);
-  };
+  const handleScroll = () => {};
 
   useEffect(() => {
     document.addEventListener("scroll", handleScroll);
@@ -33,49 +31,40 @@ const Top: FC = () => {
       lg:mt-10 lg:px-0
       `}
     >
-      <div className={`w-[160px] lg:w-[240px]`}>
+      {/* <div className={`w-[160px] lg:w-[240px]`}>
         <Image
           src={myImage}
           alt={"Image of Wonjun"}
           className={`rounded-full`}
         />
-      </div>
-      <h1
-        className={`font-bold text-[42px] leading-[52px] lg:text-[60px] lg:leading-[72px] 
-         text-transparent bg-clip-text bg-gradient-to-tr underline decoration-white underline-offset-2 decoration-1
-         from-white to-blue-300 tracking-tight`}
-        data-aos="fade-up"
-        data-aos-anchor-placement="top-center"
-      >
-        Hi there, <br />
-        this is Wonjun.
+      </div> */}
+      <h1 className={`text-white text-xl font-medium mt-6`}>
+        글쓰는 취미를 가진 개발자입니다.
       </h1>
 
-      <h2
-        className={`font-medium text-[24px] 
+      {/* TODO: maybe too much of a description? */}
+      {/* <h2
+        className={`font-regular text-xl
         lg:text-[36px] lg:leading-[40px] 
         tracking-tight leading-[30px] mt-[80px] font-montserrat
         lg:mt-[30px] text-white`}
       >
-        Currently on a <span className={`underline`}>UX journey.</span>
+        Currently on a <span className={`font-`}>UX journey.</span>
         <br />
         Studying and researching
         <br /> a better, managable frontend products.
-      </h2>
+      </h2> */}
 
       <p
-        className={`mt-6 font-[400] text-[16px] leading-[20px] 
+        className={`mt-[300px] font-[400] text-[16px] leading-[22px] 
         lg:text-[18px] lg:leading-[24px]
         text-grey`}
         ref={ptagRef}
       >
-        As a frontend developer, I try to see the details and think about the
-        journey users go through within the application. In other words,{" "}
-        <span className={`text-blue-500 font-medium`}>User Experience.</span>{" "}
-        <span className={`font-medium`}>
-          I Truly believe that keeping these in mind will leave a memorable
-          experience for the users and lead to a successful service.
-        </span>
+        프론트엔드 개발자로서, 저는 애플리케이션 내에서 사용자들이 겪는 여정과
+        세부 사항들에 세심한 주의를 기울입니다. <b>사용자 경험</b>에 중점을 두는
+        것이지요. 이러한 요소들을 고려하는 것이 사용자에게 깊은 인상을 남기고,
+        서비스의 성공을 이끌 것이라고 믿습니다.
       </p>
     </section>
   );

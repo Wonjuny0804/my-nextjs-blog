@@ -1,12 +1,35 @@
-/* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
-import MainScene from "components/Landing/MainScene/MainScene";
 
-const Layout = dynamic(() => import("../components/common/Layout"));
+const Layout = dynamic(() => import("../components/common/Layout/Layout"));
 
 const Home = () => {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [mainPhrase, setMainPhrase] = useState<string[]>([]);
+  const timerRef = useRef<NodeJS.Timer>();
+
+  useEffect(() => {
+    const mainPhrase = [
+      "Die Vögel kämpfen sich aus dem Ei. Das Ei ist die Welt. Wer geboren werden will, muss die Welt zerstören.",
+      "The bird fights its way out of the egg. The egg is the world. Who would be born must destroy a world.",
+      "새는 알을 통해 밖으로 나가기 위해 싸운다. 그 알은 세계다. 누구든 태어나기 위해선, 한 세계를 파괴해야 한다.",
+    ];
+
+    setMainPhrase(mainPhrase);
+
+    timerRef.current = setInterval(() => {
+      setPhraseIndex((prev) => {
+        if (prev === mainPhrase.length - 1) return 0;
+        return prev + 1;
+      });
+    }, 6000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
+
   return (
     <>
       <Script
@@ -33,64 +56,23 @@ const Home = () => {
             "This is the main page of Wonjundev tech blog. Please come and rest all programmers",
         }}
       >
-        <div className={`relative md:p-10`}>
-          <div
-            className={`absolute lg:relative z-10 mx-4 font-montserrat xl:w-[1280px] lg:mt-16 lg:m-auto`}
+        <div className={`min-h-[100vh] p-10 md:p-10 grid `}>
+          <p
+            className={`text-white bg-[#1e1e1e] text-3xl leading-[1.3] text-left word-wrap break-keep relative`}
           >
-            <h1
-              className={`text-white 
-              text-6xl md:text-8xl lg:text-8xl
-              md:mt-16 md:mb-14 mt-8 mb-9
-              lg:w-[642px] underline underline-offset-[10px]  font-bold 
-              xl:leading-[120px] decoration-[4px]
-               `}
-            >
-              Welcome to a developers tech blog
-            </h1>
-            <p className="md:text-lg text-[#9D9D9D] lg:w-[427px]">
-              Where you are right now is a tech blog of mine. I am a developer
-              based in{" "}
-              <a
-                className="underline text-white"
-                href="https://www.google.com/maps/place/Seoul/data=!4m5!3m4!1s0x357ca2012d5c39cf:0x7e11eca1405bf29b!8m2!3d37.566535!4d126.9779692"
-                target={"_blank"}
-                rel="noreferrer"
+            {mainPhrase.map((phrase, index) => (
+              <span
+                key={`mainPhrase-${index}`}
+                className={`absolute opacity-0 ${
+                  phraseIndex === index ? "animate-fadeInOut" : ""
+                }`}
+                aria-current={phraseIndex === index}
+                data-index={phraseIndex === index ? "current" : "not-current"}
               >
-                Seoul
-              </a>
-              .
-              <br />
-              <br />
-              This blog was built using{" "}
-              <span className="font-medium text-white">
-                <a
-                  href="https://nextjs.org/"
-                  target={"_blank"}
-                  rel="noreferrer"
-                >
-                  Nextjs
-                </a>{" "}
-                and Typescript
+                {phrase}
               </span>
-              . For Backend data and storage I am using{" "}
-              <span className="font-medium text-white">
-                Golang and PostgreSQL
-              </span>{" "}
-              If you have any inqueries please{" "}
-              <a
-                href="mailTo:wonwonjun@gmail.com"
-                className="underline text-white"
-              >
-                send me a mail
-              </a>{" "}
-              and I'll get back to you.
-            </p>
-          </div>
-          <section
-            className={`top-0 right-[13%] md:right-0 lg:right-[14%] lg:absolute lg:w-[50vw]`}
-          >
-            <MainScene />
-          </section>
+            ))}
+          </p>
         </div>
       </Layout>
     </>

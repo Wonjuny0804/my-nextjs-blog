@@ -4,7 +4,7 @@ import PostServiceInstance from "../../service/posts";
 import { DocumentData } from "firebase/firestore";
 import dynamic from "next/dynamic";
 
-const Layout = dynamic(() => import("../../components/common/Layout"));
+const Layout = dynamic(() => import("../../components/common/Layout/Layout"));
 const Articles = dynamic(
   () => import("../../components/blog/Articles/Articles")
 );

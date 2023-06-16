@@ -7,13 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        notoSans: ["Noto Sans KR", "Noto Sans"],
-        workSans: ["Work Sans", "sans-serif"],
-        monoLisa: ["Mono Lisa", "sans-serif"],
-        notoSansEng: ["Noto Sans"],
-        montserrat: ["Montserrat"],
-      },
+      fontFamily: {},
       colors: {
         "primary-dark": "#333d4b",
         "secondary-dark": "#4e5968",
@@ -30,11 +24,20 @@ module.exports = {
       screens: {
         contentSize: "1365px",
       },
+      keyframes: {
+        fadeInOut: {
+          "0%": { opacity: 0 },
+          "50%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
+      },
+      animation: {
+        fadeInOut: "fadeInOut 6s ease-in-out infinite",
+      },
     },
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
     require("tailwind-scrollbar-hide"),
   ],
 };

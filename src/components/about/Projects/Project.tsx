@@ -23,18 +23,16 @@ const Project: FC<Props> = ({
 }) => {
   return (
     <div
-      className={`border border-white lg:px-[60px] lg:py-[60px] 
+      className={` lg:px-[60px] lg:py-[60px] 
       `}
     >
       <div className={`flex items-center lg:gap-5`}>
-        <span className={`text-[#666666]`}>1</span>
         <span className={`text-white text-sm font-montserrat`}>
           {moment(period.from).format("MMM YYYY")} ~{" "}
           {moment(period.to).format("MMM YYYY")}
         </span>
       </div>
       <div className={`flex items-center lg:gap-5`}>
-        <span className={`text-[#666666]`}>2</span>
         {link ? (
           <a target={`_blank`} href={link} className={`hover:underline`}>
             <h1 className={`font-bold text-xl font-montserrat`}>
@@ -48,7 +46,6 @@ const Project: FC<Props> = ({
         )}
       </div>
       <div className={`flex items-center lg:gap-5`}>
-        <span className={`text-[#666666]`}>3</span>
         <span
           className={`font-light italic text-[#797979] mb-1 block font-montserrat`}
         >
@@ -56,7 +53,6 @@ const Project: FC<Props> = ({
         </span>
       </div>
       <div className={`flex items-center lg:gap-5`}>
-        <span className={`text-[#666666] self-start`}>4</span>
         <p className={`text-white font-montserrat`}>{desc}</p>
       </div>
       <div className={`ml-8 mt-8`}>

@@ -17,7 +17,7 @@ const PostItem = (props: Props) => {
 
   return (
     <article className={` max-w-[400px] overflow-hidden md:h-full`}>
-      <div className="relative min-h-[184px] h-[184px]">
+      {/* <div className="relative min-h-[184px] h-[184px]">
         {loading ? (
           <div className="w-full h-full flex items-center justify-center">
             <Loader />
@@ -34,17 +34,17 @@ const PostItem = (props: Props) => {
             placeholder="blur"
           />
         )}
-      </div>
-      <div className="px-4 py-4 font-montserrat bg-[#141414]">
-        <span className="text-sm text-[#999999]">{createdDate}</span>
-        <h2 className="text-xl font-medium mt-3 mb-3 line-clamp-2 text-white">
+      </div> */}
+      <div className="px-4">
+        <h2 className="leading-[1.2] font-medium mb-1 line-clamp-2 text-white break-words break-keep">
           {title}
         </h2>
-        <p className="text-sm line-clamp-2 text-white">{excerpt}</p>
+        <p className="text-sm font-light line-clamp-2 text-white mt-8">
+          {excerpt}
+        </p>
+        <span className="text-xs text-[#999999] mt-8 block">{createdDate}</span>
 
-        <span className="text-sm font-medium block mt-4 text-grey">
-          Read More
-        </span>
+        {/* <span className="text-xs font-medium block text-grey">Read More</span> */}
       </div>
     </article>
   );

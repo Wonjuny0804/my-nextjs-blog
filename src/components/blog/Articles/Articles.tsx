@@ -18,7 +18,7 @@ const Articles: FC<Props> = ({ posts, grid }) => {
   return (
     <AnimatePresence>
       <ul
-        className={`mt-10 flex flex-col md:grid md:grid-cols-2 justify-self-stretch gap-14 list-none ${
+        className={`mt-[160px] flex flex-col md:grid md:grid-cols-2 justify-self-stretch gap-20 list-none ${
           grid && "lg:grid lg:grid-cols-3"
         }`}
       >
@@ -32,7 +32,7 @@ const Articles: FC<Props> = ({ posts, grid }) => {
             key={post.id}
             className="h-full"
           >
-            <Link href={`/posts/${post.data.url}`} passHref legacyBehavior>
+            <Link href={`/posts/${post.data.url}`} passHref>
               <PostItem
                 id={post.id}
                 title={post.data.title}

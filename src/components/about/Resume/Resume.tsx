@@ -12,7 +12,7 @@ const Resume: FC = React.memo(() => {
 
   return (
     <section className={`px-4 mt-20 text-white lg:px-0`}>
-      <h1 className={`text-[17px] lg:text-2xl font-medium font-montserrat`}>
+      {/* <h1 className={`text-[17px] lg:text-2xl font-medium font-montserrat`}>
         Skills and experiences
       </h1>
 
@@ -105,16 +105,16 @@ const Resume: FC = React.memo(() => {
             reviewing is usually how I&apos;ve managed to sum up codes.
           </li>
         </ul>
-      </div>
+      </div> */}
 
       <div className={`mt-20`}>
         <h2
           className={`text-[17px] font-medium mb-3 lg:text-2xl font-montserrat`}
         >
-          Experiences
+          업무 이력
         </h2>
 
-        <div className={`flex flex-col gap-4`}>
+        <div className={`flex flex-col gap-6`}>
           {datas.data.map((experience) => (
             <Experience
               title={experience.title}

@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import NavBar from "./NavBar";
-import Footer from "./Footer/Footer";
+import NavBar from "../NavBar";
+import Footer from "../Footer/Footer";
 
 interface Props {
   children: React.ReactNode;
@@ -40,10 +40,9 @@ const Layout = (props: Props) => {
           }
         />
       </Head>
-      <main>
-        {!noNav && <NavBar position={fixedHeader ? "fixed" : "sticky"} />}
-        {children}
-      </main>
+
+      {/* {!noNav && <NavBar position={fixedHeader ? "fixed" : "sticky"} />} */}
+      <main className={``}>{children}</main>
       <Footer />
     </>
   );

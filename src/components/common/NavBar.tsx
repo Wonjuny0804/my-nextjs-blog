@@ -15,7 +15,7 @@ const NavBar = ({ position = "sticky" }: Props) => {
     <div
       className={` ${position === "sticky" && position} 
       top-0 z-10 flex justify-between px-3 xl:w-[1280px] xl:m-auto xl:px-0 xl:pr-0 xl:pt-6
-      bg-black lg:bg-transparent
+      bg-[#1e1e1e] lg:bg-transparent
        lg:pl-10 lg:pr-10`}
     >
       <div className={`flex items-center gap-3 font-montserrat self-start`}>

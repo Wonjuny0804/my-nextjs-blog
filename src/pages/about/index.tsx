@@ -20,7 +20,7 @@ const AboutPage: FC = () => {
       <main className={`lg:w-[800px] lg:m-auto`}>
         <Top />
         <Resume />
-        <Projects />
+        {/* <Projects /> */}
       </main>
       <Footer />
     </>
