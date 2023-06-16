@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
-import Layout from "../../../components/common/Layout";
+import Layout from "../../../components/common/Layout/Layout";
 import PostServiceInstance from "../../../service/posts";
 import { PostDocument } from "../../../../types/post";
 import dynamic from "next/dynamic";

@@ -7,7 +7,7 @@ interface Props {
 const BLOCKQUOTE: FC<Props> = ({ children }) => {
   return (
     <blockquote
-      className={`border-l-4 border-secondary-dark text-[#999999] pl-4 italic text-sm lg:text-base`}
+      className={`border-l-4 border-secondary-dark text-[#999999] px-4 font-light italic text-sm`}
     >
       {children}
     </blockquote>

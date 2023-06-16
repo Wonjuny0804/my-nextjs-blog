@@ -44,7 +44,7 @@ const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
       <PostHeader post={post} />
 
       <section
-        className={`min-w-[320px] font-notoSans px-4 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative`}
+        className={`min-w-[320px] font-notoSans px-8 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative`}
       >
         <MDXRenderer source={post.source} />
       </section>

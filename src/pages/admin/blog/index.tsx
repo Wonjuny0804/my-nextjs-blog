@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
-import Layout from "../../../components/common/Layout";
+import Layout from "../../../components/common/Layout/Layout";
 import PostServiceInstance from "../../../service/posts";
 import { PostDocument } from "../../../../types/post";
 import moment from "moment";

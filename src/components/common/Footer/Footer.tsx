@@ -1,25 +1,29 @@
 /* eslint-disable react/display-name */
 import React, { FC } from "react";
 import Link from "next/link";
-import Logo from "../../../../public/wonjundevtech-designLogo.svg";
+import Logo from "../../../../public/wonjundevtech-logo.svg";
 
 const Footer: FC = React.memo(() => {
   return (
-    <footer
-      className={`pt-[60px] bg-transparent pb-10 px-10 flex flex-col items-center`}
-    >
+    <footer className={`px-8 py-8 flex gap-3 mt-20`}>
       <Link
         href={"/"}
         passHref
-        className={`w-fit text-[24px] block font-workSans font-medium text-primary-dark`}
+        className={`w-fit text-[24px] grid items-center justify-center`}
       >
-        <Logo className={`h-6`} />
+        <Logo className={`h-4`} />
       </Link>
-      <p
-        className={`font-regular text-white font-montserrat text-sm font-light`}
-      >
-        © All rights reserved to Wonjun Jang
-      </p>
+      <div className={`flex gap-2 items-center text-white text-xs`}>
+        <Link href={"/"} passHref>
+          Instagram
+        </Link>
+        <Link href={"/"} passHref>
+          LinkedIn
+        </Link>
+        <Link href={"/"} passHref>
+          Email
+        </Link>
+      </div>
     </footer>
   );
 });

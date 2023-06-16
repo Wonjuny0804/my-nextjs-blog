@@ -11,7 +11,8 @@ const A: FC<Props> = ({ children, href }) => {
     <a
       href={href}
       target={"_blank"}
-      className={`underline cursor-pointer text-primary-blue`}
+      className={`
+    underline decoration-dotted underline-offset-2 cursor-pointer text-white`}
     >
       {children}
     </a>

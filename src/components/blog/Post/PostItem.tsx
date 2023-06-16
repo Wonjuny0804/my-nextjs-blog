@@ -16,7 +16,7 @@ const PostItem = (props: Props) => {
   const { title, excerpt, createdDate, thumbnailImageUrl, loading } = props;
 
   return (
-    <article className={` max-w-[400px] overflow-hidden md:h-full`}>
+    <article className={` overflow-hidden md:h-full`}>
       {/* <div className="relative min-h-[184px] h-[184px]">
         {loading ? (
           <div className="w-full h-full flex items-center justify-center">

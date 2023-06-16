@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Layout from "../../components/common/Layout";
+import Layout from "../../components/common/Layout/Layout";
 import AdminServiceInstance from "../../service/admin";
-
 import PostServiceInstance from "../../service/posts";
 import { DocumentData } from "firebase/firestore";
 import { GetStaticProps } from "next";

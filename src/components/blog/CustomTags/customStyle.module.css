@@ -1,43 +1,44 @@
 .ol {
   padding-left: 32px;
   color: #ffffff;
-  font-family: "Noto Sans KR", sans-serif;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
   margin-top: 12px;
 }
 
 .ul {
   padding-left: 32px;
   color: #ffffff;
-  font-family: "Noto Sans KR", sans-serif;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   margin-top: 12px;
 }
 
 .ol > .li {
-  padding-left: 16px;
+  padding-left: 12px;
   list-style: decimal;
+}
+
+.ol > .li > p {
+  margin: 0;
 }
 
 .ol > .li::marker {
   color: #ffffff;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .ul > .li {
-  padding-left: 16px;
+  padding-left: 12px;
   list-style: circle !important;
   font-size: 14px;
 }
 
 .ul > .li::marker {
   content: "•";
-  width: 16px;
+  width: 12px;
   color: #ffffff;
 }
 
