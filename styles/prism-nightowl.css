@@ -12,10 +12,10 @@ pre[class*="language-"] {
   font-family: "Source Code Pro", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
     monospace;
   text-align: left;
-  white-space: pre;
+  white-space: pre-wrap;
   word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
+  word-break: keep-all;
+  word-wrap: keep-all;
   line-height: 1.5;
   font-size: 14px;
 
@@ -56,7 +56,7 @@ code[class*="language-"] ::selection {
 pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 :not(pre) > code[class*="language-"],

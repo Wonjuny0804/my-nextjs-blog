@@ -130,7 +130,7 @@ const TextEditor = ({
             style={{
               height,
             }}
-            className={`hidden lg:block border-2 ${
+            className={`hidden lg:block ${
               height ? `` : "h-[600px]"
             } overflow-y-scroll px-12 scrollbar-hide`}
           >
@@ -142,7 +142,7 @@ const TextEditor = ({
         <button
           type="button"
           onClick={handleSaveEdit}
-          className="mt-3 w-fit items-end font-workSans border-2 block h-fit px-2 py-1 bg-[#f2f2f5] rounded-full shadow-[3px_3px_0px_0px_#000000]"
+          className="mt-3 w-fit items-end block h-fit py-1 text-white"
         >
           Save
         </button>

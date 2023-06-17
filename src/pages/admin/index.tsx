@@ -32,10 +32,10 @@ const AdminPage = () => {
   }, [router]);
 
   return (
-    <Layout>
+    <Layout noFooter>
       <div className="mx-4 lg:mx-0 font-montserrat">
         <div
-          className={`lg:w-[1024px] lg:min-h-[600px] xl:w-[1280px] lg:m-auto`}
+          className={`lg:w-[1024px] lg:min-h-[600px] xl:w-[1280px] lg:m-auto text-white`}
         >
           <h1 className="text-2xl my-3">Admin page</h1>
           <p className="leading-4">
@@ -45,10 +45,7 @@ const AdminPage = () => {
           <h3 className="font-medium text-xl mt-4">Services</h3>
           <ul className="mt-3 flex flex-col gap-4">
             <li>
-              <Link
-                href="/admin/blog"
-                className="px-4 py-2 border-2 font-medium text-white"
-              >
+              <Link href="/admin/blog" className=" py-2 font-medium text-white">
                 Blog CMS
               </Link>
             </li>

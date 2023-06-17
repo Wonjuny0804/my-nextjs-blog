@@ -56,7 +56,7 @@ const Home = () => {
             "This is the main page of Wonjundev tech blog. Please come and rest all programmers",
         }}
       >
-        <div className={`min-h-[100vh] p-10 md:p-10 grid `}>
+        <div className={`min-h-[calc(100vh-160px)] p-10 md:p-10 grid `}>
           <p
             className={`text-white bg-[#1e1e1e] text-3xl leading-[1.3] text-left word-wrap break-keep relative`}
           >

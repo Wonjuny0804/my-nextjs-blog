@@ -14,7 +14,7 @@ const AboutPage: FC = () => {
   return (
     <>
       <Head>
-        <title>Frontend dev Wonjun</title>
+        <title>Introduction: Welcome to my world</title>
       </Head>
       <NavBar />
       <main className={`lg:w-[800px] lg:m-auto`}>

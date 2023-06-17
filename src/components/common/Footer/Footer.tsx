@@ -7,7 +7,7 @@ const Footer: FC = React.memo(() => {
   return (
     <footer className={`px-8 py-8 flex gap-3 mt-20`}>
       <Link
-        href={"/"}
+        href={"/about"}
         passHref
         className={`w-fit text-[24px] grid items-center justify-center`}
       >

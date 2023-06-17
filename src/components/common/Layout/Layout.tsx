@@ -14,10 +14,11 @@ interface Props {
     image?: string;
   };
   noNav?: boolean;
+  noFooter?: boolean;
 }
 
 const Layout = (props: Props) => {
-  const { metaData, children, fullWidth, noNav, fixedHeader } = props;
+  const { metaData, children, fullWidth, noNav, fixedHeader, noFooter } = props;
 
   return (
     <>
@@ -41,9 +42,9 @@ const Layout = (props: Props) => {
         />
       </Head>
 
-      {/* {!noNav && <NavBar position={fixedHeader ? "fixed" : "sticky"} />} */}
+      {!noNav && <NavBar position={fixedHeader ? "fixed" : "sticky"} />}
       <main className={``}>{children}</main>
-      <Footer />
+      {!noFooter && <Footer />}
     </>
   );
 };

@@ -18,9 +18,7 @@ const Articles: FC<Props> = ({ posts, grid }) => {
   return (
     <AnimatePresence>
       <ul
-        className={`mt-[160px] flex flex-col md:grid md:grid-cols-2 justify-self-stretch gap-20 list-none ${
-          grid && "lg:grid lg:grid-cols-3"
-        }`}
+        className={`mt-[160px] flex flex-col  justify-self-stretch gap-20 list-none lg:max-w-[720px] `}
       >
         {posts.map((post, index) => (
           <motion.li

@@ -58,6 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const posts = await PostServiceInstance.getPostByTitle(url);
   const { data } = posts[0];
   const { content } = data;
+
   const meta = {
     author: data.author,
     excerpt: data.excerpt,
@@ -79,7 +80,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             },
           },
         ],
-        rehypetoc,
       ],
     },
   });

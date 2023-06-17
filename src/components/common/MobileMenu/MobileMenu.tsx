@@ -37,7 +37,7 @@ const MobileMenu: FC = () => {
                 <Menu.Item as="li">
                   <Link
                     href="/"
-                    className={`block w-full border-b py-3 pl-6 text-white`}
+                    className={`block w-full  py-3 pl-6 text-white`}
                   >
                     main
                   </Link>
@@ -45,7 +45,7 @@ const MobileMenu: FC = () => {
                 <Menu.Item as="li">
                   <Link
                     href="/about"
-                    className={`block w-full border-b py-3 pl-6 text-white`}
+                    className={`block w-full  py-3 pl-6 text-white`}
                   >
                     about
                   </Link>
@@ -53,7 +53,7 @@ const MobileMenu: FC = () => {
                 <Menu.Item as="li">
                   <Link
                     href="/posts"
-                    className={`block w-full border-b py-3 pl-6 text-white`}
+                    className={`block w-full  py-3 pl-6 text-white`}
                   >
                     posts
                   </Link>
@@ -61,7 +61,7 @@ const MobileMenu: FC = () => {
                 <Menu.Item as="li">
                   <Link
                     href="/lab"
-                    className={`block w-full border-b py-3 pl-6 text-white`}
+                    className={`block w-full  py-3 pl-6 text-white`}
                   >
                     lab
                   </Link>
@@ -69,7 +69,7 @@ const MobileMenu: FC = () => {
                 <Menu.Item as="li">
                   <Link
                     href="/admin"
-                    className={`block w-full border-b py-3 pl-6 text-white`}
+                    className={`block w-full  py-3 pl-6 text-white`}
                   >
                     admin
                   </Link>

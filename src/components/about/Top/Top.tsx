@@ -31,29 +31,9 @@ const Top: FC = () => {
       lg:mt-10 lg:px-0
       `}
     >
-      {/* <div className={`w-[160px] lg:w-[240px]`}>
-        <Image
-          src={myImage}
-          alt={"Image of Wonjun"}
-          className={`rounded-full`}
-        />
-      </div> */}
-      <h1 className={`text-white text-xl font-medium mt-6`}>
+      <h1 className={`text-white text-xl font-medium mt-8`}>
         글쓰는 취미를 가진 개발자입니다.
       </h1>
-
-      {/* TODO: maybe too much of a description? */}
-      {/* <h2
-        className={`font-regular text-xl
-        lg:text-[36px] lg:leading-[40px] 
-        tracking-tight leading-[30px] mt-[80px] font-montserrat
-        lg:mt-[30px] text-white`}
-      >
-        Currently on a <span className={`font-`}>UX journey.</span>
-        <br />
-        Studying and researching
-        <br /> a better, managable frontend products.
-      </h2> */}
 
       <p
         className={`mt-[300px] font-[400] text-[16px] leading-[22px] 

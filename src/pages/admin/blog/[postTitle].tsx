@@ -47,11 +47,11 @@ const EditBlogPostPage = ({ data }: Props) => {
 
   return (
     <Layout fixedHeader>
-      <div className="mx-4 lg:w-[1024px] xl:w-[1280px] lg:m-auto">
-        <div className="flex gap-3 mt-3 font-montserrat">
+      <div className="px-4 py-4 lg:w-[1024px] xl:w-[1280px] lg:m-auto">
+        <div className="flex gap-3 mt-3">
           <label
             htmlFor="title"
-            className={`text-lg font-bold lg:text-3xl font-montserrat text-white`}
+            className={`text-lg font-medium lg:text-3xl text-white`}
           >
             Title:
           </label>
@@ -60,18 +60,18 @@ const EditBlogPostPage = ({ data }: Props) => {
             id="title"
             value={title}
             placeholder="Please write your title"
-            className={`text-lg font-bold lg:text-3xl font-montserrat outline-none bg-black text-white flex-grow`}
+            className={`text-lg font-medium lg:text-3xl outline-none bg-transparent text-white flex-grow`}
             onChange={(event) => setTitle(event.target.value)}
           />
         </div>
-        <div className="flex gap-3 mb-2">
+        <div className="flex gap-3 mb-4 mt-2">
           <label className="font-medium text-white">author: </label>
           <input
             type="text"
             id="author"
             placeholder="Please write author name"
             value={author}
-            className=" outline-none flex-grow font-medium bg-black text-white font-montserrat"
+            className=" outline-none flex-grow font-medium bg-transparent text-white"
             onChange={(event) => setAuthor(event.target.value)}
           />
         </div>
@@ -90,7 +90,7 @@ const EditBlogPostPage = ({ data }: Props) => {
         {!data.deleted ? (
           <button
             type="button"
-            className="border-2 border-red-700 text-red-700 rounded-full px-1 py-1 mt-2 shadow-[3px_3px_0_red]"
+            className=" text-red-700 px-1 py-1 mt-2"
             onClick={() => handleDeleteClick(id)}
           >
             Delete post

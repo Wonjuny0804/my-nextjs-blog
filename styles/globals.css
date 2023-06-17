@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("./prism-nightowl.css");
-/* @import url("./prism-oneLight.css"); */
+/* @import url("./prism-nightowl.css"); */
+@import url("./prism-oneLight.css");
 /* @import url("./prism-newStyle.css"); */
 
 @layer components {
@@ -129,12 +129,12 @@ canvas {
 }
 
 .toastui-editor-defaultUI {
-  border: 2px solid #000000 !important;
+  /* border: 2px solid #000000 !important; */
   border-radius: 0px !important;
 }
 
 .toastui-editor-defaultUI-toolbar {
-  border-bottom: 2px solid #000000 !important;
+  /* border-bottom: 2px solid #000000 !important; */
 }
 
 .toastui-editor-mode-switch {
