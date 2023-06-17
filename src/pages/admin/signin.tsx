@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import Layout from "components/common/Layout";
+import Layout from "components/common/Layout/Layout";
 import useAuth from "../../stores/auth";
 import AdminServiceInstance from "../../service/admin";
 import { useRouter } from "next/router";

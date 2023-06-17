@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import PostItem from "../../../components/blog/Post/PostItem";
-import Layout from "../../../components/common/Layout";
+import Layout from "../../../components/common/Layout/Layout";
 import useBlog from "../../../stores/blog";
 import ImageServiceInstance from "../../../service/image";
 import AdminServiceInstance from "../../../service/admin";
