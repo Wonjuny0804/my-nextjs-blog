@@ -42,8 +42,8 @@ const Layout = (props: Props) => {
         />
       </Head>
 
-      {!noNav && <NavBar position={fixedHeader ? "fixed" : "sticky"} />}
-      <main className={``}>{children}</main>
+      {!noNav && <NavBar />}
+      <main>{children}</main>
       {!noFooter && <Footer />}
     </>
   );

@@ -7,14 +7,14 @@ import dynamic from "next/dynamic";
 const MobileMenu = dynamic(() => import("./MobileMenu/MobileMenu"));
 
 interface Props {
-  position?: "sticky" | "fixed";
+  position?: "sticky" | "fixed" | "absolute";
 }
 
-const NavBar = ({ position = "sticky" }: Props) => {
+const NavBar = () => {
   return (
     <div
-      className={` ${position === "sticky" && position} 
-      top-0 z-10 flex justify-between px-3 xl:w-[1280px] xl:m-auto xl:px-0 xl:pr-0 xl:pt-6
+      className={`
+      top-[10px] z-10 flex justify-between px-3 xl:w-[1280px] xl:m-auto xl:px-0 xl:pr-0 xl:pt-6
       bg-[#1e1e1e] lg:bg-transparent
        lg:pl-10 lg:pr-10`}
     >
