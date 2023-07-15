@@ -36,11 +36,13 @@ const TextEditor = ({
   const EditorRef = useRef<Editor>(null);
   const { savePost } = useBlog();
   const router = useRouter();
+
   const [source, setSource] = useState<
     MDXRemoteSerializeResult<Record<string, unknown>>
   >({
     compiledSource: "",
   });
+  const [showPreview, setShowPreview] = useState<boolean>(true);
 
   const handleSaveEdit = async () => {
     if (!EditorRef.current) return;
@@ -110,7 +112,9 @@ const TextEditor = ({
 
   return (
     <div className="flex flex-col">
-      <div className="lg:grid grid-cols-2">
+      <div
+        className={`lg:grid ${showPreview ? "grid-cols-2" : "grid-cols-1"} `}
+      >
         <Editor
           initialValue={
             editData?.content ??
@@ -125,7 +129,8 @@ const TextEditor = ({
           ref={EditorRef}
           onChange={handleContentChange}
         />
-        {source.compiledSource && (
+
+        {showPreview && source.compiledSource && (
           <div
             style={{
               height,
@@ -138,6 +143,16 @@ const TextEditor = ({
           </div>
         )}
       </div>
+
+      <div className={`hidden lg:flex flex-row gap-3 mt-2`}>
+        <label htmlFor="postPreviewOnOff">Show Preview</label>
+        <input
+          id="postPreviewOnOff"
+          type="checkbox"
+          onChange={() => setShowPreview(!showPreview)}
+        />
+      </div>
+
       {!deleted && (
         <button
           type="button"
