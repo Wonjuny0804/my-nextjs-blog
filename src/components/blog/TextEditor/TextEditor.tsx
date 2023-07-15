@@ -43,6 +43,7 @@ const TextEditor = ({
     compiledSource: "",
   });
   const [showPreview, setShowPreview] = useState<boolean>(true);
+  const [darkMode, setDarkMode] = useState<boolean>(true);
 
   const handleSaveEdit = async () => {
     if (!EditorRef.current) return;
@@ -113,7 +114,9 @@ const TextEditor = ({
   return (
     <div className="flex flex-col">
       <div
-        className={`lg:grid ${showPreview ? "grid-cols-2" : "grid-cols-1"} `}
+        className={`lg:grid ${showPreview ? "grid-cols-2" : "grid-cols-1"} ${
+          darkMode ? "dark-mode" : "light-mode"
+        }`}
       >
         <Editor
           initialValue={
@@ -149,7 +152,16 @@ const TextEditor = ({
         <input
           id="postPreviewOnOff"
           type="checkbox"
+          checked={showPreview}
           onChange={() => setShowPreview(!showPreview)}
+        />
+
+        <label htmlFor="editorMode">Use DarkMode</label>
+        <input
+          id="editorMode"
+          type="checkbox"
+          checked={darkMode}
+          onChange={() => setDarkMode((prev) => !prev)}
         />
       </div>
 

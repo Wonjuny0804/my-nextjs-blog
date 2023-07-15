@@ -147,3 +147,8 @@ canvas {
   background-color: #ffffff;
   height: 100% !important;
 }
+
+.dark-mode .ProseMirror {
+  background-color: transparent;
+  color: #ffffff !important;
+}
