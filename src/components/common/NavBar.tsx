@@ -14,8 +14,8 @@ const NavBar = () => {
   return (
     <div
       className={`
-      top-[10px] z-10 flex justify-between px-3 xl:w-[1280px] xl:m-auto xl:px-0 xl:pr-0 xl:pt-6
-      bg-[#1e1e1e] lg:bg-transparent
+      top-[10px] z-10 flex justify-between px-3 xl:w-[1280px] 
+      bg-[#1e1e1e] lg:bg-transparent lg:fixed lg:right-0
        lg:pl-10 lg:pr-10`}
     >
       <div className={`flex items-center gap-3 font-montserrat self-start`}>

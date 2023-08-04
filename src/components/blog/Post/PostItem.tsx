@@ -13,38 +13,18 @@ interface Props {
 }
 
 const PostItem = (props: Props) => {
-  const { title, excerpt, createdDate, thumbnailImageUrl, loading } = props;
+  const { title, excerpt, createdDate } = props;
 
   return (
-    <article className={` overflow-hidden md:h-full`}>
-      {/* <div className="relative min-h-[184px] h-[184px]">
-        {loading ? (
-          <div className="w-full h-full flex items-center justify-center">
-            <Loader />
-          </div>
-        ) : (
-          <Image
-            layout="fill"
-            src={thumbnailImageUrl}
-            alt={excerpt}
-            className=" max-w-full h-full bg-white"
-            loading="lazy"
-            objectFit="cover"
-            blurDataURL={thumbnailImageUrl}
-            placeholder="blur"
-          />
-        )}
-      </div> */}
+    <article
+      className={` overflow-hidden md:h-full text-white hover:text-tertiary-dark transition-colors duration-300`}
+    >
       <div className="px-4">
-        <h2 className="leading-[1.2] font-medium mb-1 line-clamp-2 text-white break-words break-keep">
+        <h2 className="leading-[1.2] font-medium mb-1 line-clamp-2 break-words break-keep">
           {title}
         </h2>
-        <p className="text-sm font-light line-clamp-2 text-white mt-8">
-          {excerpt}
-        </p>
+        <p className="text-sm font-light line-clamp-2  mt-8">{excerpt}</p>
         <span className="text-xs text-[#999999] mt-8 block">{createdDate}</span>
-
-        {/* <span className="text-xs font-medium block text-grey">Read More</span> */}
       </div>
     </article>
   );

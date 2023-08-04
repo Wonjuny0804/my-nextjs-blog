@@ -148,7 +148,9 @@ const TextEditor = ({
       </div>
 
       <div className={`hidden lg:flex flex-row gap-3 mt-2`}>
-        <label htmlFor="postPreviewOnOff">Show Preview</label>
+        <label htmlFor="postPreviewOnOff" className="text-white">
+          Show Preview
+        </label>
         <input
           id="postPreviewOnOff"
           type="checkbox"
@@ -156,7 +158,9 @@ const TextEditor = ({
           onChange={() => setShowPreview(!showPreview)}
         />
 
-        <label htmlFor="editorMode">Use DarkMode</label>
+        <label htmlFor="editorMode" className="text-white">
+          Use DarkMode
+        </label>
         <input
           id="editorMode"
           type="checkbox"
