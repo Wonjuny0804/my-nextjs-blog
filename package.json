@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.0",
+    "@headlessui/react": "^1.7.16",
     "@heroicons/react": "v1",
     "@react-three/drei": "^9.34.1",
     "@react-three/fiber": "7.0.25",

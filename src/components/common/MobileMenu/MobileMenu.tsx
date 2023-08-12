@@ -6,7 +6,7 @@ import Link from "next/link";
 const MobileMenu: FC = () => {
   return (
     <div className={`flex font-montserrat items-center lg:hidden`}>
-      <Menu as="div" className=" flex items-center text-left">
+      <Menu as="div" className=" flex items-center text-left bg-primary-dark">
         {({ open }) => (
           <>
             <Menu.Button
@@ -32,47 +32,62 @@ const MobileMenu: FC = () => {
                 as="ul"
                 className={`absolute top-0 left-0 w-screen h-screen
            flex flex-col min-w-[160px] py-6 
-          bg-black`}
+          bg-primary-dark`}
               >
                 <Menu.Item as="li">
-                  <Link
-                    href="/"
-                    className={`block w-full  py-3 pl-6 text-white`}
-                  >
-                    main
-                  </Link>
+                  {({ close }) => (
+                    <Link
+                      href="/"
+                      className={`block w-full  py-3 pl-6 text-white`}
+                      onClick={close}
+                    >
+                      main
+                    </Link>
+                  )}
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link
-                    href="/about"
-                    className={`block w-full  py-3 pl-6 text-white`}
-                  >
-                    about
-                  </Link>
+                  {({ close }) => (
+                    <Link
+                      href="/about"
+                      className={`block w-full  py-3 pl-6 text-white`}
+                      onClick={close}
+                    >
+                      about
+                    </Link>
+                  )}
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link
-                    href="/posts"
-                    className={`block w-full  py-3 pl-6 text-white`}
-                  >
-                    posts
-                  </Link>
+                  {({ close }) => (
+                    <Link
+                      href="/posts"
+                      className={`block w-full  py-3 pl-6 text-white`}
+                      onClick={close}
+                    >
+                      posts
+                    </Link>
+                  )}
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link
-                    href="/lab"
-                    className={`block w-full  py-3 pl-6 text-white`}
-                  >
-                    lab
-                  </Link>
+                  {({ close }) => (
+                    <Link
+                      href="/lab"
+                      className={`block w-full  py-3 pl-6 text-white`}
+                      onClick={close}
+                    >
+                      lab
+                    </Link>
+                  )}
                 </Menu.Item>
                 <Menu.Item as="li">
-                  <Link
-                    href="/admin"
-                    className={`block w-full  py-3 pl-6 text-white`}
-                  >
-                    admin
-                  </Link>
+                  {({ close }) => (
+                    <Link
+                      href="/admin"
+                      className={`block w-full  py-3 pl-6 text-white`}
+                      onClick={close}
+                    >
+                      admin
+                    </Link>
+                  )}
                 </Menu.Item>
               </Menu.Items>
             </Transition>
