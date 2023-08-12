@@ -51,9 +51,9 @@ const Home = () => {
       </Script>
       <Layout
         metaData={{
-          title: "wonjundev.tech",
+          title: "wonjoon.dev",
           description:
-            "This is the main page of Wonjundev tech blog. Please come and rest all programmers",
+            "A main page for the wojoon.dev site. Where you can find the newest information for technology and programming.",
         }}
       >
         <div className={`min-h-[calc(100vh-160px)] p-10 md:p-10 grid `}>
