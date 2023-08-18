@@ -51,7 +51,7 @@ const Home = () => {
       </Script>
       <Layout
         metaData={{
-          title: "wonjoon.dev",
+          title: "Wonjun Jang",
           description:
             "A main page for the wojoon.dev site. Where you can find the newest information for technology and programming.",
         }}
