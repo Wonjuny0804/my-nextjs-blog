@@ -44,12 +44,16 @@ module.exports = {
         charsIn: {
           to: { transform: "translate3d(0,0,0)", opacity: 1 },
         },
+        imageOpen: {
+          to: { top: "-400px" },
+        },
       },
       animation: {
         fadeInOut: "fadeInOut 6s ease-in infinite",
         mobileMenuEnter:
           "mobileMenuEnter 0.7s cubic-bezier(0.62,0.05,0.01,0.99)",
         charsIn: "charsIn 1s cubic-bezier(0.62,0.05,0.01,0.99) forwards",
+        imageOpen: "imageOpen 1.5s cubic-bezier(0.62,0.05,0.01,0.99) forwards",
       },
       transitionTimingFunction: {
         "primary-curve": "cubic-bezier(0.62,0.05,0.01,0.99)",
@@ -59,5 +63,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("tailwind-scrollbar-hide"),
+    require("./plugins/animationDelay.js"),
   ],
 };

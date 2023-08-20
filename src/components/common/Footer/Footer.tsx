@@ -30,30 +30,31 @@ const Footer: FC = React.memo(() => {
   }, []);
 
   return (
-    <footer className={`px-8 py-8 flex gap-3 mt-20`}>
+    <footer className={`px-8 py-8 flex flex-col gap-3 mt-20`}>
       <Link
         href={"/about"}
         passHref
-        className={`w-fit text-[24px] grid items-center justify-center`}
+        className={`w-fit text-xl grid items-center justify-center text-white leading-[1] capitalize`}
       >
-        <Logo className={`h-4`} />
+        Wonjoon Jang <br />
+        software engineer
       </Link>
-      <div className={`flex gap-2 items-center text-white text-xs`}>
+      <div className={`flex gap-1 items-center text-white text-xl`}>
         <Link href={"/"} passHref>
-          Instagram
+          Github,
         </Link>
         <Link href={"/"} passHref>
-          LinkedIn
+          LinkedIn,
         </Link>
         <Link href={"mailto: wonwonjune@gmail.com"} passHref>
-          Email
+          Email,
         </Link>
-
-        <button type="button" onClick={handleShowModal}>
+        {/* <button type="button" onClick={handleShowModal}>
           language
-        </button>
+        </button> */}
       </div>
-      <dialog
+
+      {/* <dialog
         ref={modalRef}
         className="w-[80vw] bg-secondary-dark text-white p-5"
       >
@@ -80,7 +81,7 @@ const Footer: FC = React.memo(() => {
             </button>
           </li>
         </ul>
-      </dialog>
+      </dialog> */}
     </footer>
   );
 });

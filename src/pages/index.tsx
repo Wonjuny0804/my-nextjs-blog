@@ -1,34 +1,37 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
+import AnimatedLines from "components/common/AnimatedLines";
+import AnimatedWords from "components/common/AnimatedWords";
+import Image from "next/image";
 
 const Layout = dynamic(() => import("../components/common/Layout/Layout"));
 
 const Home = () => {
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [mainPhrase, setMainPhrase] = useState<string[]>([]);
-  const timerRef = useRef<NodeJS.Timer>();
+  const pic1Ref = useRef<HTMLImageElement>(null);
+  const [reference, setReference] = React.useState<HTMLImageElement | null>(
+    null
+  );
 
   useEffect(() => {
-    const mainPhrase = [
-      "Die Vögel kämpfen sich aus dem Ei. Das Ei ist die Welt. Wer geboren werden will, muss die Welt zerstören.",
-      "The bird fights its way out of the egg. The egg is the world. Who would be born must destroy a world.",
-      "새는 알을 통해 밖으로 나가기 위해 싸운다. 그 알은 세계다. 누구든 태어나기 위해선, 한 세계를 파괴해야 한다.",
-    ];
+    setReference(pic1Ref.current);
 
-    setMainPhrase(mainPhrase);
-
-    timerRef.current = setInterval(() => {
-      setPhraseIndex((prev) => {
-        if (prev === mainPhrase.length - 1) return 0;
-        return prev + 1;
-      });
-    }, 6000);
+    window.addEventListener("scroll", () => {
+      //parallax effect
+      if (reference) {
+        reference.style.transform = `translateY(${window.scrollY * -0.1}px)`;
+      }
+    });
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      window.removeEventListener("scroll", () => {
+        //parallax effect
+        if (reference) {
+          reference.style.transform = `translateY(${window.scrollY * -0.1}px)`;
+        }
+      });
     };
-  }, []);
+  }, [reference]);
 
   return (
     <>
@@ -55,24 +58,89 @@ const Home = () => {
           description:
             "A main page for the wojoon.dev site. Where you can find the newest information for technology and programming.",
         }}
+        noFooter
       >
-        <div className={`min-h-[calc(100vh-160px)] p-10 md:p-10 grid `}>
-          <p
-            className={`text-white bg-[#1e1e1e] text-3xl leading-[1.3] text-left word-wrap break-keep relative`}
-          >
-            {mainPhrase.map((phrase, index) => (
-              <span
-                key={`mainPhrase-${index}`}
-                className={`absolute opacity-0 ${
-                  phraseIndex === index ? "animate-fadeInOut" : ""
-                }`}
-                aria-current={phraseIndex === index}
-                data-index={phraseIndex === index ? "current" : "not-current"}
-              >
-                {phrase}
+        <div className="px-5 text-white font-customFont">
+          <AnimatedLines
+            sentence={[
+              "I help designers and",
+              "developers to create a",
+              "beautiful and seamless",
+              "web applications",
+            ]}
+            className="flex flex-col gap-y-1 text-lg uppercase w-[255px] lg:w-full mt-[130px]"
+          />
+
+          <h2 className="uppercase text-[56px] leading-[3rem] mt-20">
+            <AnimatedWords word={["s", "o", "f", "t", "w", "a", "r", "e"]} />
+            <br />
+            <AnimatedWords word={["e", "n", "g", "i", "n", "e", "e", "r"]} />
+          </h2>
+
+          <section className="overflow-hidden mt-10 relative h-[300px]">
+            <div className="bg-primary-dark h-[340px] z-[2] absolute top-0 w-full animate-imageOpen"></div>
+            <Image
+              src="/../public/assets/landing_pic1.webp"
+              width={290}
+              height={300}
+              alt="picture of me"
+              ref={pic1Ref}
+              className=""
+            />
+          </section>
+
+          <div className="uppercase text-[56px] leading-[0.9] mt-10">
+            wonjoon <br />
+            jang <span>↓</span>
+          </div>
+
+          {/*
+          Introduction about me..
+          1. projects or recent works..
+          2. what I do and pictures I took
+           */}
+          <section id="projects" className="mt-20 w-full">
+            <h3 className="uppercase grid-cols-[30%_1fr] pb-[100px]">
+              <span className="block">02/</span>
+              <span className="block">
+                <span>recent</span>
+                <span>projects</span>
               </span>
-            ))}
-          </p>
+            </h3>
+
+            <h4 className="text-[56px] uppercase underline">
+              <span className="relative clip-path-animated-chars overflow-hidden">
+                <span className="hidden">enkor</span>
+                <span aria-hidden="true" className="opacity-0">
+                  e
+                </span>
+                <span aria-hidden="true" className="opacity-0">
+                  n
+                </span>
+                <span aria-hidden="true" className="opacity-0">
+                  k
+                </span>
+                <span aria-hidden="true" className="opacity-0">
+                  o
+                </span>
+                <span aria-hidden="true" className="opacity-0">
+                  r
+                </span>
+                <span className="absolute left-0">
+                  <span
+                    id="project1-e"
+                    className="inline-flex translate-y-[80%] animate-charsIn"
+                  >
+                    e
+                  </span>
+                  <span className="">n</span>
+                  <span className="">k</span>
+                  <span className="">o</span>
+                  <span className="">r</span>
+                </span>
+              </span>
+            </h4>
+          </section>
         </div>
       </Layout>
     </>

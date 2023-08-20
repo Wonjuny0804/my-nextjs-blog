@@ -18,14 +18,12 @@ interface Props {
 }
 
 const Layout = (props: Props) => {
-  const { metaData, children, fullWidth, noNav, fixedHeader, noFooter } = props;
+  const { metaData, children, noNav, fixedHeader, noFooter } = props;
 
   return (
     <>
       <Head>
-        <title>
-          {metaData?.title ?? "Frontend developer Wonjun's tech blog"}
-        </title>
+        <title>{metaData?.title ?? "Wonjun Jang"}</title>
         <meta
           name="description"
           content={

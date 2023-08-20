@@ -7,8 +7,10 @@ const MobileMenu = dynamic(() => import("./MobileMenu/MobileMenu"));
 
 const NavBar = () => {
   return (
-    <div className={`flex pt-[32px] px-5 justify-between font-customFont`}>
-      <Link href={"/"} passHref className="text-white text-[20px] p-2">
+    <div
+      className={`fixed top-0 w-full  flex pt-[32px] px-5 justify-between font-customFont z-[140]`}
+    >
+      <Link href={"/"} passHref className="text-white text-[20px]">
         Wonjoon Jang
       </Link>
       <div
@@ -39,6 +41,7 @@ const NavBar = () => {
           lab
         </Link>
       </div>
+
       <MobileMenu />
     </div>
   );
