@@ -47,6 +47,9 @@ module.exports = {
         imageOpen: {
           to: { top: "-400px" },
         },
+        primaryUnderline: {
+          to: { width: "100%" },
+        },
       },
       animation: {
         fadeInOut: "fadeInOut 6s ease-in infinite",
@@ -61,8 +64,8 @@ module.exports = {
     },
   },
   plugins: [
+    require("./plugins/animationDelay.js"),
     require("@tailwindcss/typography"),
     require("tailwind-scrollbar-hide"),
-    require("./plugins/animationDelay.js"),
   ],
 };

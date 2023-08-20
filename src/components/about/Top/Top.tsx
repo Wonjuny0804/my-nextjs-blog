@@ -2,13 +2,8 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import myImage from "../../../../public/assets/wonjun-2.png";
-import AOS from "aos";
 
 const Top: FC = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   const ptagRef = useRef<HTMLParagraphElement>(null);
   const ptag = ptagRef.current;
 

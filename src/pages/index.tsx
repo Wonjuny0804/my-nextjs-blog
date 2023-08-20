@@ -4,6 +4,7 @@ import Script from "next/script";
 import AnimatedLines from "components/common/AnimatedLines";
 import AnimatedWords from "components/common/AnimatedWords";
 import Image from "next/image";
+import { InView } from "react-intersection-observer";
 
 const Layout = dynamic(() => import("../components/common/Layout/Layout"));
 
@@ -64,7 +65,7 @@ const Home = () => {
           <AnimatedLines
             sentence={[
               "I help designers and",
-              "developers to create a",
+              "developers to create",
               "beautiful and seamless",
               "web applications",
             ]}
@@ -78,7 +79,7 @@ const Home = () => {
           </h2>
 
           <section className="overflow-hidden mt-10 relative h-[300px]">
-            <div className="bg-primary-dark h-[340px] z-[2] absolute top-0 w-full animate-imageOpen"></div>
+            <div className="bg-primary-dark h-[340px] z-[2] absolute top-0 w-full animate-imageOpen animation-delay-300"></div>
             <Image
               src="/../public/assets/landing_pic1.webp"
               width={290}
@@ -108,8 +109,8 @@ const Home = () => {
               </span>
             </h3>
 
-            <h4 className="text-[56px] uppercase underline">
-              <span className="relative clip-path-animated-chars overflow-hidden">
+            <h4 className="text-[56px] uppercase underline w-full">
+              <span className="relative clip-path-animated-chars overflow-hidden w-full">
                 <span className="hidden">enkor</span>
                 <span aria-hidden="true" className="opacity-0">
                   e
@@ -126,20 +127,114 @@ const Home = () => {
                 <span aria-hidden="true" className="opacity-0">
                   r
                 </span>
-                <span className="absolute left-0">
-                  <span
-                    id="project1-e"
-                    className="inline-flex translate-y-[80%] animate-charsIn"
-                  >
-                    e
-                  </span>
-                  <span className="">n</span>
-                  <span className="">k</span>
-                  <span className="">o</span>
-                  <span className="">r</span>
+                <span className="absolute left-0 whitespace-nowrap">
+                  <InView>
+                    {({ inView, ref }) => (
+                      <span
+                        ref={ref}
+                        className={`inline-flex translate-y-[80%] ${
+                          inView
+                            ? "animate-charsIn animation-delay-[300ms]"
+                            : ""
+                        }`}
+                      >
+                        e
+                      </span>
+                    )}
+                  </InView>
+                  <InView>
+                    {({ inView, ref }) => (
+                      <span
+                        ref={ref}
+                        className={`inline-flex translate-y-[80%] ${
+                          inView
+                            ? "animate-charsIn animation-delay-[350ms]"
+                            : ""
+                        }`}
+                      >
+                        n
+                      </span>
+                    )}
+                  </InView>
+                  <InView>
+                    {({ inView, ref }) => (
+                      <span
+                        ref={ref}
+                        className={`inline-flex translate-y-[80%] ${
+                          inView
+                            ? "animate-charsIn animation-delay-[400ms]"
+                            : ""
+                        }`}
+                      >
+                        k
+                      </span>
+                    )}
+                  </InView>
+                  <InView>
+                    {({ inView, ref }) => (
+                      <span
+                        ref={ref}
+                        className={`inline-flex translate-y-[80%] ${
+                          inView
+                            ? "animate-charsIn animation-delay-[450ms]"
+                            : ""
+                        }`}
+                      >
+                        o
+                      </span>
+                    )}
+                  </InView>
+                  <InView>
+                    {({ inView, ref }) => (
+                      <span
+                        ref={ref}
+                        className={`inline-flex translate-y-[80%] ${
+                          inView
+                            ? "animate-charsIn animation-delay-[500ms]"
+                            : ""
+                        }`}
+                      >
+                        r
+                      </span>
+                    )}
+                  </InView>
+                  <InView>
+                    {({ inView, ref }) => (
+                      <span
+                        ref={ref}
+                        className={`absolute bottom-[6px] left-0 w-0 h-[12px] bg-white ${
+                          inView
+                            ? "animate-[primaryUnderline_1s_cubic-bezier(0.62,0.05,0.01,0.99)_forwards] animation-delay-[1050ms]"
+                            : ""
+                        }`}
+                      ></span>
+                    )}
+                  </InView>
                 </span>
               </span>
             </h4>
+
+            <InView>
+              {({ inView, ref }) => (
+                <div
+                  className="mt-10 h-[350px] overflow-hidden relative"
+                  ref={ref}
+                >
+                  <div
+                    className={`bg-primary-dark w-full h-[350px] top-0 absolute ${
+                      inView ? "animate-imageOpen animation-delay-[1150ms]" : ""
+                    }`}
+                  ></div>
+                  <Image
+                    src="/../public/assets/enkor-mb.png"
+                    width={300}
+                    height={300}
+                    alt="enkor"
+                    priority
+                  />
+                </div>
+              )}
+            </InView>
           </section>
         </div>
       </Layout>
