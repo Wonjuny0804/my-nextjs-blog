@@ -50,6 +50,12 @@ module.exports = {
         primaryUnderline: {
           to: { width: "100%" },
         },
+        openRight: {
+          to: { right: "-100%" },
+        },
+        openLeft: {
+          to: { left: "-100%" },
+        },
       },
       animation: {
         fadeInOut: "fadeInOut 6s ease-in infinite",
@@ -57,6 +63,10 @@ module.exports = {
           "mobileMenuEnter 0.7s cubic-bezier(0.62,0.05,0.01,0.99)",
         charsIn: "charsIn 1s cubic-bezier(0.62,0.05,0.01,0.99) forwards",
         imageOpen: "imageOpen 1.5s cubic-bezier(0.62,0.05,0.01,0.99) forwards",
+        primaryOpenRight:
+          "openRight 1s cubic-bezier(0.62,0.05,0.01,0.99) forwards ",
+        primaryOpenLeft:
+          "openLeft 1s cubic-bezier(0.62,0.05,0.01,0.99) forwards ",
       },
       transitionTimingFunction: {
         "primary-curve": "cubic-bezier(0.62,0.05,0.01,0.99)",

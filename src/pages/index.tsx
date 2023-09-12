@@ -108,7 +108,7 @@ const Home = () => {
               className=""
             />
           </section>
-          <InView>
+          <InView triggerOnce>
             {({ inView, ref }) => (
               <div
                 className={`uppercase text-[56px] leading-[0.9] mt-10 opacity-0 translate-y-[-20px] ${
@@ -117,13 +117,7 @@ const Home = () => {
                 ref={ref}
               >
                 wonjoon <br />
-                jang{" "}
-                {/* <span
-                  className={`before:content-['↓']  text-[56px] after:content-['↓'] flex flex-col overflow-hidden w-[56px] h-[56px] justify-center items-center`}
-                >
-                  ↓
-                </span> */}
-                <span className={`text-[56px] w-[56px] h-[56px] `}>↓</span>
+                jang <span className={`text-[56px] w-[56px] h-[56px] `}>↓</span>
               </div>
             )}
           </InView>
@@ -136,319 +130,345 @@ const Home = () => {
                 <span>me</span>
               </span>
             </h3>
-            <InView>
-              {({ inView, ref }) => (
-                <h3
-                  className="text-[32px] capitalize leading-[1.1] w-full"
-                  ref={ref}
-                >
-                  <div className="w-full">
-                    <span className="hidden" aria-hidden>
-                      developer
-                    </span>
-                    <span className="relative block w-full">
-                      <span className="opacity-0">D</span>
-                      <span className="opacity-0">e</span>
-                      <span className="opacity-0">v</span>
-                      <span className="opacity-0">e</span>
-                      <span className="opacity-0">l</span>
-                      <span className="opacity-0">o</span>
-                      <span className="opacity-0">p</span>
-                      <span className="opacity-0">e</span>
-                      <span className="opacity-0">r</span>
-                      <span className="absolute top-0 left-0  overflow-y-hidden clip-path-animated-chars w-full">
-                        <span
-                          className={`inline-block translate-y-[30px] ${
-                            inView && "animate-charsIn"
-                          }`}
-                        >
-                          D
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-100 ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          e
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-200 ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          v
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-300 ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          e
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-400 ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          l
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-500 ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          o
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-600 ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          p
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-700 ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          e
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-800 ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          r
-                        </span>
-                      </span>
-                    </span>
-                  </div>
-                  <div>
-                    <span className="hidden" aria-hidden>
-                      entrepreneur
-                    </span>
-                    <span className="relative block w-full">
-                      <span className="opacity-0">E</span>
-                      <span className="opacity-0">n</span>
-                      <span className="opacity-0">t</span>
-                      <span className="opacity-0">r</span>
-                      <span className="opacity-0">e</span>
-                      <span className="opacity-0">p</span>
-                      <span className="opacity-0">r</span>
-                      <span className="opacity-0">e</span>
-                      <span className="opacity-0">n</span>
-                      <span className="opacity-0">e</span>
-                      <span className="opacity-0">u</span>
-                      <span className="opacity-0">r</span>
-                      <span className="absolute top-0 left-0 overflow-y-hidden clip-path-animated-chars w-full">
-                        <span
-                          className={`inline-block translate-y-[30px] animation-delay-[1000ms] ${
-                            inView && "animate-charsIn"
-                          }`}
-                        >
-                          E
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1100ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          n
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1200ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          t
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1300ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          r
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1400ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          e
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1500ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          p
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1600ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          r
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1700ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          e
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1800ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          n
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[1900ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          e
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[2000ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          u
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[2100ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          r
-                        </span>
-                      </span>
-                    </span>
-                  </div>
-                  <div>
-                    <span className="hidden" aria-hidden>
-                      quality
-                    </span>
-                    <span className="relative block w-full">
-                      <span className="opacity-0">Q</span>
-                      <span className="opacity-0">u</span>
-                      <span className="opacity-0">a</span>
-                      <span className="opacity-0">l</span>
-                      <span className="opacity-0">i</span>
-                      <span className="opacity-0">t</span>
-                      <span className="opacity-0">y</span>
-                      <span className="absolute top-0 left-0 overflow-y-hidden clip-path-animated-chars w-full">
-                        <span
-                          className={`inline-block translate-y-[30px] animation-delay-[2100ms] ${
-                            inView && "animate-charsIn"
-                          }`}
-                        >
-                          Q
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[2200ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          u
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[2300ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          a
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[2400ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          l
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[2500ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          i
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[2600ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          t
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[2700ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          y
-                        </span>
-                      </span>
-                    </span>
-                  </div>
-                  <div>
-                    <span className="hidden" aria-hidden>
-                      value
-                    </span>
-                    <span className="relative block w-full">
-                      <span className="opacity-0">v</span>
-                      <span className="opacity-0">a</span>
-                      <span className="opacity-0">l</span>
-                      <span className="opacity-0">u</span>
-                      <span className="opacity-0">e</span>
-                      <span className="absolute top-0 left-0 overflow-y-hidden clip-path-animated-chars w-full">
-                        <span
-                          className={`inline-block translate-y-[30px] animation-delay-[3000ms] ${
-                            inView && "animate-charsIn"
-                          }`}
-                        >
-                          V
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[3100ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          a
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[3200ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          l
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[3300ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          u
-                        </span>
-                        <span
-                          className={`inline-block translate-y-[30px] lowercase animation-delay-[3400ms] ${
-                            inView && "animate-charsIn "
-                          }`}
-                        >
-                          e
-                        </span>
-                      </span>
-                    </span>
-                  </div>
-                </h3>
-              )}
-            </InView>
 
-            <p className="mt-10">
-              Application that's a joy to use and a pleasure to look at.
-            </p>
+            <div className={`relative`}>
+              <InView triggerOnce>
+                {({ inView, ref }) => (
+                  <h3
+                    className="absolute left-[4px] top-[20px] text-[32px] capitalize leading-[1.1] w-full"
+                    ref={ref}
+                  >
+                    <div className="w-full">
+                      <span className="hidden" aria-hidden>
+                        developer
+                      </span>
+                      <span className="relative block w-full">
+                        <span className="opacity-0">D</span>
+                        <span className="opacity-0">e</span>
+                        <span className="opacity-0">v</span>
+                        <span className="opacity-0">e</span>
+                        <span className="opacity-0">l</span>
+                        <span className="opacity-0">o</span>
+                        <span className="opacity-0">p</span>
+                        <span className="opacity-0">e</span>
+                        <span className="opacity-0">r</span>
+                        <span className="absolute top-0 left-0  overflow-y-hidden clip-path-animated-chars w-full">
+                          <span
+                            className={`inline-block translate-y-[30px] ${
+                              inView && "animate-charsIn"
+                            }`}
+                          >
+                            D
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-100 ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            e
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-200 ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            v
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-300 ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            e
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-400 ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            l
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-500 ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            o
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-600 ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            p
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-700 ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            e
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-800 ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            r
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    <div>
+                      <span className="hidden" aria-hidden>
+                        entrepreneur
+                      </span>
+                      <span className="relative block w-full">
+                        <span className="opacity-0">E</span>
+                        <span className="opacity-0">n</span>
+                        <span className="opacity-0">t</span>
+                        <span className="opacity-0">r</span>
+                        <span className="opacity-0">e</span>
+                        <span className="opacity-0">p</span>
+                        <span className="opacity-0">r</span>
+                        <span className="opacity-0">e</span>
+                        <span className="opacity-0">n</span>
+                        <span className="opacity-0">e</span>
+                        <span className="opacity-0">u</span>
+                        <span className="opacity-0">r</span>
+                        <span className="absolute top-0 left-0 overflow-y-hidden clip-path-animated-chars w-full">
+                          <span
+                            className={`inline-block translate-y-[30px] animation-delay-[1000ms] ${
+                              inView && "animate-charsIn"
+                            }`}
+                          >
+                            E
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1100ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            n
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1200ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            t
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1300ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            r
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1400ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            e
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1500ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            p
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1600ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            r
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1700ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            e
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1800ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            n
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[1900ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            e
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[2000ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            u
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[2100ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            r
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    <div>
+                      <span className="hidden" aria-hidden>
+                        quality
+                      </span>
+                      <span className="relative block w-full">
+                        <span className="opacity-0">Q</span>
+                        <span className="opacity-0">u</span>
+                        <span className="opacity-0">a</span>
+                        <span className="opacity-0">l</span>
+                        <span className="opacity-0">i</span>
+                        <span className="opacity-0">t</span>
+                        <span className="opacity-0">y</span>
+                        <span className="absolute top-0 left-0 overflow-y-hidden clip-path-animated-chars w-full">
+                          <span
+                            className={`inline-block translate-y-[30px] animation-delay-[2100ms] ${
+                              inView && "animate-charsIn"
+                            }`}
+                          >
+                            Q
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[2200ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            u
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[2300ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            a
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[2400ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            l
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[2500ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            i
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[2600ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            t
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[2700ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            y
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                    <div>
+                      <span className="hidden" aria-hidden>
+                        value
+                      </span>
+                      <span className="relative block w-full">
+                        <span className="opacity-0">v</span>
+                        <span className="opacity-0">a</span>
+                        <span className="opacity-0">l</span>
+                        <span className="opacity-0">u</span>
+                        <span className="opacity-0">e</span>
+                        <span className="absolute top-0 left-0 overflow-y-hidden clip-path-animated-chars w-full">
+                          <span
+                            className={`inline-block translate-y-[30px] animation-delay-[3000ms] ${
+                              inView && "animate-charsIn"
+                            }`}
+                          >
+                            V
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[3100ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            a
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[3200ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            l
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[3300ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            u
+                          </span>
+                          <span
+                            className={`inline-block translate-y-[30px] lowercase animation-delay-[3400ms] ${
+                              inView && "animate-charsIn "
+                            }`}
+                          >
+                            e
+                          </span>
+                        </span>
+                      </span>
+                    </div>
+                  </h3>
+                )}
+              </InView>
+
+              <p className="mt-10 hidden">
+                Application that's a joy to use and a pleasure to look at.
+              </p>
+
+              <video autoPlay muted loop className={`pointer-events-none`}>
+                <source src={"/IMG_7331.mp4"} type="video/mp4" />
+              </video>
+
+              <InView triggerOnce>
+                {({ inView, ref }) => (
+                  <>
+                    <div
+                      ref={ref}
+                      className={`bg-primary-dark w-full h-[600px] absolute top-0 right-0 z-[2] ${
+                        inView && "animate-primaryOpenRight"
+                      } `}
+                    ></div>
+                    <div
+                      ref={ref}
+                      className={`bg-primary-dark w-full h-[600px] absolute top-0 left-0 z-[2]  ${
+                        inView && "animate-primaryOpenLeft"
+                      }`}
+                    ></div>
+                  </>
+                )}
+              </InView>
+            </div>
           </section>
 
           {/*
