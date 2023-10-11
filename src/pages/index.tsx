@@ -6,6 +6,8 @@ import AnimatedWords from "components/common/AnimatedWords";
 import Image from "next/image";
 import { InView } from "react-intersection-observer";
 import Link from "next/link";
+import IntroTopMobile from "components/Landing/IntroTopMobile";
+import IntroTopDesktop from "components/Landing/IntroTopDesktop";
 
 const Layout = dynamic(() => import("../components/common/Layout/Layout"));
 
@@ -82,45 +84,21 @@ const Home = () => {
         }}
         noFooter
       >
-        <div className="px-5 text-white font-customFont">
-          <AnimatedLines
-            sentence={[
-              "I help designers and",
-              "developers to create",
-              "beautiful and seamless",
-              "web applications",
-            ]}
-            className="flex flex-col gap-y-1 text-lg uppercase w-[255px] lg:w-full mt-[130px]"
-          />
-          <h2 className="uppercase text-[56px] leading-[3rem] mt-20">
-            <AnimatedWords word={["s", "o", "f", "t", "w", "a", "r", "e"]} />
-            <br />
-            <AnimatedWords word={["e", "n", "g", "i", "n", "e", "e", "r"]} />
-          </h2>
-          <section className="overflow-hidden mt-10 relative h-[300px]">
-            <div className="bg-primary-dark h-[340px] z-[2] absolute top-0 w-full animate-imageOpen animation-delay-300"></div>
-            <Image
-              src="/../public/assets/landing_pic1.webp"
-              width={290}
-              height={300}
-              alt="picture of me"
-              ref={pic1Ref}
-              className=""
+        <div className="px-5 text-white font-customFont lg:px-0">
+          <section className="lg:mt-40 lg:px-20">
+            <AnimatedLines
+              sentence={[
+                "I help designers and",
+                "developers to create",
+                "beautiful and seamless",
+                "web applications",
+              ]}
+              className="flex flex-col gap-y-1 uppercase w-[255px] lg:w-full mt-[130px] lg:hidden"
             />
+
+            <IntroTopMobile pic1Ref={pic1Ref} />
+            <IntroTopDesktop />
           </section>
-          <InView triggerOnce>
-            {({ inView, ref }) => (
-              <div
-                className={`uppercase text-[56px] leading-[0.9] mt-10 opacity-0 translate-y-[-20px] ${
-                  inView ? "animate-charsIn" : ""
-                }`}
-                ref={ref}
-              >
-                wonjoon <br />
-                jang <span className={`text-[56px] w-[56px] h-[56px] `}>↓</span>
-              </div>
-            )}
-          </InView>
 
           <section id="aboutme" className="mt-10">
             <h3 className="uppercase grid grid-cols-[30%_1fr] pb-[100px]">
@@ -131,7 +109,7 @@ const Home = () => {
               </span>
             </h3>
 
-            <div className={`relative`}>
+            <div className={`relative lg:w-[80%] lg:m-auto`}>
               <InView triggerOnce>
                 {({ inView, ref }) => (
                   <h3
@@ -446,7 +424,12 @@ const Home = () => {
                 Application that's a joy to use and a pleasure to look at.
               </p>
 
-              <video autoPlay muted loop className={`pointer-events-none`}>
+              <video
+                autoPlay
+                muted
+                loop
+                className={`pointer-events-none lg:object-cover lg:object-[0_80%] lg:h-[400px] lg:w-[100%]`}
+              >
                 <source src={"/IMG_7331.mp4"} type="video/mp4" />
               </video>
 
