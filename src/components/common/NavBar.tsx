@@ -44,9 +44,6 @@ const NavBar = () => {
         <Link href={`/posts`} className={`text-white `}>
           posts
         </Link>
-        <Link href={`/lab`} className={`text-white `}>
-          lab
-        </Link>
       </div>
 
       <MobileMenu />

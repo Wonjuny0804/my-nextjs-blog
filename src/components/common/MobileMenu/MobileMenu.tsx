@@ -214,7 +214,7 @@ const MobileMenu: FC = () => {
                           <span className="opacity-0" aria-hidden="true">
                             B
                           </span>
-                          <span className="absolute top-0 left-0 inline-block overflow-hidden clip-path-animated-chars">
+                          {/* <span className="absolute top-0 left-0 inline-block overflow-hidden clip-path-animated-chars">
                             <span
                               className={`inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.38s_forwards]`}
                             >
@@ -226,7 +226,7 @@ const MobileMenu: FC = () => {
                             <span className="inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.58s_forwards]">
                               B
                             </span>
-                          </span>
+                          </span> */}
                         </span>
                       </Link>
                     )}
