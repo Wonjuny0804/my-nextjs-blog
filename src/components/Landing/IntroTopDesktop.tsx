@@ -41,7 +41,7 @@ const IntroTopDesktop = () => {
       <section className="overflow-hidden relative h-[200px] col-start-1 col-end-6 row-start-2 row-end-3">
         <div className="bg-primary-dark z-[2] h-[200px] absolute top-0 w-full animate-imageOpen animation-delay-300"></div>
         <Image
-          src="/../public/assets/landing_pic1.webp"
+          src="/assets/landing_pic1.webp"
           width={500}
           height={500}
           alt="picture of me"

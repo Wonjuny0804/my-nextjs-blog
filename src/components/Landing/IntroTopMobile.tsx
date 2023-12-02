@@ -18,7 +18,7 @@ const IntroTopMobile = ({ pic1Ref }: Props) => {
       <section className="overflow-hidden mt-10 relative h-[300px]">
         <div className="bg-primary-dark h-[340px] z-[2] absolute top-0 w-full animate-imageOpen animation-delay-300"></div>
         <Image
-          src="/../public/assets/landing_pic1.webp"
+          src="/assets/landing_pic1.webp"
           width={290}
           height={300}
           alt="picture of me"
