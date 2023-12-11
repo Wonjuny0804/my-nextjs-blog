@@ -32,7 +32,7 @@ const AdminPage = () => {
   }, [router]);
 
   return (
-    <Layout noFooter>
+    <Layout noFooter noNav>
       <div className="mx-4 lg:mx-0 font-montserrat">
         <div
           className={`lg:w-[1024px] lg:min-h-[600px] xl:w-[1280px] lg:m-auto text-white`}

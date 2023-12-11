@@ -3,14 +3,11 @@ import dynamic from "next/dynamic";
 import moment from "moment";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { DocumentData } from "firebase/firestore";
+import { NotionPostData } from "../../../../types/NotionPostData";
 
 const PostItem = dynamic(() => import("../Post/PostItem"));
 interface Props {
-  posts: Array<{
-    id: string;
-    data: DocumentData;
-  }>;
+  posts: Array<NotionPostData>;
   grid: boolean;
 }
 
@@ -30,16 +27,13 @@ const Articles: FC<Props> = ({ posts, grid }) => {
             key={post.id}
             className="h-full"
           >
-            <Link href={`/posts/${post.data.url}`} passHref>
+            <Link href={`/posts/${post.id}`} passHref>
               <PostItem
                 id={post.id}
-                title={post.data.title}
-                excerpt={post.data.excerpt}
-                tags={post.data.tags}
-                createdDate={moment
-                  .unix(post.data.createdAt)
-                  .format("MMM Do YYYY")}
-                thumbnailImageUrl={post.data.thumbnailImage.imageUrl}
+                title={post.title}
+                excerpt={post.excerpt}
+                tags={post.tags}
+                createdDate={new Date(post.createDateTime).toDateString()}
               />
             </Link>
           </motion.li>

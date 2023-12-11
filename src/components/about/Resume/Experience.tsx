@@ -12,7 +12,7 @@ interface Props {
   role?: string;
 }
 
-const Experience: FC<Props> = ({ title, period, desc, techStacks }) => {
+const Experience: FC<Props> = ({ title, period, desc }) => {
   return (
     <div>
       {!period?.to && (
@@ -35,17 +35,7 @@ const Experience: FC<Props> = ({ title, period, desc, techStacks }) => {
       </h3>
 
       <p className={`leading-[1.2] text-sm`}>{desc}</p>
-      <div className={`flex gap-2 flex-wrap`}>
-        {/* {techStacks.map((techStack) => (
-          <span
-            key={techStack}
-            className={`block leading-[20px] text-xs text-lighter-grey font-base
-            `}
-          >
-            {techStack}
-          </span>
-        ))} */}
-      </div>
+      <div className={`flex gap-2 flex-wrap`}></div>
     </div>
   );
 };
