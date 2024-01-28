@@ -1,3 +1,8 @@
+import {
+  GetPageResponse,
+  PageObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
+
 export interface NotionBlogPostResponseData {
   object: string;
   id: string;
@@ -14,7 +19,7 @@ export interface NotionBlogPostResponseData {
   // cover: null;
   // icon: null;
   parent: {
-    type: "database_id" | string;
+    type: "database_id";
     database_id: string;
   };
   archived: boolean;

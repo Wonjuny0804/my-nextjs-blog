@@ -1,33 +1,44 @@
 import React, { FC } from "react";
 import { GetStaticProps } from "next";
-import { PostMeta } from "../api/getAllPosts";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import Footer from "../../components/common/Footer/Footer";
 import { Client } from "@notionhq/client";
+import {
+  GetPageResponse,
+  ListBlockChildrenResponse,
+} from "@notionhq/client/build/src/api-endpoints";
+import { NotionBlogPostResponseData } from "../../../types/NotionPostResponseData";
+import NotionBlockRenderer from "components/blog/NotionBlockRenderer";
 
 interface PostDetailProps {
   post: {
-    source: MDXRemoteSerializeResult<Record<string, unknown>>;
-    meta: PostMeta;
+    source: ListBlockChildrenResponse;
+    meta: NotionBlogPostResponseData | null;
   };
 }
 
 const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
-  console.log(post);
+  const blocks = post.source.results;
   return (
     <>
       {/* <PostHeader post={post} /> */}
 
       <section
-        className={`min-w-[320px] font-notoSans px-8 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative`}
-      ></section>
+        className={`min-w-[320px] font-notoSans px-8 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative lg:min-h-[calc(100vh-250px)]`}
+      >
+        <div>
+          <h1 className="text-4xl font-bold mt-6 mb-20 text-white ">
+            {post.meta?.properties?.Name?.title[0].text.content}
+          </h1>
+        </div>
+        <NotionBlockRenderer blocks={blocks} />
+      </section>
       <Footer />
     </>
   );
 };
 
 export const getServerSideProps: GetStaticProps = async ({ params }) => {
-  console.log(params);
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
   });
@@ -50,8 +61,20 @@ export const getServerSideProps: GetStaticProps = async ({ params }) => {
     return [null, null];
   };
 
-  const [pageProperties, pageContent] = await getPost();
-  console.log(pageProperties, pageContent);
+  const postData = await getPost();
+  const pageProperties = postData[0] as NotionBlogPostResponseData;
+  const pageContent = postData[1] as ListBlockChildrenResponse;
+  console.log(pageProperties.properties.Name.title[0].text.content);
+
+  const metaData = {
+    title: pageProperties?.properties?.Name?.title[0].text.content,
+    // description: pageProperties?.properties?.Description?.rich_text[0].text
+    //   .content,
+    // date: pageProperties?.properties?.?.date.start,
+    // tags: pageProperties?.properties?.Tags?.multi_select.map(
+    //   (tag) => tag.name
+    // ),
+  };
 
   return {
     props: {

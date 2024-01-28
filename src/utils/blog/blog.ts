@@ -17,3 +17,5 @@ export const mapPostData = (
     createDateTime: Created.created_time,
   };
 };
+
+export const mapPostMetaData = (post: NotionBlogPostResponseData) => {};
