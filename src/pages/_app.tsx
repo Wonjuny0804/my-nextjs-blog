@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import type { AppProps } from "next/app";
+import React from "react";
 import "../../styles/globals.css";
 import NextNProgress from "nextjs-progressbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -7,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
+  // Use the layout defined at the page level, if available
+
   return (
     <>
       <meta

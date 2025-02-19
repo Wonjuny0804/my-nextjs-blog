@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Loader from "../../common/Loader/Loader";
 
 interface Props {
   title: string;
@@ -8,7 +6,6 @@ interface Props {
   excerpt: string;
   createdDate: string;
   tags: Array<string>;
-  thumbnailImageUrl: string;
   loading?: boolean;
 }
 

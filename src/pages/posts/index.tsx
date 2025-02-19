@@ -1,8 +1,10 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import PostServiceInstance from "../../service/posts";
-import { DocumentData } from "firebase/firestore";
 import dynamic from "next/dynamic";
+import { NotionPostData } from "../../../types/NotionPostData";
+import { mapPostData } from "utils/blog/blog";
+
+const { Client } = require("@notionhq/client");
 
 const Layout = dynamic(() => import("../../components/common/Layout/Layout"));
 const Articles = dynamic(
@@ -10,10 +12,7 @@ const Articles = dynamic(
 );
 
 interface Props {
-  posts: Array<{
-    id: string;
-    data: DocumentData;
-  }>;
+  posts: NotionPostData[];
 }
 
 const PostsPage = ({ posts }: Props) => {
@@ -41,39 +40,36 @@ const PostsPage = ({ posts }: Props) => {
   );
 };
 
-export const getStaticProps = async () => {
-  try {
-    const posts = await PostServiceInstance.getPosts({ published: true });
-    const postsTimeMap = posts?.map((post) => ({
-      ...post,
-      data: {
-        ...post.data,
-        createdAt: post.data.createdAt.seconds,
-        updatedAt: post.data.updatedAt.seconds,
-        thumbnailImage: post.data.thumbnailImage?.imageUrl
-          ? post.data.thumbnailImage
-          : {
-              imageUrl: "/posts/default-image.png",
-            },
-      },
-    }));
+export const getServerSideProps = async () => {
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  });
 
-    postsTimeMap?.sort(
-      (postA, postB) => postB.data.createdAt - postA.data.createdAt
-    );
+  // we only get the published posts
 
-    return {
-      props: {
-        posts: postsTimeMap,
+  const databaseId = process.env.NOTION_DATABASE_ID;
+
+  const getPosts = async () => {
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      filter: {
+        property: "status",
+        select: {
+          equals: "published",
+        },
       },
-    };
-  } catch (error) {
-    return {
-      props: {
-        posts: [],
-      },
-    };
-  }
+    });
+    return response.results;
+  };
+
+  const posts = await getPosts();
+  const mappedPosts = posts.map(mapPostData);
+
+  return {
+    props: {
+      posts: mappedPosts,
+    },
+  };
 };
 
 export default PostsPage;

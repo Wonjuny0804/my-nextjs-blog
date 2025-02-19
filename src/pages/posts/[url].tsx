@@ -1,120 +1,88 @@
 import React, { FC } from "react";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { PostMeta } from "../api/getAllPosts";
-import { serialize } from "next-mdx-remote/serialize";
+import { GetStaticProps } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import rehypePrism from "rehype-prism-plus";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeCodeTitles from "rehype-code-titles";
-import readingTime from "reading-time";
-import rehypetoc from "rehype-toc";
-import PostHeader from "../../components/blog/PostHeader/PostHeader";
 import Footer from "../../components/common/Footer/Footer";
-import MDXRenderer from "../../components/blog/MDXRenderer";
-import PostServiceInstance from "../../service/posts";
-
-export const serializeOptions = {
-  mdxOptions: {
-    rehypePlugins: [
-      rehypePrism,
-      rehypeCodeTitles,
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: {
-            className: "anchor",
-          },
-        },
-      ],
-      rehypetoc,
-    ],
-  },
-};
+import { Client } from "@notionhq/client";
+import {
+  GetPageResponse,
+  ListBlockChildrenResponse,
+} from "@notionhq/client/build/src/api-endpoints";
+import { NotionBlogPostResponseData } from "../../../types/NotionPostResponseData";
+import NotionBlockRenderer from "components/blog/NotionBlockRenderer";
 
 interface PostDetailProps {
   post: {
-    source: MDXRemoteSerializeResult<Record<string, unknown>>;
-    meta: PostMeta;
+    source: ListBlockChildrenResponse;
+    meta: NotionBlogPostResponseData | null;
   };
 }
 
 const PostDetailPage: FC<PostDetailProps> = ({ post }) => {
+  const blocks = post.source.results;
   return (
     <>
-      <PostHeader post={post} />
+      {/* <PostHeader post={post} /> */}
 
       <section
-        className={`min-w-[320px] font-notoSans px-8 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative`}
+        className={`min-w-[320px] font-notoSans px-8 mt-10 lg:w-[800px] lg:mt-10 lg:m-auto contentSize:relative lg:min-h-[calc(100vh-250px)]`}
       >
-        <MDXRenderer source={post.source} />
+        <div>
+          <h1 className="text-4xl font-bold mt-6 mb-20 text-white ">
+            {post.meta?.properties?.Name?.title[0].text.content}
+          </h1>
+        </div>
+        <NotionBlockRenderer blocks={blocks} />
       </section>
       <Footer />
     </>
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { url } = params as { url: string };
-  const posts = await PostServiceInstance.getPostByTitle(url);
-  const { data } = posts[0];
-  const { content } = data;
+export const getServerSideProps: GetStaticProps = async ({ params }) => {
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  });
 
-  const meta = {
-    author: data.author,
-    excerpt: data.excerpt,
-    createdAt: data.createdAt.seconds,
-    updatedAt: data.updatedAt.seconds,
-    title: data.title,
+  // we now get the page from notion
+  const getPost = async () => {
+    const pageId = typeof params?.url === "string" ? params?.url : "";
+
+    try {
+      const values = await Promise.all([
+        notion.pages.retrieve({ page_id: pageId }),
+        notion.blocks.children.list({ block_id: pageId }),
+      ]);
+
+      return values;
+    } catch (err) {
+      console.log(err);
+    }
+
+    return [null, null];
   };
 
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      rehypePlugins: [
-        rehypePrism,
-        rehypeCodeTitles,
-        [
-          rehypeAutolinkHeadings,
-          {
-            properties: {
-              className: "anchor",
-            },
-          },
-        ],
-      ],
-    },
-  });
+  const postData = await getPost();
+  const pageProperties = postData[0] as NotionBlogPostResponseData;
+  const pageContent = postData[1] as ListBlockChildrenResponse;
+  console.log(pageProperties.properties.Name.title[0].text.content);
+
+  const metaData = {
+    title: pageProperties?.properties?.Name?.title[0].text.content,
+    // description: pageProperties?.properties?.Description?.rich_text[0].text
+    //   .content,
+    // date: pageProperties?.properties?.?.date.start,
+    // tags: pageProperties?.properties?.Tags?.multi_select.map(
+    //   (tag) => tag.name
+    // ),
+  };
 
   return {
     props: {
       post: {
-        source: mdxSource,
-        meta: {
-          ...meta,
-          readingTime: readingTime(content),
-        },
+        meta: pageProperties,
+        source: pageContent,
       },
     },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await PostServiceInstance.getPosts({ published: true });
-  if (!posts)
-    //FIXME: please fix this place logic...!
-    return {
-      paths: [],
-      fallback: true,
-    };
-
-  const paths = posts.map((post) => ({
-    params: {
-      url: post.data.url,
-    },
-  }));
-
-  return {
-    paths,
-    fallback: false,
   };
 };
 
