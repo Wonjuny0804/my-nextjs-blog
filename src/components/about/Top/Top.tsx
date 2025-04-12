@@ -6,15 +6,11 @@ const Top: FC = () => {
     <section
       className={`flex flex-col font-montserrat px-4
         lg:gap-14
-      lg:mt-10 lg:px-0
+      lg:mt-6 lg:px-0
       `}
     >
-      <h1 className={`text-white text-xl font-medium mt-8`}>
-        A developer who likes to write articles.
-      </h1>
-
       <p
-        className={`mt-[300px] font-[400] text-[16px] leading-[22px] 
+        className={`mt-5 font-[400] text-[16px] leading-[22px] 
         lg:text-[18px] lg:leading-[24px]
         text-grey`}
       >
