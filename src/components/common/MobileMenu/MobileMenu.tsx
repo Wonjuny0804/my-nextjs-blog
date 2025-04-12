@@ -15,13 +15,16 @@ const MobileMenu: FC = () => {
           justify-center text-[20px]
            font-medium hover:bg-opacity-30
            focus-visible:ring-2 focus-visible:ring-white 
-           focus-visible:ring-opacity-75`}
+           focus-visible:ring-opacity-75 py-1 px-3`}
               >
                 Menu
               </Menu.Button>
 
               <Transition
                 show={open}
+                enter="transition-all duration-300 ease-in"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
                 leave="transition-all duration-300 ease-out"
                 leaveFrom="opacity-100 z-[100]"
                 leaveTo="opacity-0 z-[100]"
@@ -30,7 +33,7 @@ const MobileMenu: FC = () => {
                   as="ul"
                   className={`fixed top-0 left-0 w-screen h-screen
            flex flex-col min-w-[160px] pt-8 px-5 pb-[38px] z-[140] animate-mobileMenuEnter
-          bg-dark-teal text-white`}
+          bg-[#1e1e1e] text-white`}
                 >
                   <div className="mobileMenu__header">
                     <Menu.Item
@@ -102,7 +105,7 @@ const MobileMenu: FC = () => {
                   <Menu.Item as="li">
                     {({ close }) => (
                       <Link
-                        href="/about"
+                        href="/#about"
                         className={`block w-full   text-white h-[68px]`}
                         onClick={close}
                         passHref
@@ -141,6 +144,60 @@ const MobileMenu: FC = () => {
                             </span>
                             <span className="inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.78s_forwards]">
                               T
+                            </span>
+                          </span>
+                        </span>
+                      </Link>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item as="li">
+                    {({ close }) => (
+                      <Link
+                        href="/#resume"
+                        className={`block w-full   text-white h-[68px]`}
+                        onClick={close}
+                        passHref
+                      >
+                        <span className="relative text-[56px] overflow-hidden leading-[1.15]">
+                          <span className="aria-hidden clip-path">Resume</span>
+                          <span className="opacity-0" aria-hidden="true">
+                            R
+                          </span>
+                          <span className="opacity-0" aria-hidden="true">
+                            E
+                          </span>
+                          <span className="opacity-0" aria-hidden="true">
+                            S
+                          </span>
+                          <span className="opacity-0" aria-hidden="true">
+                            U
+                          </span>
+                          <span className="opacity-0" aria-hidden="true">
+                            M
+                          </span>
+                          <span className="opacity-0" aria-hidden="true">
+                            E
+                          </span>
+                          <span className="absolute top-0 left-0 inline-block overflow-hidden clip-path-animated-chars">
+                            <span
+                              className={`inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.38s_forwards]`}
+                            >
+                              R
+                            </span>
+                            <span className="inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.48s_forwards]">
+                              E
+                            </span>
+                            <span className="inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.58s_forwards]">
+                              S
+                            </span>
+                            <span className="inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.68s_forwards]">
+                              U
+                            </span>
+                            <span className="inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.78s_forwards]">
+                              M
+                            </span>
+                            <span className="inline-flex h-[68px] opacity-0 translate-y-[80%] animate-[charsIn_1.25s_cubic-bezier(0.62,0.05,0.01,0.99)_0.88s_forwards]">
+                              E
                             </span>
                           </span>
                         </span>

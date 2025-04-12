@@ -42,7 +42,8 @@
       "id": 4,
       "title": "Paula's Choice Frontend Developer",
       "period": {
-        "from": "2022-08"
+        "from": "2022-08",
+        "to": "2024-10"
       },
       "desc": "Paulas Choice APAC Storefront SFCC(SalesForce Commerce Cloud) and React, Typescript based frontend product",
       "techStacks": [

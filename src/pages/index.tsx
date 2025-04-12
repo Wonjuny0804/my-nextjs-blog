@@ -7,6 +7,8 @@ import IntroTopMobile from "components/Landing/IntroTopMobile";
 import IntroTopDesktop from "components/Landing/IntroTopDesktop";
 
 const Layout = dynamic(() => import("../components/common/Layout/Layout"));
+const Resume = dynamic(() => import("../components/about/Resume/Resume"));
+const Top = dynamic(() => import("../components/about/Top/Top"));
 
 const Home = () => {
   const pic1Ref = useRef<HTMLImageElement>(null);
@@ -79,9 +81,10 @@ const Home = () => {
           description:
             "A main page for the wojoon.dev site. Where you can find the newest information for technology and programming.",
         }}
-        noFooter
+        noFooter={false}
       >
         <div className="px-5 text-white font-customFont lg:px-0">
+          {/* Hero Section */}
           <section className="lg:mt-40 lg:px-20">
             <AnimatedLines
               sentence={[
@@ -97,18 +100,16 @@ const Home = () => {
             <IntroTopDesktop />
           </section>
 
-          <section id="info" className="lg:px-20 lg:flex lg:py-5 lg:gap-3">
-            <h3 className="text-xl capitalize mt-10 lg:mt-0">
-              wonjoon jang
-              <br />
-              Software Engineer
-            </h3>
+          {/* About Section */}
+          <div id="about" className="mt-20 lg:mt-40 lg:px-20 pt-10 ">
+            <h2 className="text-2xl font-bold mb-8 uppercase">About Me</h2>
+            <Top />
+          </div>
 
-            <div className="mt-10 mb-10 flex gap-2 capitalize text-xl lg:mt-0 lg:mb-0 lg:self-end">
-              <Link href="/instagram">instagram</Link>
-              <Link href="/github">github</Link>
-            </div>
-          </section>
+          {/* Resume Section */}
+          <div id="resume" className="mt-20 lg:px-20 pt-10">
+            <Resume />
+          </div>
         </div>
       </Layout>
     </>

@@ -24,9 +24,6 @@ const Experience: FC<Props> = ({ title, period, desc }) => {
           {moment(period.from).format("MMM YYYY")} -{" "}
           {period?.to && moment(period.to).format("MMM YYYY")}
         </span>
-        <span className={`text-xs font-montserrat font-medium text-white`}>
-          {moment(period.to).diff(moment(period.from), "months") + 1} months
-        </span>
       </div>
       <h3
         className={`font-medium text-xl font-montserrat decoration-1 underline-offset-[3px]`}
