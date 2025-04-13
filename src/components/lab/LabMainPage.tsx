@@ -12,6 +12,11 @@ const LabMainPage: FC<Props> = () => {
             My first Lab Project, The space warp effect using Threejs
           </Link>
         </li>
+        <li>
+          <Link href={`/lab/orbit-chat`}>
+            Orbit Chat - Track the ISS in real-time with 3D globe visualization
+          </Link>
+        </li>
       </ol>
     </section>
   );
