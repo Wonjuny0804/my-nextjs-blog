@@ -1,13 +1,14 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useRef, useState, useEffect } from "react";
 import { Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Stars from "./components/Stars";
 import Earth from "./components/Earth";
 import Sun from "./components/Sun";
 import ISSTracker from "./components/ISSTracker";
 import SceneSetup from "./components/SceneSetup";
 import IssTrail from "./components/IssTrail";
 import { PositionPoint } from "./components/IssTrail";
+import { fetchISSTLE } from "./utils/issTracker";
+import ISSFunFacts from "./components/ISSFunFacts";
 
 // Extend OrbitControls to be used within the Canvas
 extend({ OrbitControls });
@@ -16,6 +17,15 @@ interface GlobeVisualizationProps {}
 
 const GlobeVisualization: FC<GlobeVisualizationProps> = () => {
   const trailRef = useRef<PositionPoint[]>([]);
+
+  const [tleData, setTleData] = useState<[string, string] | null>(null);
+
+  useEffect(() => {
+    fetchISSTLE().then((tle) => {
+      setTleData(tle);
+    });
+  }, []);
+
   return (
     <div
       style={{
@@ -29,13 +39,13 @@ const GlobeVisualization: FC<GlobeVisualizationProps> = () => {
     >
       <Canvas>
         <SceneSetup>
-          {/* <Stars /> */}
           <Earth />
           <Sun />
-          <IssTrail trail={trailRef.current} />
-          <ISSTracker trailRef={trailRef} />
+          {tleData && <IssTrail tle={tleData} />}
+          {tleData && <ISSTracker trailRef={trailRef} tleData={tleData} />}
         </SceneSetup>
       </Canvas>
+      <ISSFunFacts />
     </div>
   );
 };
