@@ -1,5 +1,4 @@
 import React, { FC, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import * as constants from "../utils/constants";
 
@@ -14,21 +13,10 @@ const Earth: FC = () => {
   const bumpMap = useRef(
     new THREE.TextureLoader().load(constants.EARTH_BUMP_MAP_TEXTURE_PATH)
   );
-
-  // useFrame(() => {
-  // const date = new Date();
-  // const hours = date.getUTCHours();
-  // const minutes = date.getUTCMinutes();
-  // const seconds = date.getUTCSeconds();
-  // const timeRotation =
-  //   ((hours + minutes / 60 + seconds / 3600) / 24) * Math.PI * 2;
-  // if (earthRef.current) {
-  //   earthRef.current.rotation.y = timeRotation;
-  // }
-  // if (atmosphereRef.current) {
-  //   atmosphereRef.current.rotation.y = timeRotation;
-  // }
-  // });
+  const nightTexture = useRef(
+    new THREE.TextureLoader().load(constants.NIGHT_MAP_TEXTURE_PATH)
+  );
+  console.log(nightTexture.current);
 
   return (
     <group>
@@ -40,10 +28,15 @@ const Earth: FC = () => {
           bumpScale={constants.EARTH_BUMP_SCALE}
           specular={new THREE.Color(0x111111)}
           shininess={5}
+          emissive={new THREE.Color(0xffffff)}
+          emissiveMap={nightTexture.current}
+          emissiveIntensity={0.5}
         />
       </mesh>
+
+      {/* Atmosphere */}
       <mesh ref={atmosphereRef} rotation={[0, Math.PI / 2, 0]}>
-        <sphereGeometry args={[constants.EARTH_RADIUS + 0.2, 64, 64]} />
+        <sphereGeometry args={[constants.EARTH_RADIUS + 2, 64, 64]} />
         <meshPhongMaterial
           color={constants.ATMOSPHERE_COLOR}
           transparent={true}

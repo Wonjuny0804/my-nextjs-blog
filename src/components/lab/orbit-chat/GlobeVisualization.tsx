@@ -16,9 +16,10 @@ extend({ OrbitControls });
 interface GlobeVisualizationProps {}
 
 const GlobeVisualization: FC<GlobeVisualizationProps> = () => {
-  const trailRef = useRef<PositionPoint[]>([]);
-
   const [tleData, setTleData] = useState<[string, string] | null>(null);
+
+  const trailRef = useRef<PositionPoint[]>([]);
+  const controlsRef = useRef<any>(null);
 
   useEffect(() => {
     fetchISSTLE().then((tle) => {
@@ -38,7 +39,7 @@ const GlobeVisualization: FC<GlobeVisualizationProps> = () => {
       }}
     >
       <Canvas>
-        <SceneSetup>
+        <SceneSetup controlsRef={controlsRef}>
           <Earth />
           <Sun />
           {tleData && <IssTrail tle={tleData} />}

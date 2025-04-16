@@ -1,12 +1,12 @@
 import React, { FC, useRef, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { fetchISSTLE, getISSPosition } from "../utils/issTracker";
+import { getISSPosition } from "../utils/issTracker";
 import { latLngToSphereCoords } from "../utils/threeHelpers";
 import { useGLTF } from "@react-three/drei";
 import * as constants from "../utils/constants";
 import { PositionPoint } from "./IssTrail";
-import IssTrail from "./IssTrail";
+import { useThree } from "@react-three/fiber";
 
 const MAX_TRAIL_POINTS = 1800;
 
@@ -20,6 +20,7 @@ const ISSTracker: FC<Props> = ({ trailRef, tleData }) => {
   const issMarker = useRef<THREE.Mesh>(null);
   const targetPos = useRef<THREE.Vector3 | null>(null);
   const { scene } = useGLTF("/models/iss.glb");
+  const { camera, controls } = useThree();
 
   useEffect(() => {
     const interval = setInterval(() => {

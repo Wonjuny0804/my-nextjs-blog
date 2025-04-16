@@ -29,6 +29,7 @@ export const EARTH_BUMP_SCALE = 1.2;
 // Textures
 export const EARTH_MAP_TEXTURE_PATH = "/images/earth_texture.jpg";
 export const EARTH_BUMP_MAP_TEXTURE_PATH = "/images/earth-topology.png";
+export const NIGHT_MAP_TEXTURE_PATH = "/images/earth_night.jpg";
 
 // Camera
 export const CAMERA_FOV = 75;
