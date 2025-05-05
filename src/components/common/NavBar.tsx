@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-
-const MobileMenu = dynamic(() => import("./MobileMenu/MobileMenu"));
 
 const NavBar = () => {
   const pathName = usePathname();
@@ -114,8 +111,6 @@ const NavBar = () => {
           Resume
         </Link>
       </div>
-
-      <MobileMenu />
     </div>
   );
 };

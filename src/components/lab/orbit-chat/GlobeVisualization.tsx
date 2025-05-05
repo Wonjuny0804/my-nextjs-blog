@@ -1,6 +1,8 @@
+'use client';
+
 import React, { FC, useRef, useState, useEffect } from "react";
-import { Canvas, extend } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+// import { OrbitControls } from "@react-three/drei";
 import Earth from "./components/Earth";
 import Sun from "./components/Sun";
 import ISSTracker from "./components/ISSTracker";
@@ -11,7 +13,7 @@ import { fetchISSTLE } from "./utils/issTracker";
 import ISSFunFacts from "./components/ISSFunFacts";
 
 // Extend OrbitControls to be used within the Canvas
-extend({ OrbitControls });
+// extend({ OrbitControls });
 
 interface GlobeVisualizationProps {}
 

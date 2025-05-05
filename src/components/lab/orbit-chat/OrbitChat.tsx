@@ -1,11 +1,10 @@
+'use client';
+
 import React, { FC } from "react";
 import dynamic from "next/dynamic";
 import styles from "./OrbitChat.module.css";
 import ISSFunFacts from "./components/ISSFunFacts";
-
-const GlobeVisualization = dynamic(() => import("./GlobeVisualization"), {
-  ssr: false,
-}) as any;
+import GlobeVisualization from "./GlobeVisualization";
 
 const OrbitChat: FC = () => {
   return (
