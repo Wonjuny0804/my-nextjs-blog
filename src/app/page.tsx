@@ -134,7 +134,7 @@ const Home = () => {
                                 </Link>
                             </li>
                             <li className={`py-6 group cursor-pointer`}>
-                                <Link href={`https://stay.enko.kr/`} target="_blank" className={`grid gap-2`}>
+                                <Link href={`https://stay.enkor.kr/`} target="_blank" className={`grid gap-2`}>
                                     <span className={`block font-medium text-xs text-[#90a9a3] group-hover:text-[#c3fcf2] transition-colors duration-300 uppercase mt-1`}>jun 2021 - aug 2022</span>
                                     <div>
                                         <div className={`flex items-center justify-between gap-2`}>
