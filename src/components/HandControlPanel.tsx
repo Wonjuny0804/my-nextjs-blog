@@ -21,10 +21,10 @@ export type GestureAction = {
 
 type HandControlPanelProps = {
   onGesture: (gesture: GestureAction) => void;
+  videoRef: React.RefObject<HTMLVideoElement | null>;
 };
 
-export default function HandControlPanel({ onGesture }: HandControlPanelProps) {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+export default function HandControlPanel({ onGesture, videoRef }: HandControlPanelProps) {
   const handLandmarkerRef = useRef<HandLandmarker | null>(null);
   const animationFrameId = useRef<number | null>(null);
 
@@ -161,8 +161,13 @@ export default function HandControlPanel({ onGesture }: HandControlPanelProps) {
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
+      if (videoRef.current?.srcObject) {
+        const stream = videoRef.current.srcObject as MediaStream;
+        stream.getTracks().forEach((track) => track.stop());
+        videoRef.current.srcObject = null;
+      }
     };
-  }, [onGesture]);
+  }, [onGesture, videoRef]);
 
   return (
     <video

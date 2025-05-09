@@ -14,6 +14,7 @@ const Home = () => {
     const sphereRef = useRef<THREE.Mesh>(null);
     const controlRef = useRef<BackgroundSphereHandle>(null);
     const materialRef = useRef<THREE.MeshStandardMaterial>(null);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
 
     const handleGesture = (gesture: GestureAction) => {
         if (!sphereRef.current) return;
@@ -31,6 +32,16 @@ const Home = () => {
         }
         if (gesture.action === 'color-change') {
             controlRef.current.applyColorIntensity(gesture.value);
+        }
+    };
+
+    const handleToggleGestureMode = () => {
+        setGestureMode(prev => !prev);
+
+        if (videoRef.current?.srcObject) {
+            const stream = videoRef.current.srcObject as MediaStream;
+            stream.getTracks().forEach((track) => track.stop());
+            videoRef.current.srcObject = null;
         }
     };
     
@@ -64,7 +75,7 @@ const Home = () => {
                     </div>
 
                     <button 
-                    onClick={() => setGestureMode(prev => !prev)} 
+                    onClick={handleToggleGestureMode} 
                     className={`hidden md:block cursor-pointer rounded fixed bottom-20 left-65 bg-[#141515] text-[#ffffff] hover:text-[#e1fcf5] font-semibold px-6 py-2 mt-20 hover:translate-y-[-2px] transition-all duration-300`}>
                         {gestureMode ? 'Disable Gesture Mode' : 'Play with sphere'}
                     </button>
@@ -78,7 +89,7 @@ const Home = () => {
                         </div>
                         </>
                     )}
-                    {gestureMode && <HandControlPanel onGesture={handleGesture}/>}
+                    {gestureMode && <HandControlPanel onGesture={handleGesture} videoRef={videoRef}/>}
                 </section>
                 <section className={`mt-20 font-light text-[#90a9a3] mb-20`}>
                     <h3 className={'font-semibold uppercase text-[14px] text-[#e1fcf5] font-stretch-150%'}>intro</h3>
