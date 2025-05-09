@@ -16,7 +16,6 @@ const Earth: FC = () => {
   const nightTexture = useRef(
     new THREE.TextureLoader().load(constants.NIGHT_MAP_TEXTURE_PATH)
   );
-  console.log(nightTexture.current);
 
   return (
     <group>

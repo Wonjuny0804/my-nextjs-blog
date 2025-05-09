@@ -1,12 +1,12 @@
 import Script from "next/script";
 import '../../styles/globals.css'
 import Head from "next/head";
-import localFont from "next/font/local";
-import { Inter } from "next/font/google";
+// import localFont from "next/font/local";
+import { Inter, Lora } from "next/font/google";
 
-const NeueMontreal = localFont({
-  src: '../../public/assets/PPNeueMontreal-Regular.woff',
-})
+// const NeueMontreal = localFont({
+//   src: '../../public/assets/PPNeueMontreal-Regular.woff',
+// })
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -41,7 +41,7 @@ export default function RootLayout({
          }');
         `}
       </Script>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-[#1d2628]`}>{children}</body>
     </html>
   )
 }
