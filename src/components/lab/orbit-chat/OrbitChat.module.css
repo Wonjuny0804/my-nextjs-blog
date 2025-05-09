@@ -1,10 +1,8 @@
 .container {
   position: relative;
   width: 100%;
-  height: calc(100vh - 60px); /* Just accounting for navbar */
+  height: 100vh;
   overflow: hidden;
-  margin-top: 0; /* Remove top margin */
-  padding-top: 10px; /* Add minimal padding instead */
 }
 
 .globeContainer {

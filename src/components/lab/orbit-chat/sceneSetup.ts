@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as constants from "./utils/constants";
-import { createTextLabel } from "./utils/threeHelpers";
 
 export interface SceneElements {
   scene: THREE.Scene;
@@ -209,7 +208,7 @@ export const createAtmosphere = (scene: THREE.Scene): THREE.Mesh => {
  */
 export const addControls = (
   camera: THREE.Camera,
-  renderer: THREE.Renderer
+  renderer: THREE.WebGLRenderer
 ): OrbitControls => {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
