@@ -5,10 +5,19 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["jsx", "js", "tsx", "ts", "mdx", "md"],
   images: {
-    domains: [
-      "images.velog.io",
-      "cdn.thenewstack.io",
-      "firebasestorage.googleapis.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.velog.io",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.thenewstack.io",
+      },
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+      },
     ],
   },
   output: "standalone", // this is for docker purposes
