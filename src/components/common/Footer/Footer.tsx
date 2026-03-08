@@ -10,8 +10,7 @@ const Footer: FC = React.memo(() => {
         passHref
         className={`w-fit text-xl grid items-center justify-center text-white leading-[1] capitalize`}
       >
-        Wonjoon Jang <br />
-        software engineer
+        Wonjoon Jang <br /> Software Engineer, JPMorgan Chase (since August 2025)
       </Link>
       <div className={`flex gap-1 items-center text-white text-xl`}>
         <Link href={"https://github.com/Wonjuny0804"} passHref>

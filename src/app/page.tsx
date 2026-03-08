@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import Background, { BackgroundSphereHandle } from  "../components/Background";
+import Background, { BackgroundSphereHandle } from "../components/Background";
 import HandControlPanel, { GestureAction } from "../components/HandControlPanel";
 import * as THREE from 'three';
 
@@ -44,7 +44,6 @@ const Home = () => {
             videoRef.current.srcObject = null;
         }
     };
-    
     return (
         <main className={`min-h-screen bg-[#1d2628]`}>
             <Background sphereRef={sphereRef} controlRef={controlRef} materialRef={materialRef} cameraOn={gestureMode} />
@@ -53,7 +52,7 @@ const Home = () => {
                     <div className={`pt-10 px-6 fixed top-20`}>
                         <h1 className={`font-bold text-[32px] text-[#f7fffd]`}>Wonjun Jang</h1>
                         <h2 className={`text-lg mt-2`}>Software Engineer</h2>
-                        <p className={`font-light text-[#90a9a3] mt-3`}>Your average tech bro,<br/> software engineer based in St.Louis, MO</p>
+                        <p className={`font-light text-[#90a9a3] mt-3`}>Your average tech bro,<br /> software engineer based in NYC area.</p>
 
                         <ul className={`flex gap-3 mt-6`}>
                             <li>
@@ -74,40 +73,60 @@ const Home = () => {
                         </ul>
                     </div>
 
-                    <button 
-                    onClick={handleToggleGestureMode} 
-                    className={`hidden md:block cursor-pointer rounded fixed bottom-20 left-65 bg-[#141515] text-[#ffffff] hover:text-[#e1fcf5] font-semibold px-6 py-2 mt-20 hover:translate-y-[-2px] transition-all duration-300`}>
+                    <button
+                        onClick={handleToggleGestureMode}
+                        className={`hidden md:block cursor-pointer rounded fixed bottom-20 left-65 bg-[#141515] text-[#ffffff] hover:text-[#e1fcf5] font-semibold px-6 py-2 mt-20 hover:translate-y-[-2px] transition-all duration-300`}>
                         {gestureMode ? 'Disable Gesture Mode' : 'Play with sphere'}
                     </button>
                     {gestureMode && (
                         <>
-                        <div className={`fixed bottom-4 right-4 z-50 px-3 py-1 bg-green-600 text-white text-xs rounded shadow animate-pulse`}>
-                            🎥 Gesture Control Active
-                        </div>
-                        <div className="fixed top-6 left-6 z-50 bg-black/70 text-white p-4 rounded-xl text-sm max-w-sm transition-opacity duration-500 animate-fade-in-out">
-                            Try pinching your fingers, rotating your hand, or flicking to spin the sphere.
-                        </div>
+                            <div className={`fixed bottom-4 right-4 z-50 px-3 py-1 bg-green-600 text-white text-xs rounded shadow animate-pulse`}>
+                                🎥 Gesture Control Active
+                            </div>
+                            <div className="fixed top-6 left-6 z-50 bg-black/70 text-white p-4 rounded-xl text-sm max-w-sm transition-opacity duration-500 animate-fade-in-out">
+                                Try pinching your fingers, rotating your hand, or flicking to spin the sphere.
+                            </div>
                         </>
                     )}
-                    {gestureMode && <HandControlPanel onGesture={handleGesture} videoRef={videoRef}/>}
+                    {gestureMode && <HandControlPanel onGesture={handleGesture} videoRef={videoRef} />}
                 </section>
                 <section className={`mt-20 font-light text-[#90a9a3] mb-20`}>
                     <h3 className={'font-semibold uppercase text-[14px] text-[#e1fcf5] font-stretch-150%'}>intro</h3>
                     <p className={`mt-6`}>
-                    I’m a software engineer who thrives at the intersection of product, performance, and polish. From crafting sleek frontends to architecting AI-powered backends, I build systems that are as thoughtful as they are scalable.
+                        I’m a software engineer who thrives at the intersection of product, performance, and polish. From crafting sleek frontends to architecting AI-powered backends, I build systems that are as thoughtful as they are scalable.
                     </p>
                     <p className={`mt-10`}>
-                    Most recently, I worked at <span className={`text-[#e1fcf5] font-medium`}>Paula’s Choice</span> as a Frontend Developer for the Korea and Japan markets, leading UI initiatives and shipping accessible, high-performance features to a global user base. 
-                    Before that, I helped build both frontend and backend systems at an <span className={`text-[#e1fcf5] font-medium`}>early-stage proptech startup</span>, and earlier, contributed as a QA intern at a large enterprise. While finishing my degree, I worked on perception AI projects—experimenting with object detection and anomaly detection models.
-                    Currently, I’m building automation tools powered by AI agents—fast-moving products that blend smart UX with serious technical depth.
+                        I currently work at <span className={`text-[#e1fcf5] font-medium`}>JPMorgan Chase</span> as a Software Engineer on the <span className={`text-[#e1fcf5] font-medium`}>UI Library team</span>. We support the entire firm by building and maintaining a comprehensive component library that enables teams across the organization to rapidly develop consistent, accessible applications.
+                        Before that, I helped build both frontend and backend systems at an <span className={`text-[#e1fcf5] font-medium`}>early-stage proptech startup</span>, and earlier, contributed as a QA intern at a large enterprise. While finishing my degree, I worked on perception AI projects—experimenting with object detection and anomaly detection models.
+                        My work spans product optimization, cross-functional collaboration, and building scalable systems that empower teams across the firm.
                     </p>
                     <p className={`mt-10`}>
-                    Outside of work, you’ll find me doing <span className={`text-[#e1fcf5] font-medium`}>CrossFit</span>, logging long runs, <span className={`text-[#e1fcf5] font-medium`}>swimming</span> or geeking out on side projects. I’m always chasing growth—whether it’s building better software, stronger habits.
+                        Outside of work, you’ll find me doing <span className={`text-[#e1fcf5] font-medium`}>logging long runs</span> or working on side projects. I’m always chasing growth—whether it’s building better software, stronger habits.
                     </p>
 
 
                     <section className={`mt-20`}>
                         <ol>
+                            <li className={`py-6 group cursor-pointer`}>
+                                <Link href={`https://www.jpmorganchase.com`} target="_blank" className={`grid gap-2`}>
+                                    <span className={`block font-medium text-xs text-[#90a9a3] group-hover:text-[#c3fcf2] transition-colors duration-300 uppercase mt-1`}>since August 2025</span>
+                                    <div>
+                                        <div className={`flex items-center justify-between gap-2`}>
+                                            <div className={`flex gap-2`}>
+                                                <h3 className={`font-semibold text-[#e1fcf5] group-hover:text-[#c3fcf2] transition-colors duration-300`}>JPMorgan Chase</h3>
+                                                <p className={`text-[#e1fcf5] group-hover:text-[#c3fcf2] transition-colors duration-300`}>Software Engineer (UI Library)</p>
+                                            </div>
+                                        </div>
+                                        <p className={`mt-5 text-sm text-[#90a9a3] group-hover:text-[#f7fffd] transition-colors duration-400`}>Building and maintaining an internal UI component library that enables teams across the firm to develop consistent, accessible applications. Collaborating with product teams across divisions to define component APIs, ensure accessibility standards, and ship features that scale across the organization.</p>
+
+                                        <ul className={`mt-5 flex gap-2 flex-wrap `}>
+                                            <li className={`text-xs font-medium text-[#90a9a3] mb-1 bg-[rgba(255,255,255,0.1)] px-2 py-1 rounded-full group-hover:text-[#c3fcf2] transition-colors duration-400`}>React</li>
+                                            <li className={`text-xs font-medium text-[#90a9a3] mb-1 bg-[rgba(255,255,255,0.1)] px-2 py-1 rounded-full group-hover:text-[#c3fcf2] transition-colors duration-400`}>Typescript</li>
+                                        </ul>
+                                    </div>
+                                </Link>
+                            </li>
+
                             <li className={`py-6 group cursor-pointer`}>
                                 <Link href={`https://paulaschoice.co.kr`} target="_blank" className={`grid gap-2`}>
                                     <span className={`block font-medium text-xs text-[#90a9a3] group-hover:text-[#c3fcf2] transition-colors duration-300 uppercase mt-1`}>aug 2022 - oct 2024</span>
@@ -134,7 +153,7 @@ const Home = () => {
                                 </Link>
                             </li>
                             <li className={`py-6 group cursor-pointer`}>
-                                <Link href={`https://stay.enkor.kr/`} target="_blank" className={`grid gap-2`}>
+                                <Link href={`https://stay.enko.kr/`} target="_blank" className={`grid gap-2`}>
                                     <span className={`block font-medium text-xs text-[#90a9a3] group-hover:text-[#c3fcf2] transition-colors duration-300 uppercase mt-1`}>jun 2021 - aug 2022</span>
                                     <div>
                                         <div className={`flex items-center justify-between gap-2`}>
@@ -144,7 +163,7 @@ const Home = () => {
                                             </div>
                                         </div>
                                         <p className={`mt-5 text-sm text-[#90a9a3] group-hover:text-[#f7fffd] transition-colors duration-400`}>
-                                        Joined as one of the first full-time engineer and helped take the product from zero to a fully operational housing platform. I built and scaled the entire stack—from map-based property search to host onboarding tools—while working closely with users and non-technical stakeholders. I led key product iterations based on real customer feedback, developed internal tooling to support growth, and contributed directly to an 8x revenue increase during my time there.
+                                            Joined as one of the first full-time engineer and helped take the product from zero to a fully operational housing platform. I built and scaled the entire stack—from map-based property search to host onboarding tools—while working closely with users and non-technical stakeholders. I led key product iterations based on real customer feedback, developed internal tooling to support growth, and contributed directly to an 8x revenue increase during my time there.
                                         </p>
 
                                         <ul className={`mt-5 flex gap-2 flex-wrap `}>
@@ -174,7 +193,7 @@ const Home = () => {
                                             </div>
                                         </div>
                                         <p className={`mt-5 text-sm text-[#90a9a3] group-hover:text-[#f7fffd] transition-colors duration-400`}>
-                                        Testing and ensuring the quality of software products. I worked closely with developers and product managers to identify and resolve issues, and provided feedback to improve the overall quality of the product.
+                                            Testing and ensuring the quality of software products. I worked closely with developers and product managers to identify and resolve issues, and provided feedback to improve the overall quality of the product.
                                         </p>
 
                                         <ul className={`mt-5 flex gap-2 flex-wrap `}>
@@ -198,7 +217,7 @@ const Home = () => {
                                             </div>
                                         </div>
                                         <p className={`mt-5 text-sm text-[#90a9a3] group-hover:text-[#f7fffd] transition-colors duration-400`}>
-                                        Worked as a research assistant, developed real-time anomaly detection systems for smart surveillance use cases. I built data pipelines to preprocess surveillance footage and benchmarked traditional ML models against deep learning approaches like YOLO and CNNs. The deep learning models consistently outperformed legacy techniques—delivering over 94% accuracy and proving viable for production deployment.
+                                            Worked as a research assistant, developed real-time anomaly detection systems for smart surveillance use cases. I built data pipelines to preprocess surveillance footage and benchmarked traditional ML models against deep learning approaches like YOLO and CNNs. The deep learning models consistently outperformed legacy techniques—delivering over 94% accuracy and proving viable for production deployment.
                                         </p>
 
                                         <ul className={`mt-5 flex gap-2 flex-wrap `}>

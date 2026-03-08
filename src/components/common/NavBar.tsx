@@ -72,7 +72,7 @@ const NavBar = () => {
         (pathName.startsWith("/posts") && (
           <>
             <div className="hidden lg:block text-white leading-[28px]">
-              Working at <br /> Paula's Choice
+              Working at <br /> JPMorgan Chase — Software Engineer (since August 2025)
             </div>
             <div className="hidden lg:block text-white leading-[28px]">
               Based in Seoul
