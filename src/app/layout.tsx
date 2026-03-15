@@ -1,8 +1,7 @@
 import Script from "next/script";
 import '../../styles/globals.css'
-import Head from "next/head";
 // import localFont from "next/font/local";
-import { Inter, Lora } from "next/font/google";
+import { Inter } from "next/font/google";
 
 // const NeueMontreal = localFont({
 //   src: '../../public/assets/PPNeueMontreal-Regular.woff',
@@ -21,9 +20,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <title>Wonjun Jang</title>
-      </Head>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${
           process.env.GA_ID || process.env.NEXT_PUBLIC_GA_ID
